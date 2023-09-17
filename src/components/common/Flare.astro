@@ -1,0 +1,45 @@
+---
+interface Props {
+	color: "orange" | "yellow" | "blue";
+	width: string;
+	height: string;
+	top?: string;
+	right?: string;
+}
+
+const { color, width, height, top, right } = Astro.props;
+---
+
+<div class:list={["flair", color]}></div>
+
+<style define:vars={{ width, height, top, right }}>
+	.flair {
+		position: absolute;
+		z-index: -1;
+		width: var(--width);
+		height: var(--height);
+		top: var(--top);
+		right: var(--right);
+	}
+	.orange {
+		background: radial-gradient(
+			circle,
+			rgba(var(--flare-orange),0.4),
+			rgba(var(--flare-orange),0) 50%
+		);
+	}
+	.yellow {
+		background: radial-gradient(
+			circle,
+			rgba(var(--flare-yellow),0.4),
+			rgba(var(--flare-yellow),0) 50%
+		);
+	}
+	.blue {
+		background: radial-gradient(
+			circle,
+			rgba(var(--flare-blue),0.4),
+			rgba(var(--flare-blue),0) 50%
+		);
+	}
+</style>

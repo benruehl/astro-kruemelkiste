@@ -1,0 +1,29 @@
+<section class="container">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+</section>
+
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .container > div:not(:nth-child(3n+2)) {
+        translate: 0 10rem;
+    }
+
+    .card {
+        background: var(--card-background);
+        border-radius: 15%;
+        height: 500px;
+    }
+</style>

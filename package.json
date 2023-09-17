@@ -10,6 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/dosis": "^5.0.12",
+    "@fontsource/varela-round": "^5.0.8",
     "astro": "^3.1.0"
   }
 }
