@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+import titleImage from "../../images/title-base.png"
+import bubble1Image from "../../images/title-bubble-1.png"
+import bubble2Image from "../../images/title-bubble-2.png"
+import bubble3Image from "../../images/title-bubble-3.png"
+---
+
+<div class="container">
+    <Image src={titleImage} alt="Mädchen bläßt Seifenblasen"/>
+    <Image src={bubble1Image} alt="Seifenblase" class="bubble bubble-1"/>
+    <Image src={bubble2Image} alt="Seifenblase" class="bubble bubble-2"/>
+    <Image src={bubble3Image} alt="Seifenblase" class="bubble bubble-3"/>
+</div>
+
+<style>
+    .container {
+        position: relative;
+    }
+
+    .bubble {
+        position: absolute;
+        animation: float 5s infinite ease-in-out reverse;
+    }
+
+    .bubble-1 {
+        left: 21%;
+        top: 29.5%;
+        filter: sepia() saturate(.75);
+    }
+
+    .bubble-2 {
+        left: 16%;
+        top: 30%;
+        animation-delay: -1s;
+        filter: sepia() saturate(1.5) hue-rotate(45deg);
+    }
+
+    .bubble-3 {
+        left: 0;
+        top: 12%;
+        animation-delay: 1s;
+        filter: sepia() saturate(2) hue-rotate(-45deg);
+    }
+
+    @keyframes float {
+        from {
+            translate: 0;
+        }
+        50% {
+            translate: 2% -5%;
+        }
+        to {
+            translate: 0;
+        }
+    }
+</style>
