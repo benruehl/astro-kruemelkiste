@@ -29,15 +29,16 @@ const { title } = Astro.props;
 		--text-color-strong: #264653;
 		--accent-color: 193, 102, 107;
 		--accent-color-alt: 42, 157, 143;
-		--card-background: #F0E5D8;
-		--card-background-alt: #FDEDCE;
-		--card-background-accent: #FEDFCD;
-		--card-background-accent-alt: #F5EBD6;
+		--card-background: 240, 229, 216;
+		--card-background-alt: 253, 237, 206;
+		--card-background-accent: 254, 223, 205;
+		--card-background-accent-alt: 245, 235, 214;
 		--flare-orange: 244, 162, 97;
 		--flare-yellow: 233, 196, 106;
 		--flare-blue: 42, 157, 143;
 		--orange: 244, 162, 97;
 		--orange-strong: 231, 111, 81;
+		--footer-background: rgba(var(--card-background), 0.5);
 	}
 	html {
 		font-family: "Varela Round", sans-serif;
@@ -75,11 +76,22 @@ const { title } = Astro.props;
 		font-family: "Varela Round", sans-serif;
 		color: var(--text-color);
 	}
-	main {
+	a {
+		color: rgb(var(--accent-color-alt));
+		text-decoration: none;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	main,
+	footer {
 		margin: auto;
-		padding: 1rem;
 		width: 1280px;
 		max-width: calc(100% - 2rem);
+	}
+	main {
+		padding: 1rem;
 		font-size: 18px;
 		line-height: 1.4;
 		display: flex;
