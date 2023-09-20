@@ -1,0 +1,21 @@
+---
+export interface Props {
+  fileName: string;
+  class?: string;
+}
+
+const { fileName, class: className } = Astro.props as Props;
+const { default: svg } = await import(`/src/images/${fileName}.svg?raw`);
+
+function addAttributesToInnerHTMLString(innerHTML: string, attributes: Record<string, string>) {
+  const attributesString = Object.entries(attributes)
+    .map(([key, value]) => `${key}="${value}"`)
+    .join(' ');
+
+  return innerHTML.replace(/<svg/, `<svg ${attributesString}`);
+}
+
+const innerHTML = addAttributesToInnerHTMLString(svg, {"class": className ?? ""});
+---
+
+<Fragment class={className} set:html={innerHTML}/>

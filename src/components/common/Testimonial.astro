@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+  author: string;
+  image: ImageMetadata;
+  imageAlt: string;
+}
+
+const { author, image, imageAlt } = Astro.props as Props;
+---
+
+<div class="container">
+    <Image src={image} alt={imageAlt} width={128} height={128}/>
+    <figure>
+        <blockquote>
+            <slot/>
+        </blockquote>
+        <figcaption>
+            {author}
+        </figcaption>
+    </figure>
+</div>
+
+<style lang="scss">
+    .container {
+        background: white;
+        border-radius: 24px;
+        padding: 2rem;
+        padding-left: 8rem;
+        box-shadow: 0px 10px 100px 0px rgba(112,81,43,0.1);
+        position: relative;
+
+        & img {
+            position: absolute;
+            left: -40px;
+        }
+    }
+
+    figure,
+    blockquote {
+        margin: 0;
+    }
+
+    figcaption {
+        margin-top: 2rem;
+        position: relative;
+        opacity: .75;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -1rem;
+            width: 50px;
+            height: 1px;
+            background: var(--text-color);
+            opacity: .35;
+        }
+    }
+</style>

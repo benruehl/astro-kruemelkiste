@@ -38,10 +38,11 @@ const { title } = Astro.props;
 		--flare-blue: 42, 157, 143;
 		--orange: 244, 162, 97;
 		--orange-strong: 231, 111, 81;
-		--footer-background: rgba(var(--card-background), 0.5);
+		--footer-background: #F7EFE7;
 	}
 	html {
 		font-family: "Varela Round", sans-serif;
+		color: var(--text-color);
 		background: white;
 		background: linear-gradient(
 			180deg, 
@@ -52,7 +53,7 @@ const { title } = Astro.props;
 		overflow-x: hidden;
 	}
 	h1 {
-		font-family: Dosis, sans-serif;
+		font-family: "Dosis", sans-serif;
 		font-size: 6.5rem;
 		font-weight: 400;
 		line-height: 1;
@@ -61,20 +62,27 @@ const { title } = Astro.props;
 		margin-bottom: 1em;
 	}
 	h2 {
-		font-family: Dosis, sans-serif;
+		font-family: "Dosis", sans-serif;
 		font-size: 4rem;
 		font-weight: 400;
 		line-height: 1;
 	}
 	h3 {
-		font-family: Dosis, sans-serif;
+		font-family: "Dosis", sans-serif;
 		font-size: 2.5rem;
 		font-weight: 400;
 		line-height: 1;
 	}
+	h2,
+	h3 {
+		.small {
+			font-size: .4em;
+			display: block;
+			text-transform: none;
+		}
+	}
 	p {
 		font-family: "Varela Round", sans-serif;
-		color: var(--text-color);
 	}
 	a {
 		color: rgb(var(--accent-color-alt));
@@ -84,6 +92,10 @@ const { title } = Astro.props;
 			text-decoration: underline;
 		}
 	}
+	blockquote,
+	figcaption {
+		font-family: "Dosis", sans-serif;
+	}
 	main,
 	footer {
 		margin: auto;
@@ -91,7 +103,6 @@ const { title } = Astro.props;
 		max-width: calc(100% - 2rem);
 	}
 	main {
-		padding: 1rem;
 		font-size: 18px;
 		line-height: 1.4;
 		display: flex;

@@ -1,0 +1,103 @@
+---
+import { Image } from 'astro:assets';
+import loverImage from "../../images/lover.png";
+import professorImage from "../../images/professor.png";
+import travelerImage from "../../images/traveler.png";
+import SVG from '../common/SVG.astro';
+import Testimonial from '../common/Testimonial.astro';
+---
+
+<section>
+    <SVG class="background-curve" fileName="curve" />
+    <div class="contact">
+        <h2><span class="small">Habe ich Ihr</span> Interesse geweckt?</h2>
+        <p>
+            Schreiben Sie mir.<br>
+            <a href="">steffis.kruemelkiste@gmail.com</a>
+        </p>
+        <p>
+            Oder rufen Sie mich an.<br>
+            <a href="">030 / 92 40 94 42</a>
+        </p>
+        <p>
+            Ich freue mich auf Ihre Nachricht.
+            Anrufe innerhalb der Woche sind 
+            am besten zur Mittagszeit möglich.
+        </p>
+    </div>
+    <div class="testimonials">
+        <Testimonial author="Jenny" image={travelerImage} imageAlt="Glückliche Frau">
+            Ich bin sehr froh, dass du meine beiden 
+            Jungs in den ersten Jahren begleitet hast 
+            und noch begleitest. Ich könnte mir keine 
+            bessere Betreuung vorstellen.
+        </Testimonial>
+        <Testimonial author="Boris und Sigrid" image={loverImage} imageAlt="Glückliches Paar">
+            Für uns Eltern ist es natürlich herrlich, 
+            wenn Magda Tag für Tag voller Freude zu 
+            Euch geht, ja: sogar "zu Effi!!!" einfordert.
+            Wir geben sie mit einem rundum guten 
+            Gefühl zu Euch. Jetzt ist Magda schon seit 
+            einem Jahr bei Euch, ein weiteres liegt 
+            noch vor ihr. Um diese zwei Jahre sind wir 
+            so froh! Ganz gewiss wird sie von der Zeit, 
+            die sie bei Euch verbringt, gestärkt ins 
+            weitere Leben gehen.
+        </Testimonial>
+        <Testimonial author="Reinhold" image={professorImage} imageAlt="Zufriedener älterer Herr">
+            Ich bin sehr froh und beruhigt, dass meine 
+            Enkelin Anouari bei Ihnen in der 
+            Tagespflege ist. Da stimmt einfach alles! 
+            Super Atmosphäre, nette Leute, 
+            ausgezeichnete Pflege und Betreuung, 
+            einfach rundum gut. Besser hätte sie es 
+            nicht treffen können.
+        </Testimonial>
+    </div>
+</section>
+
+<style lang="scss">
+    section {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 40px;
+        position: relative;
+    }
+
+    .contact {
+        max-width: 400px;
+    }
+
+    .testimonials {
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin: 80px 0;
+    }
+
+    h2 {
+        text-transform: uppercase;
+    }
+
+    .background-curve {
+        position: absolute;
+        right: calc(50% - 45vw);
+        height: 100%;
+        width: auto;
+        color: var(--footer-background);
+        z-index: -1;
+    }
+
+    section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: calc(50% + 45vw - 1px);
+        height: 100%;
+        width: 100vw;
+        background: var(--footer-background);
+        z-index: -1;
+    }
+</style>

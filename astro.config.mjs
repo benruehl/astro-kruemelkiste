@@ -4,4 +4,5 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
     site: 'https://benruehl.github.io',
     base: '/astro-kruemelkiste',
+    scopedStyleStrategy: 'class'
 });
