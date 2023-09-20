@@ -1,16 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import kidHappyImage from "../../images/kid-happy.jpg";
+import kidToysImage from "../../images/kid-toys.jpg";
+import kidAutumnImage from "../../images/kid-autumn.jpg";
+import kidSnackImage from "../../images/kid-snack.jpg";
+import kruemelImage from "../../images/kruemel.svg";
+---
+
 <section class="container">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+    <div class="card">
+        <Image src={kidHappyImage} alt="Mädchen lächelt"/>
+    </div>
+    <div class="card card-text card-title">
+        <h2>
+            Was mir wichtig ist
+        </h2>
+    </div>
+    <div class="card">
+        <Image src={kidToysImage} alt="Junge spielt mit Spielzeugautos"/>
+    </div>
+    <div class="card card-text card-background-1">
+        <h3>Spiel, Spaß und Kreativität</h3>
+        <p>
+            Es wird gespielt, gemalt, 
+            gebastelt und mehr.
+            Ich gehe auf Interessen und 
+            Ideen der Kinder ein und 
+            entwickle sie mit ihnen 
+            weiter.
+        </p>
+    </div>
+    <div class="card">
+        <Image src={kidAutumnImage} alt="Kleinkind sitzt auf Herbstlaub"/>
+    </div>
+    <div class="card card-text card-background-2 card-alt">
+        <h3>Familie, Geborgenheit, Bodenständigkeit</h3>
+        <p>
+            Die Kinder werden wie als Teil 
+            der Familie aufgenommen 
+            und dabei liebevoll und 
+            individuell betreut. 
+            Jedes Kind wird entsprechend 
+            seines Alters und seines 
+            Entwicklungsstandes 
+            individuell gefördert.
+        </p>
+    </div>
+    <div class="card">
+        <Image src={kidSnackImage} alt="Kleinkind nascht Schokolade"/>
+    </div>
+    <div class="card card-text card-background-3">
+        <h3>Faires, freundliches Miteinander</h3>
+        <p>
+            Der richtige Umgang mit
+            anderen Kindern muss erst
+            erlernt werden. Hierbei
+            werden behutsam soziale
+            Werte vermittelt.
+        </p>
+    </div>
+    <div class="card card-text card-kruemel">
+        <Image src={kruemelImage} alt="Krümel, Maskottchen der Krümelkiste"/>
+        <h3><span class="small">Hi, ich bin</span><br>Krümel!</h3>
+        <p>
+            Ich begleite die 
+            Kinder durch den 
+            Tag und spende 
+            Trost wenn nötig.
+        </p>
+    </div>
 </section>
 
-<style>
+<style lang="scss">
     .container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -23,7 +84,67 @@
 
     .card {
         background: var(--card-background);
-        border-radius: 15%;
+        border-radius: 50px;
         height: 500px;
+        overflow: hidden;
+
+        h3 {
+            margin-top: 3rem;
+            color: rgb(var(--accent-color));
+        }
+
+        &.card-alt {
+            h3 {
+                color: rgb(var(--accent-color-alt));
+            }
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+
+    .card-text {
+        padding: 0 3rem;
+    }
+
+    .card-background-1 {
+        background: var(--card-background-alt);
+    }
+
+    .card-background-2 {
+        background: var(--card-background-accent-alt);
+    }
+
+    .card-background-3 {
+        background: var(--card-background-accent);
+    }
+
+    .card-title {
+        color: rgb(var(--accent-color));
+        text-transform: uppercase;
+    }
+
+    .card-kruemel {
+        background: none;
+        border: 4px solid #FCBC98;
+
+        img {
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            height: 100%;
+            object-position: bottom right;
+        }
+
+        p {
+            max-width: 60%;
+        }
+
+        .small {
+            font-size: 1.5rem;
+        }
     }
 </style>
