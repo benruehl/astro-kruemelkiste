@@ -6,7 +6,7 @@ const baseUrl = import.meta.env.BASE_URL;
 const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/");
 ---
 
-<section class="container">
+<section>
     <div class="flares">
         <Flare color="yellow" width="150%" height="1234px" top="-200px" right="-250px"/>
         <Flare color="orange" width="700px" height="700px" top="-200px" right="0"/>
@@ -26,7 +26,7 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
 </section>
 
 <style lang="scss" define:vars={{ textBackgroundImageUrl }}>
-    .container {
+    section {
         display: flex;
         position: relative;
     }

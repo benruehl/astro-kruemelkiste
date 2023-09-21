@@ -5,14 +5,16 @@ interface Props {
 	height: string;
 	top?: string;
 	right?: string;
+	bottom?: string;
+	left?: string;
 }
 
-const { color, width, height, top, right } = Astro.props;
+const { color, width, height, top, right, bottom, left } = Astro.props;
 ---
 
 <div class:list={["flair", color]}></div>
 
-<style define:vars={{ width, height, top, right }}>
+<style define:vars={{ width, height, top, right, bottom, left }}>
 	.flair {
 		position: absolute;
 		z-index: -1;
@@ -20,24 +22,23 @@ const { color, width, height, top, right } = Astro.props;
 		height: var(--height);
 		top: var(--top);
 		right: var(--right);
+		bottom: var(--bottom);
+		left: var(--left);
 	}
 	.orange {
 		background: radial-gradient(
-			circle,
 			rgba(var(--flare-orange),0.4),
 			rgba(var(--flare-orange),0) 50%
 		);
 	}
 	.yellow {
 		background: radial-gradient(
-			circle,
 			rgba(var(--flare-yellow),0.4),
 			rgba(var(--flare-yellow),0) 50%
 		);
 	}
 	.blue {
 		background: radial-gradient(
-			circle,
 			rgba(var(--flare-blue),0.4),
 			rgba(var(--flare-blue),0) 50%
 		);
