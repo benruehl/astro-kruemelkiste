@@ -25,8 +25,8 @@ const { title } = Astro.props;
 </html>
 <style is:global>
 	:root {
-		--text-color: #6A7E85;
-		--text-color-strong: #264653;
+		--text-color: 106, 126, 133;
+		--text-color-strong: 38, 70, 83;
 		--accent-color: 193, 102, 107;
 		--accent-color-alt: 42, 157, 143;
 		--card-background: 240, 229, 216;
@@ -43,7 +43,7 @@ const { title } = Astro.props;
 	}
 	html {
 		font-family: "Varela Round", sans-serif;
-		color: var(--text-color);
+		color: rgb(var(--text-color));
 		background: white;
 		background: linear-gradient(
 			180deg, 
