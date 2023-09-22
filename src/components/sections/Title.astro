@@ -8,9 +8,9 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
 
 <section>
     <div class="flares">
-        <Flare color="yellow" width="150%" height="1234px" top="-200px" right="-250px"/>
-        <Flare color="orange" width="700px" height="700px" top="-200px" right="0"/>
-        <Flare color="blue" width="1100px" height="700px" top="100px" right="-100px"/>
+        <Flare color="yellow" width="1900" height="1234" x="10%" y="-5%"/>
+        <Flare color="orange" width="700" height="700" x="40%" y="-35%"/>
+        <Flare color="blue" width="1100" height="700" x="15%" y="15%"/>
     </div>
     <div class="text">
         <h1>Steffis<br>Krümelkiste</h1>
@@ -96,5 +96,13 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
         top: 0;
         bottom: 0;
         z-index: -1;
+        display: grid;
+        grid-template-areas: "overlay";
+        align-items: center;
+        justify-content: center;
+
+        :global(*) {
+            grid-area: overlay;
+        }
     }
 </style>

@@ -11,9 +11,9 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
 
 <section>
     <div class="flares">
-        <Flare color="yellow" width="1500px" height="1200px" top="-100px" right="-100px"/>
-        <Flare color="orange" width="1500px" height="700px" bottom="0" right="0"/>
-        <Flare color="blue" width="970px" height="1180px" top="-150px" left="-150px"/>
+        <Flare color="yellow" width="1400" height="1000" x="10%" y="-10%"/>
+        <Flare color="orange" width="1400" height="800" x="5%" y="30%"/>
+        <Flare color="blue" width="1000" height="1200" x="-20%" y="-10%"/>
     </div>
     <div class="spoon-container">
         <SVG class="sprinkles" fileName="spoon-sprinkles"/>
@@ -90,7 +90,15 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         top: 0;
         bottom: 0;
         z-index: -1;
-        opacity: .75;
+        opacity: .5;
+        display: grid;
+        grid-template-areas: "overlay";
+        align-items: center;
+        justify-content: center;
+
+        :global(*) {
+            grid-area: overlay;
+        }
     }
 
     .wallpaper {
