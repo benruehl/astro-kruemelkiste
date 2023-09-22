@@ -62,6 +62,8 @@ import Testimonial from '../common/Testimonial.astro';
         align-items: center;
         gap: 40px;
         position: relative;
+
+        --curve-distance: -300px;
     }
 
     .contact {
@@ -78,7 +80,7 @@ import Testimonial from '../common/Testimonial.astro';
 
     .background-curve {
         position: absolute;
-        right: calc(50% - 45vw);
+        right: var(--curve-distance);
         height: 100%;
         width: auto;
         color: var(--footer-background);
@@ -89,9 +91,10 @@ import Testimonial from '../common/Testimonial.astro';
         content: "";
         position: absolute;
         top: 0;
-        left: calc(50% + 45vw - 1px);
+        right: calc(var(--curve-distance) + 1px);
+        transform: translate(100%, 0);
         height: 100%;
-        width: 100vw;
+        width: calc(50vw - (var(--content-max-width) / 2) + var(--curve-distance));
         background: var(--footer-background);
         z-index: -1;
     }
