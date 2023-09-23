@@ -44,11 +44,9 @@ const { title } = Astro.props;
 	html {
 		font-family: "Varela Round", sans-serif;
 		color: rgb(var(--text-color));
-		background: linear-gradient(
-			180deg, 
-			rgba(252,188,152,0.25),
-			transparent
-		);
+		background-image: radial-gradient(
+        	at bottom, transparent 50%, rgba(252,188,152,0.2)
+        );
 		background-attachment: fixed;
 		overflow-x: hidden;
 		position: relative;
