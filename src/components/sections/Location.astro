@@ -1,11 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import SVG from "../common/SVG.astro";
+import { Icon } from "astro-icon";
 import kidImage from "../../images/kid-corner.jpg";
 ---
 
 <section>
-    <SVG class="map" fileName="map"/>
+    <Icon class="map" name="map"/>
     <div class="pill">
         <Image src={kidImage} alt="Junge schaut um Ecke"/>
         <div class="text">
@@ -31,7 +31,7 @@ import kidImage from "../../images/kid-corner.jpg";
         translate: 100px 0;
         z-index: -2;
 
-        :global(#marker) {
+        :global(> :last-child) {
             animation: float 3s infinite ease-in-out;
         }
 

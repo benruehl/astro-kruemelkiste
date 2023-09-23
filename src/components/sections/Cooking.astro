@@ -1,9 +1,9 @@
 ---
 import { getImage , Image } from 'astro:assets';
+import { Icon } from "astro-icon";
 import spoonImage from "../../images/spoon.png";
 import ingredientsImage from "../../images/ingredients.png";
-import childishWallpaperImage from "../../images/childish-wallpaper.svg";
-import SVG from '../common/SVG.astro';
+import childishWallpaperImage from "../../icons/childish-wallpaper.svg";
 import Flare from '../common/Flare.astro';
 
 const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
@@ -16,9 +16,9 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         <Flare color="blue" width="1000" height="1200" x="-20%" y="-10%"/>
     </div>
     <div class="spoon-container">
-        <SVG class="sprinkles" fileName="spoon-sprinkles"/>
+        <Icon class="sprinkles" name="spoon-sprinkles"/>
         <Image class="spoon" src={spoonImage} alt="Holzlöffel" width={290}/>
-        <SVG class="bow" fileName="spoon-bow"/>
+        <Icon class="bow" name="spoon-bow"/>
     </div>
     <div class="text">
         <h2><span class="small">Jeden Tag</span> Selbstgekochte Mahlzeiten</h2>
@@ -62,6 +62,7 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
             width: 383px;
             grid-row: 2;
             grid-column: 1;
+            margin: auto;
             filter: drop-shadow(0 5px 5px rgba(var(--text-color), .25));
             z-index: 1;
         }
