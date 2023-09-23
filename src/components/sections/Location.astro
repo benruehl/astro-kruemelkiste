@@ -1,0 +1,93 @@
+---
+import { Image } from "astro:assets";
+import SVG from "../common/SVG.astro";
+import kidImage from "../../images/kid-corner.jpg";
+---
+
+<section>
+    <SVG class="map" fileName="map"/>
+    <div class="pill">
+        <Image src={kidImage} alt="Junge schaut um Ecke"/>
+        <div class="text">
+            <h2><span class="small">Ihr findet mich</span> hier</h2>
+            <p>
+                Gounodstr. 101<br>
+                13088 Berlin<br>
+            </p>
+            <a href="">Öffne Maps</a>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    section {
+        display: flex;
+        justify-content: end;
+        position: relative;
+    }
+
+    .map {
+        max-width: 1000px;
+        translate: 100px 0;
+        z-index: -2;
+
+        :global(#marker) {
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            from, to {
+                translate: 0;
+            }
+            50% {
+                translate: 0 -10px;
+            }
+        }
+    }
+
+    .pill {
+        position: absolute;
+        left: 0;
+        bottom: -120px;
+        display: flex;
+        align-items: center;
+        border-radius: 1000px;
+        overflow: hidden;
+        width: 800px;
+        height: 420px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(var(--card-background));
+            mix-blend-mode: screen;
+            z-index: -1;
+        }
+
+        h2 {
+            color: rgb(var(--accent-color));
+            font-size: 6rem;
+            margin-top: 0;
+            margin-bottom: 3rem;
+            
+            .small {
+                font-size: 1.95rem;
+            }
+        }
+        
+        .text {
+            margin: 0 auto;
+            padding: 20px 80px 20px 0;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+        }
+    }
+</style>
