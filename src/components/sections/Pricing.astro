@@ -1,0 +1,177 @@
+---
+import { Icon } from "astro-icon";
+import Flag from "../common/Flag.astro";
+import Flare from "../common/Flare.astro";
+---
+
+<section>
+    <h2><span class="small">Antrag beim Jugendamt</span>Kosten & Vertrag</h2>
+    <div class="content">
+        <div class="artwork">
+            <div class="flares">
+                <Flare color="yellow" width="870" height="740" x="-5%" y="-5%"/>
+                <Flare color="orange" width="1020" height="770" x="-5%" y="30%"/>
+            </div>
+            <div class="background"></div>
+            <div class="jugendamt">
+                <Flag class="flag" width="80px" height="60px"/>
+                <div class="pole"></div>
+                <Icon class="building" name="jugendamt"/>
+            </div>
+        </div>
+        <div class="text">
+            <h3>Kostenlose Betreuung</h3>
+            <p>
+                Die Betreuung bei mir erfolgt über 
+                das Jugendamt. Sie ist für Eltern 
+                kostenlos. Es wird lediglich ein 
+                Essensbeitrag in Höhe von 23 EUR 
+                monatlich erhoben.
+            </p>
+            <h3>Vorbereitung</h3>
+            <p>
+                Zunächst wird ein Gutschein 
+                benötigt. Dieser kann beim 
+                Jugendamt beantragt werden.<br>
+                <a href="http://www.berlin.de/jugendamt-pankow/dienste-und-leistungen/kindertagesbetreuung/kita/">Zum Antragsformular</a>
+            </p>
+            <h3>Antragstellung</h3>
+            <p>
+                Vereinbart am besten 9 bis 2 
+                Monate vor Betreuungsbeginn 
+                einen Termin über die 
+                <a href="https://service.berlin.de/terminvereinbarung/termin/tag.php?termin=1&dienstleister=324903&anliegen%5B%5D=324873">Website des Jugendamts Pankow</a>
+                oder telefonisch unter 030 90295-0.
+            </p>
+            <p>
+                Bezirksamt Pankow von Berlin<br>
+                AG Gutschein<br>
+                Fröbelstr.17/ Haus 4<br>
+                10405 Berlin<br>
+            </p>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    .content {
+        display: flex;
+    }
+
+    .artwork {
+        display: grid;
+        grid-template-areas: "overlay";
+        align-items: center;
+        margin-left: -180px;
+
+        .background {
+            grid-area: overlay;
+            width: 615px;
+            height: 615px;
+            background-color: rgb(var(--card-background));
+            background-image: var(--card-background-gradient);
+            border-radius: 50%;
+            margin-left: 170px;
+        }
+        
+        .jugendamt {
+            grid-area: overlay;
+            display: grid;
+            grid-template-areas: "overlay";
+            align-items: end;
+            width: 640px;
+            --pole-height: 300px;
+    
+            .building {
+                grid-area: overlay;
+                z-index: 2;
+            }
+    
+            .pole {
+                grid-area: overlay;
+                justify-self: end;
+                margin-right: 40px;
+                margin-bottom: 2px;
+                height: var(--pole-height);
+                width: 6px;
+                background-color: #999999;
+                border-radius: 8px;
+                position: relative;
+                z-index: 1;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 3px;
+                    left: 6px;
+                    background-color: #F2F2F2;
+                }
+            }
+    
+            .flag {
+                grid-area: overlay;
+                justify-self: end;
+                margin-right: 40px;
+                margin-bottom: var(--pole-height);
+                translate: 100% 100%;
+            }
+        }
+
+        .flares {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: -3;
+            display: grid;
+            grid-template-areas: "overlay";
+            align-items: center;
+            justify-content: center;
+            margin-left: -250px;
+
+            :global(*) {
+                grid-area: overlay;
+            }
+        }
+    }
+
+    .small {
+        color: rgb(var(--accent-color));
+    }
+
+    h2 {
+        margin-bottom: 6rem;
+    }
+
+    h3 {
+        color: rgb(var(--accent-color));
+        text-transform: uppercase;
+        margin-top: 4rem;
+    }
+
+    .text {
+        max-width: 400px;
+        padding: 0 60px;
+        margin-left: 60px;
+        border-image: var(--card-background-gradient) 1;
+        border-left-style: solid;
+        border-left-width: 2px;
+        background: white;
+
+        :first-child {
+            margin-top: 0;
+        }
+        :last-child {
+            margin-bottom: 0;
+        }
+    }
+</style>

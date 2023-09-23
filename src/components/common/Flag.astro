@@ -1,0 +1,73 @@
+---
+import { Icon } from "astro-icon";
+
+interface Props {
+	width: string;
+	height: string;
+    class?: string;
+}
+
+const { width, height, class: className } = Astro.props;
+---
+
+<div class:list={["container", className]}>
+    {[...Array(20).keys()].map(i => (
+        <span class="col"></span>
+    ))}
+    <Icon class="bear" name="berlin-bear"/>
+</div>
+
+<style lang="scss" define:vars={{ width, height }}>
+    .container {
+        display: flex;
+        height: var(--height);
+        width: var(--width);
+        position: relative;
+
+        --outer-color: #CDA5A5;
+        --inner-color: #F2F2F2;
+    }
+
+    .col {
+        flex: 1 1 auto;
+        background: linear-gradient(
+            to bottom, 
+            var(--outer-color),
+            var(--outer-color) 25%,
+            var(--inner-color) 25%,
+            var(--inner-color) 75%,
+            var(--outer-color) 75%,
+            var(--outer-color)
+        );
+        border-radius: 1px;
+        animation: wave 2s ease infinite;
+
+        $columnCount: 20;
+        @for $i from 1 through $columnCount {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i * .1s};
+                --wave-intensity: #{$i / $columnCount};
+            }
+        }
+    }
+
+    .bear {
+        position: absolute;
+        height: 40%;
+        left: 50%;
+        top: 50%;
+        translate: -50% -50%;
+        animation: wave 2s ease infinite;
+        animation-delay: 1s;
+        --wave-intensity: 1;
+    }
+
+    @keyframes wave {
+        from, to {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(calc(-20% * var(--wave-intensity)));
+        }
+    }
+</style>
