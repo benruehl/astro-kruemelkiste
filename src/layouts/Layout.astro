@@ -91,6 +91,28 @@ const { title } = Astro.props;
 		&:hover {
 			text-decoration: underline;
 		}
+
+		&[href^="http"]::after,
+		&[href^="https://"]::after
+		{
+			content: "";
+			background-color: rgb(var(--accent-color-alt));
+			-webkit-mask-image: url("data:image/svg+xml,\
+				<svg xmlns='http://www.w3.org/2000/svg'\
+					stroke='currentColor' fill='none'\
+					stroke-width='10' stroke-dashoffset='0'\
+					stroke-dasharray='0' stroke-linecap='round'\
+					stroke-linejoin='round' viewBox='0 0 100 100'>\
+					<polyline fill='none' points='40 20 20 20 20 90 80 90 80 60'/>\
+					<polyline fill='none' points='60 10 90 10 90 40'/>\
+					<line fill='none' x1='89' y1='11' x2='50' y2='50' />\
+				</svg>"
+			);
+			width: .8em;
+			height: .8em;
+			margin-left: .3em;
+			display: inline-block;
+		}
 	}
 	blockquote,
 	figcaption {
