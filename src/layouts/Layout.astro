@@ -16,13 +16,19 @@ const { title } = Astro.props;
 		<meta name="description" content="Liebevolle Kindertagespflege in Weißensee" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
+		<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		<script is:inline>
+			AOS.init();
+		</script>
 	</body>
 </html>
+
 <style lang="scss" is:global>
 	:root {
 		--text-color: 106, 126, 133;
@@ -57,7 +63,7 @@ const { title } = Astro.props;
 		position: relative;
 	}
 	h1 {
-		font-family: "Dosis", sans-serif;
+		font-family: "Dosis", Tahoma, sans-serif;
 		font-size: 6.5rem;
 		font-weight: 400;
 		line-height: 1;
@@ -66,14 +72,14 @@ const { title } = Astro.props;
 		margin-bottom: 1em;
 	}
 	h2 {
-		font-family: "Dosis", sans-serif;
+		font-family: "Dosis", Tahoma, sans-serif;
 		font-size: 4rem;
 		font-weight: 400;
 		line-height: 1;
         text-transform: uppercase;
 	}
 	h3 {
-		font-family: "Dosis", sans-serif;
+		font-family: "Dosis", Tahoma, sans-serif;
 		font-size: 2.5rem;
 		font-weight: 400;
 		line-height: 1;
@@ -121,7 +127,7 @@ const { title } = Astro.props;
 	}
 	blockquote,
 	figcaption {
-		font-family: "Dosis", sans-serif;
+		font-family: "Dosis", Tahoma, sans-serif;
 	}
 	main,
 	footer {

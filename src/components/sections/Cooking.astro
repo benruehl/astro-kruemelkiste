@@ -16,9 +16,15 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         <Flare color="blue" width="1000" height="1200" x="-20%" y="-10%"/>
     </div>
     <div class="spoon-container">
-        <Icon class="sprinkles" name="spoon-sprinkles"/>
+        <Icon
+            class="sprinkles"
+            name="spoon-sprinkles"
+            data-aos="zoom-in"
+            data-aos-anchor=".ingredients"
+            data-aos-delay="200"
+        />
         <Image class="spoon" src={spoonImage} alt="Holzlöffel" width={290}/>
-        <Icon class="bow" name="spoon-bow"/>
+        <Icon class="bow" name="spoon-bow" data-aos="zoom-in" data-aos-anchor=".ingredients"/>
     </div>
     <div class="text">
         <h2><span class="small">Jeden Tag</span> Selbstgekochte Mahlzeiten</h2>

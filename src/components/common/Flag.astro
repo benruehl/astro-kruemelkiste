@@ -46,7 +46,7 @@ const { width, height, class: className } = Astro.props;
         @for $i from 1 through $columnCount {
             &:nth-child(#{$i}) {
                 animation-delay: #{$i * .1s};
-                --wave-intensity: #{$i / $columnCount};
+                --wave-intensity: #{calc($i / $columnCount)};
             }
         }
     }
