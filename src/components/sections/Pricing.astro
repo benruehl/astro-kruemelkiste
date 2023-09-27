@@ -86,7 +86,11 @@ import Flare from "../common/Flare.astro";
             width: 615px;
             height: 615px;
             background-color: rgb(var(--card-background));
-            background-image: var(--card-background-gradient);
+            background-image: linear-gradient(
+                to bottom,
+                rgb(var(--card-background)),
+                rgb(var(--card-background-dark))
+            );
             border-radius: 50%;
             margin-left: 170px;
         }
@@ -172,7 +176,11 @@ import Flare from "../common/Flare.astro";
         max-width: 400px;
         padding: 0 60px;
         margin-left: 60px;
-        border-image: var(--card-background-gradient) 1;
+        border-image: linear-gradient(
+			to bottom,
+			rgb(var(--card-background)),
+			rgb(var(--card-background-dark))
+		) 1;
         border-left-style: solid;
         border-left-width: 2px;
         background: white;

@@ -1,0 +1,124 @@
+---
+import { Image, getImage } from "astro:assets";
+import { Icon } from "astro-icon";
+import kidForestImage from "../../images/kid-forest.jpg";
+import kidReadingImage from "../../images/kid-reading.jpg";
+import patternImage from "../../icons/wave-pattern.svg";
+
+const optimizedPatternImage = await getImage({ src: patternImage });
+---
+
+<section>
+    <Icon class="background-flowers" name="flowers"/>
+    <div class="card" style={`background-image: url('${optimizedPatternImage.src}')`}>
+        <div class="text">
+            <h2 class="accent-alt"><span class="small">Jede Menge</span> Frische Luft</h2>
+            <p>
+                Täglich sind wir an der frischen Luft, beobachten die 
+                Natur in ihrer Vielfältigkeit und besuchen die 
+                Spielplätze in der Umgebung. Bewegung wird bei uns 
+                großgeschrieben.
+            </p>
+        </div>
+        <picture class="top">
+            <Image src={kidForestImage} alt="Kind spielt auf Wiese"/>
+        </picture>
+    </div>
+    <div class="card" style={`background-image: url('${optimizedPatternImage.src}')`}>
+        <picture class="bottom">
+            <Image src={kidReadingImage} alt="Kind ließt ein Buch"/>
+        </picture>
+        <div class="text">
+            <h2 class="accent"><span class="small">Umfangreicher</span> Spieleschatz</h2>
+            <p>
+                Wir haben ein kindgerechtes, farbenfrohes Spiel-
+                zimmer mit Kletterhäuschen, Kuschelmatratze und 
+                vielen Bewegungsmöglichkeiten. Spannende Spiel-
+                elemente, wie die große Holzeisenbahn, die Murmel-
+                bahn, jede Menge Bausteine, Autos, Bücher, Spiele, 
+                Handpuppen, einfache Musikinstrumente u.s.w.
+                wecken die kreative Neugier der Kinder.
+            </p>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    section {
+        position: relative;
+    }
+
+    .card {
+        display: flex;
+        gap: 60px;
+        background: rgb(var(--card-background));
+        border-radius: 20px;
+        padding: 60px 80px;
+        margin-bottom: 40px;
+        min-height: 260px;
+        
+        .text {
+            flex: 6;
+            margin: auto 0;
+
+            & > :first-child {
+                margin-top: 0;
+            }
+            & > :last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        picture {   
+            width: 424px;
+            height: 424px;
+            border-radius: 1000px;
+            position: relative;
+
+            &.top {
+                margin-top: -164px;
+            }
+            &.bottom {
+                margin-bottom: -164px;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                box-shadow: rgb(var(--card-background-dark)) 0 0 100px;
+                mix-blend-mode: difference;
+                border-radius: 1000px;
+                opacity: .4;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 1000px;
+            }
+        }
+
+        h2 {
+            text-transform: none;
+            margin-bottom: 2rem;
+
+            &.accent {
+                color: rgb(var(--accent-color));
+            }
+            &.accent-alt {
+                color: rgb(var(--accent-color-alt));
+            }
+        }
+    }
+
+    .background-flowers {
+        position: absolute;
+        top: -330px;
+        right: -130px;
+        width: 700px;
+        z-index: -1;
+    }
+</style>
