@@ -11,7 +11,7 @@ const optimizedPatternImage = await getImage({ src: patternImage });
 <section>
     <Icon class="background-flowers" name="flowers"/>
     <div class="card" style={`background-image: url('${optimizedPatternImage.src}')`}>
-        <div class="text">
+        <div class="text" data-aos="fade-left">
             <h2 class="accent-alt"><span class="small">Jede Menge</span> Frische Luft</h2>
             <p>
                 Täglich sind wir an der frischen Luft, beobachten die 
@@ -28,7 +28,7 @@ const optimizedPatternImage = await getImage({ src: patternImage });
         <picture class="bottom">
             <Image src={kidReadingImage} alt="Kind ließt ein Buch"/>
         </picture>
-        <div class="text">
+        <div class="text" data-aos="fade-right">
             <h2 class="accent"><span class="small">Umfangreicher</span> Spieleschatz</h2>
             <p>
                 Wir haben ein kindgerechtes, farbenfrohes Spiel-
