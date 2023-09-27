@@ -15,6 +15,8 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         <Flare color="orange" width="1400" height="800" x="5%" y="30%"/>
         <Flare color="blue" width="1000" height="1200" x="-20%" y="-10%"/>
     </div>
+    <Image class="ingredients" src={ingredientsImage} alt="Tomaten, Basilikum und Pfefferkürner"/>
+    <div class="wallpaper" style={`background-image: url('${optimizedWallpaperImage.src}')`}/>
     <div class="spoon-container">
         <Icon
             class="sprinkles"
@@ -35,8 +37,6 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
             frisches Essen. 
         </p>
     </div>
-    <Image class="ingredients" src={ingredientsImage} alt="Tomaten, Basilikum und Pfefferkürner"/>
-    <div class="wallpaper" style={`background-image: url('${optimizedWallpaperImage.src}')`}/>
 </section>
 
 <style lang="scss">
@@ -90,6 +90,7 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         position: absolute;
         bottom: 0;
         right: 0; 
+        z-index: -1;
     }
 
     .flares {
