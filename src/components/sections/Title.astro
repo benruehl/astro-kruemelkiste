@@ -40,14 +40,14 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
 		background-image:
             linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)),
             var(--textBackgroundImageUrl);
-		-webkit-background-clip: text;
+		background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-size: cover;
 	}
 
     p {
         background: linear-gradient(to right, rgb(var(--text-color)), rgb(var(--text-color-strong)));
-        -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
