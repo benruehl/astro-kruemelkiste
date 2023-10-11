@@ -55,8 +55,15 @@ const { title } = Astro.props;
         	at bottom, transparent 50%, rgba(252,188,152,0.2)
         );
 		background-attachment: fixed;
-		overflow-x: hidden;
 		position: relative;
+	}
+	html,
+	body {
+		max-width: 100%;
+		overflow-x: hidden;
+	}
+	body {
+		margin: 0;
 	}
 	h1 {
 		font-family: "Dosis", Tahoma, sans-serif;
