@@ -11,8 +11,8 @@ import Testimonial from "../common/Testimonial.astro";
     <Icon class="background-curve" name="curve" />
     <div class="contact">
         <div class="flares">
-            <Flare color="yellow" width="1200" height="970" x="5%" y="5%"/>
-            <Flare color="blue" width="970" height="1200" x="20%" y="35%"/>
+            <Flare color="yellow" width="1200px" height="970px" x="20%" y="10%"/>
+            <Flare color="blue" width="970px" height="1200px" x="50%" y="80%"/>
         </div>
         <h2><span class="small">Habe ich Ihr</span> Interesse geweckt?</h2>
         <p>
@@ -73,6 +73,7 @@ import Testimonial from "../common/Testimonial.astro";
 
     .contact {
         max-width: 400px;
+        position: relative;
     }
 
     .testimonials {
@@ -105,6 +106,8 @@ import Testimonial from "../common/Testimonial.astro";
     }
 
     .flares {
+        position: absolute;
+        inset: 0;
         opacity: .35;
         z-index: -1;
         display: grid;

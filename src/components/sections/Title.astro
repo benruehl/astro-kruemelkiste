@@ -1,5 +1,4 @@
 ---
-import Flare from '../common/Flare.astro';
 import ImageText from '../common/ImageText.astro';
 import TitleImage from '../common/TitleImage.astro';
 
@@ -8,11 +7,6 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
 ---
 
 <section>
-    <div class="flares">
-        <Flare color="yellow" width="1900" height="1234" x="10%" y="-5%"/>
-        <Flare color="orange" width="700" height="700" x="40%" y="-35%"/>
-        <Flare color="blue" width="1100" height="700" x="15%" y="15%"/>
-    </div>
     <div class="text">
         <h1>
             <ImageText>
@@ -74,23 +68,6 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
             &::before {
                 opacity: 1;
             }
-        }
-    }
-
-    .flares {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        z-index: -1;
-        display: grid;
-        grid-template-areas: "overlay";
-        align-items: center;
-        justify-content: center;
-
-        :global(*) {
-            grid-area: overlay;
         }
     }
 </style>
