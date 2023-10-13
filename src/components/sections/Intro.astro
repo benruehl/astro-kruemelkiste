@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from "astro-icon";
+import kidHappyCroppedImage from "../../images/kid-happy-cropped.png";
+import Goo from "../common/Goo.astro";
+import ImageText from '../common/ImageText.astro';
+---
+
+<section class="container">
+    <div class="box">
+        <Icon class="corner" name="corner"/>
+        <h2>
+            <ImageText>
+                Kinderbetreuung.<br>Familiär und individuell.
+            </ImageText>
+        </h2>
+        <div class="feature" data-aos="fade-left">
+            <h3>
+                <Goo>
+                    Kleine Gruppe
+                </Goo>
+            </h3>
+            <p>
+                <Goo>
+                    Meine Gruppe besteht aus fünf Kindern im Alter von 1 bis 3 Jahren.
+                </Goo>
+            </p>
+        </div>
+        <div class="feature" data-aos="fade-right">
+            <h3>
+                <Goo>
+                    Familiennahe Betreuung
+                </Goo>
+            </h3>
+            <p>
+                <Goo>
+                    Die Kinder werden wie als Teil der Familie aufgenommen und dabei liebevoll betreut.
+                </Goo>
+            </p>
+        </div>
+        <div class="feature" data-aos="fade-left">
+            <h3>
+                <Goo>
+                    Individuelle Förderung
+                </Goo>
+            </h3>
+            <p>
+                <Goo>
+                    Jedes Kind wird entsprechend seines Alters und seines Entwicklungsstandes individuell gefördert.
+                </Goo>
+            </p>
+        </div>
+        <Icon class="image sun" name="sun"/>
+        <Image class="image" src={kidHappyCroppedImage} alt="Mädchen lächelt"/>
+    </div>
+</section>
+
+<style lang="scss">
+    @mixin QuadVertexColors($v0, $v1, $v2, $v3) {
+        background: linear-gradient(to bottom, $v0, $v2);
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, $v1, $v3);
+            mask-image: linear-gradient(to left, white, transparent);
+            border-radius: inherit;
+        }
+    }
+
+    .box {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        @include QuadVertexColors(
+            rgba(var(--flare-orange), .1),
+            rgba(var(--flare-yellow), .1),
+            rgba(var(--flare-yellow), .1),
+            rgba(var(--flare-blue), .1)
+        );
+        border-radius: 50px;
+        padding: 50px;
+        padding-bottom: 0;
+        min-height: 45rem;
+        position: relative;
+
+        h2 {
+            grid-column: span 2;
+            text-transform: none;
+            line-height: 1.2;
+            margin-top: -9.5rem;
+            z-index: 1;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .feature {
+            max-width: 300px;
+
+            &*:first-child {
+                margin-top: 0;
+            }
+
+            &*:last-child {
+                margin-bottom: 0;
+            }
+
+            h3 {
+                line-height: 1.25;
+                margin-bottom: 1.75rem;
+            }
+        }
+
+        .image {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .sun {
+            color: rgb(var(--flare-orange));
+            width: 700px;
+            opacity: .1;
+            animation: rotate 240s linear infinite;
+            transform-origin: 0;
+        }
+
+        @keyframes rotate {
+            from {
+                rotate: 0deg;
+            }
+            to {
+                rotate: 360deg;
+            }
+        }
+
+        .corner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 45rem;
+        }
+    }
+</style>

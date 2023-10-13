@@ -1,0 +1,19 @@
+---
+import { getImage } from 'astro:assets';
+import textBackgroundImage from "../../images/text-bg.jpg";
+
+const optimizedTextBackgroundImage = await getImage({ src: textBackgroundImage });
+---
+
+<div class="image-text" style={`background-image: url('${optimizedTextBackgroundImage.src}')`}>
+    <slot/>
+</div>
+
+<style>
+    .image-text {
+        background-color: #6D7C48;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: cover;
+    }
+</style>

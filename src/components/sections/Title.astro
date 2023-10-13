@@ -1,5 +1,6 @@
 ---
 import Flare from '../common/Flare.astro';
+import ImageText from '../common/ImageText.astro';
 import TitleImage from '../common/TitleImage.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -13,7 +14,11 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
         <Flare color="blue" width="1100" height="700" x="15%" y="15%"/>
     </div>
     <div class="text">
-        <h1>Steffis<br>Krümelkiste</h1>
+        <h1>
+            <ImageText>
+                Steffis<br>Krümelkiste
+            </ImageText>
+        </h1>
         <p class="subtitle">Liebevolle Kindertagespflege in Weißensee</p>
         <p>
             Ich bin Steffi Rühl. In meiner Einrichtung betreue ich Kinder im Alter
@@ -34,16 +39,6 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
     .subtitle {
         font-size: 1.4rem;
     }
-    
-	h1 {
-        background-color: #6D7C48;
-		background-image:
-            linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)),
-            var(--textBackgroundImageUrl);
-		background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: cover;
-	}
 
     p {
         background: linear-gradient(to right, rgb(var(--text-color)), rgb(var(--text-color-strong)));
@@ -52,20 +47,13 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
     }
 
     button {
-        font-family: Dosis, "sans-serif";
-        font-size: 1.2rem;
-        font-weight: 600;
         background: linear-gradient(
             to right,
             rgba(var(--orange-strong), 0.6),
             rgba(var(--orange), 0.7)
         );
-        border: none;
         color: white;
-        padding: .6em 2em;
-        border-radius: 2em;
         margin-top: 1em;
-        cursor: pointer;
         position: relative;
 
         &::before {
