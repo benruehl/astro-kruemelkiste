@@ -15,8 +15,8 @@ import Flare from "../common/Flare.astro";
                 data-aos-delay="200"
                 data-aos-duration="1000"
             >
-                <Flare color="yellow" width="870px" height="740px" x="-5%" y="-5%"/>
-                <Flare color="orange" width="1020px" height="770px" x="-5%" y="30%"/>
+                <Flare color="yellow" width="870px" height="740px" x="75%" y="35%"/>
+                <Flare color="orange" width="1020px" height="770px" x="75%" y="65%"/>
             </div>
             <div
                 class="background" 
@@ -80,6 +80,7 @@ import Flare from "../common/Flare.astro";
         grid-template-areas: "overlay";
         align-items: center;
         margin-left: -180px;
+        position: relative;
 
         .background {
             grid-area: overlay;
@@ -141,16 +142,10 @@ import Flare from "../common/Flare.astro";
 
         .flares {
             position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
+            inset: 0;
             z-index: -3;
             display: grid;
             grid-template-areas: "overlay";
-            align-items: center;
-            justify-content: center;
-            margin-left: -250px;
 
             :global(*) {
                 grid-area: overlay;
