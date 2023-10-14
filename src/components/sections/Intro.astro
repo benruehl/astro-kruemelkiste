@@ -2,8 +2,11 @@
 import { Image } from 'astro:assets';
 import { Icon } from "astro-icon";
 import kidHappyCroppedImage from "../../images/kid-happy-cropped.png";
+import kidToysImage from "../../images/kid-toys.jpg";
+import kidAutumnImage from "../../images/kid-autumn.jpg";
 import Goo from "../common/Goo.astro";
 import ImageText from '../common/ImageText.astro';
+import Flare from '../common/Flare.astro';
 ---
 
 <section>
@@ -52,6 +55,27 @@ import ImageText from '../common/ImageText.astro';
         </div>
         <Icon class="image sun" name="sun"/>
         <Image class="image" src={kidHappyCroppedImage} alt="Mädchen lächelt"/>
+    </div>
+    <div class="creativity">
+        <div class="text">
+            <div class="flares">
+                <Flare color="yellow" width="1400px" height="1000px" x="0%" y="40%"/>
+                <Flare color="orange" width="1400px" height="800px" x="55%" y="80%"/>
+                <Flare color="blue" width="800px" height="1000px" x="100%" y="50%"/>
+            </div>
+            <h3>Spiel, Spaß und Kreativität</h3>
+            <p>
+                Es wird gespielt, gemalt, gebastelt und mehr. Ich gehe auf Interessen und Ideen der Kinder ein und entwickle sie mit ihnen weiter. 
+            </p>
+        </div>
+        <div class="images" data-aos="fade-up" data-aos-offset="300">
+            <div class="card">
+                <Image src={kidAutumnImage} alt="Kleinkind sitzt auf Herbstlaub"/>
+            </div>
+            <div class="card">
+                <Image src={kidToysImage} alt="Junge spielt mit Spielzeugautos"/>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -111,6 +135,7 @@ import ImageText from '../common/ImageText.astro';
             h3 {
                 line-height: 1.25;
                 margin-bottom: 1.75rem;
+                color: rgb(var(--accent-color));
             }
         }
 
@@ -143,6 +168,59 @@ import ImageText from '../common/ImageText.astro';
             top: 0;
             left: 0;
             width: 45rem;
+        }
+    }
+
+    .creativity {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 50px;
+        
+        .images {
+            margin-top: -50px;
+            display: flex;
+            gap: 10px;
+            background: white;
+            border-radius: 55px;
+            padding: 10px;
+            z-index: 1;
+
+            .card {
+                border-radius: 50px;
+                width: 300px;
+                height: 400px;
+                overflow: hidden;
+        
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    scale: -1 1;
+                }
+            }
+        }
+
+        .text {
+            max-width: 400px;
+            position: relative;
+
+            h3 {
+                color: rgb(var(--accent-color));
+            }
+
+            .flares {
+                position: absolute;
+                inset: 0;
+                z-index: -1;
+                opacity: .35;
+                display: grid;
+                grid-template-areas: "overlay";
+
+                :global(*) {
+                    grid-area: overlay;
+                }
+            }
         }
     }
 </style>
