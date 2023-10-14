@@ -68,11 +68,11 @@ import Flare from '../common/Flare.astro';
                 Es wird gespielt, gemalt, gebastelt und mehr. Ich gehe auf Interessen und Ideen der Kinder ein und entwickle sie mit ihnen weiter. 
             </p>
         </div>
-        <div class="images" data-aos="fade-up" data-aos-offset="300">
-            <div class="card">
+        <div class="images">
+            <div class="card" data-aos="fade-up" data-aos-offset="300">
                 <Image src={kidAutumnImage} alt="Kleinkind sitzt auf Herbstlaub"/>
             </div>
-            <div class="card">
+            <div class="card" data-aos="fade-up" data-aos-offset="300" data-aos-delay="100">
                 <Image src={kidToysImage} alt="Junge spielt mit Spielzeugautos"/>
             </div>
         </div>
@@ -180,17 +180,22 @@ import Flare from '../common/Flare.astro';
         .images {
             margin-top: -50px;
             display: flex;
-            gap: 10px;
-            background: white;
-            border-radius: 55px;
-            padding: 10px;
             z-index: 1;
 
             .card {
+                border: 10px solid white;
                 border-radius: 50px;
                 width: 300px;
                 height: 400px;
                 overflow: hidden;
+
+                &:first-child {
+                    border-radius: 50px 0 0 50px;
+                }
+                &:last-child {
+                    border-radius: 0 50px 50px 0;
+                    border-left-width: 0;
+                }
         
                 img {
                     width: 100%;
