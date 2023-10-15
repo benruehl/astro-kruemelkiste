@@ -4,6 +4,7 @@ import { Icon } from "astro-icon";
 import kidHappyCroppedImage from "../../images/kid-happy-cropped.png";
 import kidToysImage from "../../images/kid-toys.jpg";
 import kidAutumnImage from "../../images/kid-autumn.jpg";
+import kidsCartImage from "../../images/kids-cart.jpg";
 import Goo from "../common/Goo.astro";
 import ImageText from '../common/ImageText.astro';
 import Flare from '../common/Flare.astro';
@@ -11,7 +12,7 @@ import Flare from '../common/Flare.astro';
 
 <section>
     <div class="box">
-        <Icon class="corner" name="corner"/>
+        <Icon class="corner" name="corner-l"/>
         <h2>
             <ImageText>
                 Kinderbetreuung.<br>Familiär und individuell.
@@ -56,25 +57,50 @@ import Flare from '../common/Flare.astro';
         <Icon class="image sun" name="sun"/>
         <Image class="image" src={kidHappyCroppedImage} alt="Mädchen lächelt"/>
     </div>
-    <div class="creativity">
-        <div class="text">
+    <div class="bottom-row">
+        <div class="text" data-aos="fade-left">
             <div class="flares">
                 <Flare color="yellow" width="1400px" height="1000px" x="0%" y="40%"/>
-                <Flare color="orange" width="1400px" height="800px" x="55%" y="80%"/>
-                <Flare color="blue" width="800px" height="1000px" x="100%" y="50%"/>
+                <Flare color="orange" width="1400px" height="800px" x="70%" y="90%"/>
             </div>
             <h3>Spiel, Spaß und Kreativität</h3>
             <p>
                 Es wird gespielt, gemalt, gebastelt und mehr. Ich gehe auf Interessen und Ideen der Kinder ein und entwickle sie mit ihnen weiter. 
             </p>
         </div>
-        <div class="images">
+        <div class="images image-group">
             <div class="card" data-aos="fade-up" data-aos-offset="300">
-                <Image src={kidAutumnImage} alt="Kleinkind sitzt auf Herbstlaub"/>
+                <Image class="flip" src={kidAutumnImage} alt="Kleinkind sitzt auf Herbstlaub"/>
             </div>
             <div class="card" data-aos="fade-up" data-aos-offset="300" data-aos-delay="100">
-                <Image src={kidToysImage} alt="Junge spielt mit Spielzeugautos"/>
+                <Image class="flip" src={kidToysImage} alt="Junge spielt mit Spielzeugautos"/>
             </div>
+        </div>
+    </div>
+    <div class="bottom-row">
+        <div class="flares">
+            <Flare color="yellow" width="1000px" height="1000px" x="70%" y="80%"/>
+            <Flare color="orange" width="1400px" height="800px" x="80%" y="15%"/>
+            <Flare color="blue" width="1400px" height="1000px" x="30%" y="90%"/>
+        </div>
+        <div class="images">
+            <div class="card big-card">
+                <Image src={kidsCartImage} alt="Kinder sitzen im Holzwagen"/>
+            </div>
+            <Icon class="corner" name="corner-s"/>
+            <div class="time">
+                <ImageText>
+                    <h4>Betreuungszeiten</h4>
+                    <div class="time-value">8:00 - 16:00</div>
+                    <div class="day-value">Montags - Freitags</div>
+                </ImageText>
+            </div>
+        </div>
+        <div class="text" data-aos="fade-right">
+            <h3>Faires, freundliches Miteinander</h3>
+            <p>
+                Der richtige Umgang mit anderen Kindern muss erst erlernt werden. Hierbei werden behutsam soziale Werte vermittelt.
+            </p>
         </div>
     </div>
 </section>
@@ -171,38 +197,65 @@ import Flare from '../common/Flare.astro';
         }
     }
 
-    .creativity {
+    .bottom-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0 50px;
+        position: relative;
+
+        &:not(:last-child) {
+            margin-bottom: 150px;
+        }
         
         .images {
-            margin-top: -50px;
             display: flex;
             z-index: 1;
+            position: relative;
 
             .card {
-                border: 10px solid white;
                 border-radius: 50px;
                 width: 300px;
                 height: 400px;
                 overflow: hidden;
 
-                &:first-child {
-                    border-radius: 50px 0 0 50px;
-                }
-                &:last-child {
-                    border-radius: 0 50px 50px 0;
-                    border-left-width: 0;
+                &.big-card {
+                    width: 600px;
                 }
         
                 img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                }
+
+                .flip {
                     scale: -1 1;
                 }
+            }
+
+            &.image-group {
+                margin-top: -50px;
+
+                .card {
+                    border: 10px solid white;
+
+                    &:first-child {
+                        border-radius: 50px 0 0 50px;
+                    }
+                    &:last-child {
+                        border-radius: 0 50px 50px 0;
+                        border-left-width: 0;
+                    }
+                }
+            }
+
+            .corner {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 15rem;
+                scale: -1 1;
             }
         }
 
@@ -213,18 +266,42 @@ import Flare from '../common/Flare.astro';
             h3 {
                 color: rgb(var(--accent-color));
             }
+        }
 
-            .flares {
-                position: absolute;
-                inset: 0;
-                z-index: -1;
-                opacity: .35;
-                display: grid;
-                grid-template-areas: "overlay";
+        .time {
+            position: absolute;
+            top: 0;
+            right: -1rem;
+            background: linear-gradient(to bottom, transparent 50%, white 50%);
+            border-radius: 18px;
+            padding: .5rem 1rem;
+            transform: translateY(-50%);
 
-                :global(*) {
-                    grid-area: overlay;
-                }
+            * {
+                margin: 0;
+            }
+
+            .time-value {
+                font-family: Dosis;
+                font-size: 2.22rem;
+            }
+
+            h4 {
+                font-weight: normal;
+                font-size: 1.2rem;
+            }
+        }
+
+        .flares {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            opacity: .35;
+            display: grid;
+            grid-template-areas: "overlay";
+
+            :global(*) {
+                grid-area: overlay;
             }
         }
     }
