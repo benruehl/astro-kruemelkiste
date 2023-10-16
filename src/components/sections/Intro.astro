@@ -60,8 +60,7 @@ import Flare from '../common/Flare.astro';
     <div class="bottom-row">
         <div class="text" data-aos="fade-left">
             <div class="flares">
-                <Flare color="yellow" width="1400px" height="1000px" x="0%" y="40%"/>
-                <Flare color="orange" width="1400px" height="800px" x="70%" y="90%"/>
+                <Flare color="yellow" width="1400px" height="1000px" x="40%" y="40%"/>
             </div>
             <h3>Spiel, Spaß und Kreativität</h3>
             <p>
@@ -80,7 +79,6 @@ import Flare from '../common/Flare.astro';
     <div class="bottom-row">
         <div class="flares">
             <Flare color="yellow" width="1000px" height="1000px" x="70%" y="80%"/>
-            <Flare color="orange" width="1400px" height="800px" x="80%" y="15%"/>
             <Flare color="blue" width="1400px" height="1000px" x="30%" y="90%"/>
         </div>
         <div class="images">
@@ -210,7 +208,6 @@ import Flare from '../common/Flare.astro';
         
         .images {
             display: flex;
-            z-index: 1;
             position: relative;
 
             .card {
@@ -270,9 +267,8 @@ import Flare from '../common/Flare.astro';
 
         .time {
             position: absolute;
-            top: 0;
-            right: -1rem;
-            background: linear-gradient(to bottom, transparent 50%, white 50%);
+            top: -1rem;
+            right: -4rem;
             border-radius: 18px;
             padding: .5rem 1rem;
             transform: translateY(-50%);
@@ -282,13 +278,15 @@ import Flare from '../common/Flare.astro';
             }
 
             .time-value {
-                font-family: Dosis;
                 font-size: 2.22rem;
+            }
+
+            .day-value {
+                text-align: right;
             }
 
             h4 {
                 font-weight: normal;
-                font-size: 1.2rem;
             }
         }
 
