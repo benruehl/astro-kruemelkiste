@@ -10,7 +10,7 @@ const optimizedPatternImage = await getImage({ src: patternImage });
 
 <section>
     <Icon class="background-flowers" name="flowers"/>
-    <div class="card" style={`background-image: url('${optimizedPatternImage.src}')`}>
+    <div class="card">
         <div class="text" data-aos="fade-left">
             <h2 class="accent-alt"><span class="small">Jede Menge</span> Frische Luft</h2>
             <p>
@@ -51,7 +51,7 @@ const optimizedPatternImage = await getImage({ src: patternImage });
     .card {
         display: flex;
         gap: 60px;
-        background: rgb(var(--card-background));
+        @include QuadGradientBackground();
         border-radius: 20px;
         padding: 60px 80px;
         margin-bottom: 40px;
@@ -60,6 +60,7 @@ const optimizedPatternImage = await getImage({ src: patternImage });
         .text {
             flex: 6;
             margin: auto 0;
+            position: relative;
 
             & > :first-child {
                 margin-top: 0;
@@ -116,9 +117,9 @@ const optimizedPatternImage = await getImage({ src: patternImage });
 
     .background-flowers {
         position: absolute;
-        top: -330px;
-        right: -130px;
-        width: 700px;
+        top: -280px;
+        right: -50px;
+        width: 600px;
         z-index: -1;
     }
 </style>

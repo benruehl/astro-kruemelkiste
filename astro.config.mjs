@@ -4,5 +4,14 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
     site: 'https://benruehl.github.io',
     base: '/astro-kruemelkiste',
-    scopedStyleStrategy: 'class'
+    scopedStyleStrategy: 'class',
+    vite: {
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    additionalData: '@import "./src/styles/main.scss";',
+                },
+            },
+        },
+    },
 });

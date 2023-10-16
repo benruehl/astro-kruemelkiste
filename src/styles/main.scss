@@ -1,0 +1,27 @@
+@mixin QuadVertexColors($v0, $v1, $v2, $v3, $saturation) {
+    background:
+        linear-gradient(rgba(255, 255, 255, 1 - $saturation), rgba(255, 255, 255, 1 - $saturation)),
+        linear-gradient(to bottom, $v0, $v2);
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(rgba(255, 255, 255, 1 - $saturation), rgba(255, 255, 255, 1 - $saturation)),
+            linear-gradient(to bottom, $v1, $v3);
+        mask-image: linear-gradient(to left, white, transparent);
+        border-radius: inherit;
+    }
+}
+
+@mixin QuadGradientBackground {
+    @include QuadVertexColors(
+        rgba(var(--flare-orange)),
+        rgba(var(--flare-yellow)),
+        rgba(var(--flare-yellow)),
+        rgba(var(--flare-blue)),
+        0.1
+    );
+}

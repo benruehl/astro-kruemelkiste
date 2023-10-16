@@ -104,29 +104,10 @@ import Flare from '../common/Flare.astro';
 </section>
 
 <style lang="scss">
-    @mixin QuadVertexColors($v0, $v1, $v2, $v3) {
-        background: linear-gradient(to bottom, $v0, $v2);
-        position: relative;
-
-        &::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, $v1, $v3);
-            mask-image: linear-gradient(to left, white, transparent);
-            border-radius: inherit;
-        }
-    }
-
     .box {
         display: grid;
         grid-template-columns: 1fr auto;
-        @include QuadVertexColors(
-            rgba(var(--flare-orange), .1),
-            rgba(var(--flare-yellow), .1),
-            rgba(var(--flare-yellow), .1),
-            rgba(var(--flare-blue), .1)
-        );
+        @include QuadGradientBackground();
         border-radius: 50px;
         padding: 50px;
         padding-bottom: 0;
