@@ -4,7 +4,7 @@ import { Icon } from "astro-icon";
 import kidHappyCroppedImage from "../../images/kid-happy-cropped.png";
 import kidToysImage from "../../images/kid-toys.jpg";
 import kidAutumnImage from "../../images/kid-autumn.jpg";
-import kidsCartImage from "../../images/kids-cart.jpg";
+import kidsCartImage from "../../images/kids-cart.png";
 import Goo from "../common/Goo.astro";
 import ImageText from '../common/ImageText.astro';
 import Flare from '../common/Flare.astro';
@@ -57,17 +57,14 @@ import Flare from '../common/Flare.astro';
         <Icon class="image sun" name="sun"/>
         <Image class="image" src={kidHappyCroppedImage} alt="Mädchen lächelt"/>
     </div>
-    <div class="bottom-row">
+    <div class="creativity-row">
         <div class="text" data-aos="fade-left">
-            <div class="flares">
-                <Flare color="yellow" width="1400px" height="1000px" x="40%" y="40%"/>
-            </div>
             <h3>Spiel, Spaß und Kreativität</h3>
             <p>
                 Es wird gespielt, gemalt, gebastelt und mehr. Ich gehe auf Interessen und Ideen der Kinder ein und entwickle sie mit ihnen weiter. 
             </p>
         </div>
-        <div class="images image-group">
+        <div class="image-group">
             <div class="card" data-aos="fade-up" data-aos-offset="300">
                 <Image class="flip" src={kidAutumnImage} alt="Kleinkind sitzt auf Herbstlaub"/>
             </div>
@@ -76,28 +73,26 @@ import Flare from '../common/Flare.astro';
             </div>
         </div>
     </div>
-    <div class="bottom-row">
-        <div class="flares">
-            <Flare color="yellow" width="1000px" height="1000px" x="70%" y="80%"/>
-            <Flare color="blue" width="1400px" height="1000px" x="30%" y="90%"/>
-        </div>
-        <div class="images">
-            <div class="card big-card">
-                <Image src={kidsCartImage} alt="Kinder sitzen im Holzwagen"/>
+    <div class="social-row">
+        <div class="image-background"></div>
+        <div class="big-image">
+            <div class="flares">
+                <Flare color="orange" width="1000px" height="1000px" x="75%" y="45%"/>
+                <Flare color="yellow" width="1400px" height="1000px" x="30%" y="60%"/>
+                <Flare color="blue" width="1400px" height="1000px" x="30%" y="30%"/>
             </div>
-            <Icon class="corner" name="corner-s"/>
-            <div class="time">
-                <ImageText>
-                    <h4>Betreuungszeiten</h4>
-                    <div class="time-value">8:00 - 16:00</div>
-                    <div class="day-value">Montags - Freitags</div>
-                </ImageText>
-            </div>
+            <Image src={kidsCartImage} alt="Kinder sitzen im Holzwagen"/>
         </div>
-        <div class="text" data-aos="fade-right">
-            <h3>Faires, freundliches Miteinander</h3>
+        <div class="text" data-aos="zoom-in">
+            <h3>
+                <Goo>
+                    Faires, freundliches Miteinander
+                </Goo>
+            </h3>
             <p>
-                Der richtige Umgang mit anderen Kindern muss erst erlernt werden. Hierbei werden behutsam soziale Werte vermittelt.
+                <Goo>
+                    Der richtige Umgang mit anderen Kindern muss erst erlernt werden. Hierbei werden behutsam soziale Werte vermittelt.
+                </Goo>
             </p>
         </div>
     </div>
@@ -122,10 +117,6 @@ import Flare from '../common/Flare.astro';
             z-index: 1;
         }
 
-        p {
-            line-height: 1.6;
-        }
-
         .feature {
             max-width: 300px;
 
@@ -135,12 +126,6 @@ import Flare from '../common/Flare.astro';
 
             &*:last-child {
                 margin-bottom: 0;
-            }
-
-            h3 {
-                line-height: 1.25;
-                margin-bottom: 1.75rem;
-                color: rgb(var(--accent-color));
             }
         }
 
@@ -176,7 +161,7 @@ import Flare from '../common/Flare.astro';
         }
     }
 
-    .bottom-row {
+    .creativity-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -184,22 +169,20 @@ import Flare from '../common/Flare.astro';
         position: relative;
 
         &:not(:last-child) {
-            margin-bottom: 150px;
+            margin-bottom: 100px;
         }
         
-        .images {
+        .image-group {
             display: flex;
             position: relative;
+            margin-top: -50px;
 
             .card {
                 border-radius: 50px;
                 width: 300px;
                 height: 400px;
+                border: 10px solid white;
                 overflow: hidden;
-
-                &.big-card {
-                    width: 600px;
-                }
         
                 img {
                     width: 100%;
@@ -210,30 +193,14 @@ import Flare from '../common/Flare.astro';
                 .flip {
                     scale: -1 1;
                 }
-            }
 
-            &.image-group {
-                margin-top: -50px;
-
-                .card {
-                    border: 10px solid white;
-
-                    &:first-child {
-                        border-radius: 50px 0 0 50px;
-                    }
-                    &:last-child {
-                        border-radius: 0 50px 50px 0;
-                        border-left-width: 0;
-                    }
+                &:first-child {
+                    border-radius: 50px 0 0 50px;
                 }
-            }
-
-            .corner {
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 15rem;
-                scale: -1 1;
+                &:last-child {
+                    border-radius: 0 50px 50px 0;
+                    border-left-width: 0;
+                }
             }
         }
 
@@ -245,37 +212,49 @@ import Flare from '../common/Flare.astro';
                 color: rgb(var(--accent-color));
             }
         }
+    }
 
-        .time {
-            position: absolute;
-            top: -1rem;
-            right: -4rem;
-            border-radius: 18px;
-            padding: .5rem 1rem;
-            transform: translateY(-50%);
+    .social-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        position: relative;
 
-            * {
-                margin: 0;
-            }
+        h3 {
+            grid-column: span 2;
+            justify-self: center;
+        }
 
-            .time-value {
-                font-size: 2.22rem;
-            }
+        .big-image {
+            grid-column: 1;
+            grid-row: 2;
+            position: relative;
+        }
 
-            .day-value {
-                text-align: right;
-            }
+        .image-background {
+            grid-column: 1 / span 2;
+            grid-row: 2;
+            height: 547px;
+            margin-top: 200px;
+            margin-left: 20%;
+            @include QuadGradientBackground();
+            border-radius: 50px;
+            z-index: -1;
+        }
 
-            h4 {
-                font-weight: normal;
-            }
+        .text {
+            grid-column: 2;
+            grid-row: 2;
+            align-self: flex-end;
+            max-width: 350px;
+            margin-left: -35px;
+            margin-bottom: 100px;
         }
 
         .flares {
             position: absolute;
             inset: 0;
             z-index: -1;
-            opacity: .5;
+            opacity: .75;
             display: grid;
             grid-template-areas: "overlay";
 
@@ -283,5 +262,15 @@ import Flare from '../common/Flare.astro';
                 grid-area: overlay;
             }
         }
+    }
+
+    h3 {
+        line-height: 1.25;
+        margin-bottom: 1.75rem;
+        color: rgb(var(--accent-color));
+    }
+
+    p {
+        line-height: 1.6;
     }
 </style>
