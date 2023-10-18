@@ -54,8 +54,11 @@ const optimizedPatternImage = await getImage({ src: patternImage });
         @include QuadGradientBackground();
         border-radius: 20px;
         padding: 60px 80px;
-        margin-bottom: 40px;
         min-height: 260px;
+
+        &:not(:last-child) {
+            margin-bottom: 40px;
+        }
         
         .text {
             flex: 6;
