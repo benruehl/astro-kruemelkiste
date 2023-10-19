@@ -89,7 +89,9 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
                 Der richtige Umgang mit anderen Kindern muss erst erlernt werden. Hierbei werden behutsam soziale Werte vermittelt.
             </p>
         </div>
-        <div class="wallpaper" style={`background-image: url('${optimizedWallpaperImage.src}')`}/>
+        <div class="wallpaper-container">
+            <div class="wallpaper" style={`background-image: url('${optimizedWallpaperImage.src}')`}/>
+        </div>
     </div>
 </section>
 
@@ -261,18 +263,34 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
             z-index: 1;
         }
 
-        .wallpaper {
+        .wallpaper-container {
             position: absolute;
             bottom: 0;
             right: 0;
             width: 60%;
             height: 90%;
-            background-size: 243px 200px;
             border-radius: 50px;
-            mix-blend-mode: multiply;
             mask-image: linear-gradient(to top left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 70%);
-            filter: hue-rotate(90deg);
+            mix-blend-mode: multiply;
             opacity: .75;
+            
+            .wallpaper {
+                width: 100%;
+                height: 200%;
+                background-size: 243px 200px;
+                background-repeat: repeat;
+                filter: hue-rotate(90deg);
+                animation: background-scroll 20s linear infinite;
+            }
+    
+            @keyframes background-scroll {
+                from {
+                    transform: translateY(0);
+                }
+                to { 
+                    transform: translateY(-200px);
+                }
+            }
         }
     }
 
