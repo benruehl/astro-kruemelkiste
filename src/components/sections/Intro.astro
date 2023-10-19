@@ -1,13 +1,16 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import { Icon } from "astro-icon";
 import kidHappyCroppedImage from "../../images/kid-happy-cropped.png";
 import kidToysImage from "../../images/kid-toys.jpg";
 import kidAutumnImage from "../../images/kid-autumn.jpg";
 import kidsCartImage from "../../images/kids-cart.png";
+import childishWallpaperImage from "../../icons/childish-wallpaper.svg";
 import Goo from "../common/Goo.astro";
 import ImageText from '../common/ImageText.astro';
 import Flare from '../common/Flare.astro';
+
+const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
 ---
 
 <section>
@@ -74,27 +77,19 @@ import Flare from '../common/Flare.astro';
         </div>
     </div>
     <div class="social-row">
-        <div class="image-background"></div>
-        <div class="big-image">
+        <div class="image-group">
             <div class="flares">
                 <Flare color="orange" width="1000px" height="1000px" x="75%" y="45%"/>
-                <Flare color="yellow" width="1400px" height="1000px" x="30%" y="60%"/>
-                <Flare color="blue" width="1400px" height="1000px" x="30%" y="30%"/>
             </div>
             <Image src={kidsCartImage} alt="Kinder sitzen im Holzwagen"/>
         </div>
         <div class="text" data-aos="zoom-in">
-            <h3>
-                <Goo>
-                    Faires & freundliches Miteinander
-                </Goo>
-            </h3>
+            <h3>Faires & freundliches Miteinander</h3>
             <p>
-                <Goo>
-                    Der richtige Umgang mit anderen Kindern muss erst erlernt werden. Hierbei werden behutsam soziale Werte vermittelt.
-                </Goo>
+                Der richtige Umgang mit anderen Kindern muss erst erlernt werden. Hierbei werden behutsam soziale Werte vermittelt.
             </p>
         </div>
+        <div class="wallpaper" style={`background-image: url('${optimizedWallpaperImage.src}')`}/>
     </div>
 </section>
 
@@ -167,11 +162,8 @@ import Flare from '../common/Flare.astro';
         align-items: center;
         padding: 0 50px;
         position: relative;
+        margin-bottom: 200px;
 
-        &:not(:last-child) {
-            margin-bottom: 100px;
-        }
-        
         .image-group {
             display: flex;
             position: relative;
@@ -215,52 +207,72 @@ import Flare from '../common/Flare.astro';
     }
 
     .social-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        gap: 15%;
+        @include QuadGradientBackground();
+        border-radius: 50px;
+        padding: 60px 80px;
         position: relative;
 
-        h3 {
-            grid-column: span 2;
-            justify-self: center;
-        }
-
-        .big-image {
-            grid-column: 1;
-            grid-row: 2;
+        .image-group {
+            margin-top: -244px;
             position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 8px;
+                right: 2px;
+                width: calc(100% - 20px);
+                height: calc(100% - 82px);
+                box-shadow: rgb(var(--card-background-dark)) 0 0 100px;
+                mix-blend-mode: difference;
+                border-radius: 1000px;
+                opacity: .3;
+            }
         }
 
         .image-background {
             grid-column: 1 / span 2;
             grid-row: 2;
-            height: 547px;
             margin-top: 200px;
-            margin-left: 20%;
-            @include QuadGradientBackground();
-            border-radius: 50px;
+            margin-bottom: -100px;
             z-index: -1;
         }
 
         .text {
-            grid-column: 2;
-            grid-row: 2;
-            align-self: flex-end;
-            max-width: 350px;
-            margin-left: -35px;
-            margin-bottom: 100px;
+            max-width: 330px;
         }
 
         .flares {
             position: absolute;
             inset: 0;
-            z-index: -1;
-            opacity: .75;
+            opacity: .5;
             display: grid;
             grid-template-areas: "overlay";
 
             :global(*) {
                 grid-area: overlay;
             }
+        }
+
+        img {
+            position: relative;
+            z-index: 1;
+        }
+
+        .wallpaper {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            height: 90%;
+            background-size: 243px 200px;
+            border-radius: 50px;
+            mix-blend-mode: multiply;
+            mask-image: linear-gradient(to top left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 70%);
+            filter: hue-rotate(90deg);
+            opacity: .75;
         }
     }
 
