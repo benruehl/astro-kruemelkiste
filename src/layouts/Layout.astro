@@ -112,8 +112,8 @@ const { title } = Astro.props;
 			text-decoration: underline;
 		}
 
-		&[href^="http"]::after,
-		&[href^="https://"]::after
+		&[href^="http"]::before,
+		&[href^="https://"]::before
 		{
 			content: "";
 			background-color: rgb(var(--accent-color-alt));
@@ -130,7 +130,7 @@ const { title } = Astro.props;
 			);
 			width: .8em;
 			height: .8em;
-			margin-left: .3em;
+			margin-right: .3em;
 			display: inline-block;
 		}
 	}
