@@ -33,15 +33,18 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
                 </Goo>
             </p>
         </div>
-        <div class="feature" data-aos="fade-right">
+        <div class="feature large" data-aos="fade-right">
             <h3>
                 <Goo>
-                    Familiennahe Betreuung
+                    Situationsbezogene Pädagogik
                 </Goo>
             </h3>
             <p>
                 <Goo>
-                    Die Kinder werden wie als Teil der Familie aufgenommen und dabei liebevoll betreut.
+                    Ich greife Themen, Ideen und Anregungen auf, die 
+                    die Kinder in die Tagespflege mitbringen, und entwickle 
+                    sie gemeinsam weiter.
+                    Wir machen kleine Projekte - häufig in Bezug auf die Jahreszeiten und deren Besonderheiten.
                 </Goo>
             </p>
         </div>
@@ -53,7 +56,8 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
             </h3>
             <p>
                 <Goo>
-                    Jedes Kind wird entsprechend seines Alters und seines Entwicklungsstandes individuell gefördert.
+                    Jedes Kind wird entsprechend seines Alters und 
+                    seines Entwicklungsstandes individuell gefördert.
                 </Goo>
             </p>
         </div>
@@ -116,6 +120,11 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
 
         .feature {
             max-width: 300px;
+
+            &.large {
+                grid-column: 2;
+                grid-row: 2 / span 2;
+            }
 
             &*:first-child {
                 margin-top: 0;
