@@ -1,5 +1,4 @@
 ---
-
 const data = [
     {
         start: "8:00",
@@ -92,16 +91,19 @@ const data = [
 
 <section>
     <h2>Unser Tagesablauf</h2>
-    <ul class="schedule">
-        {data.map(item => 
-            <li data-icon={item.icon}>
+    <div class="schedule">
+        {data.map(item =>
+            <div class="schedule-item">
+                <div class="icon">{item.icon}</div>
                 <div class="connection"></div>
-                <div class="time-start">{item.start}</div>
-                <h3 class="title">{item.title}</h3>
-                <p class="description">{item.description}</p>
+                <div class="card" data-aos="zoom-in-right">
+                    <div class="time-start">{item.start}</div>
+                    <h3 class="title">{item.title}</h3>
+                    <p class="description">{item.description}</p>
+                </div>
             </div>
         )}
-    </ul>
+    </div>
 </section>
 
 <style lang="scss">
@@ -121,50 +123,37 @@ const data = [
         --marker-padding: .5em;
         --connection-gradient: linear-gradient(rgb(var(--card-background)) 50%, rgba(255, 255, 255, .25) 51%);
 
-        li {
-            padding: var(--padding-y) 3rem var(--padding-y) 4rem;
+        .schedule-item {
             margin-bottom: var(--gap-y);
-            background: rgb(var(--card-background));
-            border-radius: 30px;
             position: relative;
 
-            &::before,
-            &::after {
-                content: attr(data-icon);
+            .icon {
                 position: absolute;
                 top: 2rem;
                 left: 0;
                 font-size: var(--marker-size);
-                background: white;
-                border-radius: 50%;
                 padding: var(--marker-padding);
-                margin-left: calc((var(--marker-size) + var(--marker-padding)) / 2 * -1);
                 z-index: 2;
-            }
 
-            &::after {
-                --thickness: 4px;
-                top: calc(2rem - var(--thickness));
-                padding: calc(var(--marker-padding) + var(--thickness));
-                margin-left: calc((var(--marker-size) + var(--marker-padding)) / 2 * -1 - var(--thickness));
-                z-index: 1;
-                background-image: var(--connection-gradient);
-                background-position: center;
-                background-attachment: fixed;
-            }
+                &::before {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background: white;
+                    border-radius: 50%;
+                    z-index: -1;
+                }
 
-            .time-start {
-                color: rgb(var(--accent-color));
-            }
-
-            .title {
-                font-size: 2rem;
-                margin: 0;
-                margin-bottom: 1rem;
-            }
-
-            .description {
-                margin: 0;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    inset: -4px;
+                    background-image: var(--connection-gradient);
+                    background-position: center;
+                    background-attachment: fixed;
+                    border-radius: 50%;
+                    z-index: -2;
+                }
             }
 
             .connection {
@@ -174,16 +163,38 @@ const data = [
                 bottom: 0;
                 width: 4px;
                 margin-bottom: calc(-1 * (2 * var(--padding-y) + var(--gap-y)));
+                margin-left: calc(var(--marker-size) + var(--marker-padding) + 50px);
                 background-image: var(--connection-gradient);
                 background-position: center;
                 background-attachment: fixed;
                 border-radius: 10px;
-                z-index: 1;
+                z-index: -1;
             }
 
             &:last-child {
                 .connection {
                     margin-bottom: 100%;
+                }
+            }
+
+            .card {
+                padding: var(--padding-y) 3rem var(--padding-y) 4rem;
+                background: rgb(var(--card-background));
+                border-radius: 30px;
+                margin-left: calc(var(--marker-size) + var(--marker-padding));
+
+                .time-start {
+                    color: rgb(var(--accent-color));
+                }
+    
+                .title {
+                    font-size: 2rem;
+                    margin: 0;
+                    margin-bottom: 1rem;
+                }
+    
+                .description {
+                    margin: 0;
                 }
             }
         }
