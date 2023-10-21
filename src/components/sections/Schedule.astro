@@ -90,7 +90,7 @@ const data = [
 ---
 
 <section>
-    <h2>Unser Tagesablauf</h2>
+    <h2><span class="small">Mit Struktur durch den Tag</span>Unser Tagesablauf</h2>
     <div class="schedule">
         {data.map(item =>
             <div class="schedule-item">
@@ -124,8 +124,11 @@ const data = [
         --connection-gradient: linear-gradient(rgb(var(--card-background)) 50%, rgba(255, 255, 255, .25) 51%);
 
         .schedule-item {
-            margin-bottom: var(--gap-y);
             position: relative;
+
+            &:not(:last-child) {
+                margin-bottom: var(--gap-y);
+            }
 
             .icon {
                 position: absolute;
@@ -200,12 +203,11 @@ const data = [
         }
     }
 
-    [data-aos="scale-down"] {
-        transform: scaleY(0);
-        transform-origin: center top;
-        transition-property: transform;
-        &.aos-animate {
-            transform: scaleY(1);
+    h2 {
+        margin-bottom: 6rem;
+
+        .small {
+            color: rgb(var(--accent-color));
         }
     }
 </style>
