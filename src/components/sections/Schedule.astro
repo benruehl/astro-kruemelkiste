@@ -1,0 +1,200 @@
+---
+
+const data = [
+    {
+        start: "8:00",
+        icon: "👋",
+        title: "Begrüßung der Kinder",
+        description: `
+            Aufgreifen von Themen und Dingen, die die Kinder mitbringen und bewegen;
+            Kleine Beschäftigungen wie Singspiele, Lesen, Malen, Puzzlen, Bauen mit Bausteinen, Basteln, Toben etc.
+        `
+    },
+    {
+        start: "9:30",
+        icon: "🍎",
+        title: "Obstfrühstück",
+        description: `
+            Bei sehr schönem Wetter gibt's manchmal auch Obstpicknicks draußen.
+        `
+    },
+    {
+        start: "10:00",
+        icon: "🌳",
+        title: "Wir sind draußen",
+        description: `
+            Spielplatz, Natur beobachten, Pfützen patschen, Laub fegen usw.
+        `
+    },
+    {
+        start: "11:15",
+        icon: "🍝",
+        title: "Mittagessen",
+        description: `
+            Selbstgekocht & lecker
+        `
+    },
+    {
+        start: "11:30",
+        icon: "🧸",
+        title: "Vorbereitung auf die Mittagsruhe",
+        description: `
+            Hygiene, Anziehen der Schlafsäckchen, Bettgeschichte
+        `
+    },
+    {
+        start: "12:00",
+        icon: "😴",
+        title: "Mittagsruhe"
+    },
+    {
+        start: "13:30",
+        icon: "🥱",
+        title: "Erwachen",
+        description: `
+            Individuelles Erwachen, freies Spiel
+        `
+    },
+    {
+        start: "14:30",
+        icon: "🥁",
+        title: "Freies Spiel",
+        description: `
+            Bausteine, Singspiele, Buch lesen, Toben o.ä.
+        `
+    },
+    {
+        start: "15:00",
+        icon: "🍉",
+        title: "Vesper",
+        description: `
+            Es gibt Obst und manchmal Nudeln oder Kekse. Im Sommer vespern wir gelegentlich draußen.
+        `
+    },
+    {
+        start: "15:00",
+        icon: "🚂",
+        title: "Freies Spiel",
+        description: `
+            Kleine Beschäftigungen am Tisch oder freies Spiel
+        `
+    },
+    {
+        start: "15:30",
+        icon: "🛝",
+        title: "Spielplatz",
+        description: `
+            Wir sind auf dem Spielplatz im Hof. Bei schlechtem Wetter oder im Winter spielen wir drinnen.
+        `
+    },
+]
+---
+
+<section>
+    <h2>Unser Tagesablauf</h2>
+    <ul class="schedule">
+        {data.map(item => 
+            <li data-icon={item.icon}>
+                <div class="connection"></div>
+                <div class="time-start">{item.start}</div>
+                <h3 class="title">{item.title}</h3>
+                <p class="description">{item.description}</p>
+            </div>
+        )}
+    </ul>
+</section>
+
+<style lang="scss">
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .schedule {
+        list-style-type: none;
+        max-width: 600px;
+
+        --padding-y: 2rem;
+        --gap-y: 3rem;
+        --marker-size: 2em;
+        --marker-padding: .5em;
+        --connection-gradient: linear-gradient(rgb(var(--card-background)) 50%, rgba(255, 255, 255, .25) 51%);
+
+        li {
+            padding: var(--padding-y) 3rem var(--padding-y) 4rem;
+            margin-bottom: var(--gap-y);
+            background: rgb(var(--card-background));
+            border-radius: 30px;
+            position: relative;
+
+            &::before,
+            &::after {
+                content: attr(data-icon);
+                position: absolute;
+                top: 2rem;
+                left: 0;
+                font-size: var(--marker-size);
+                background: white;
+                border-radius: 50%;
+                padding: var(--marker-padding);
+                margin-left: calc((var(--marker-size) + var(--marker-padding)) / 2 * -1);
+                z-index: 2;
+            }
+
+            &::after {
+                --thickness: 4px;
+                top: calc(2rem - var(--thickness));
+                padding: calc(var(--marker-padding) + var(--thickness));
+                margin-left: calc((var(--marker-size) + var(--marker-padding)) / 2 * -1 - var(--thickness));
+                z-index: 1;
+                background-image: var(--connection-gradient);
+                background-position: center;
+                background-attachment: fixed;
+            }
+
+            .time-start {
+                color: rgb(var(--accent-color));
+            }
+
+            .title {
+                font-size: 2rem;
+                margin: 0;
+                margin-bottom: 1rem;
+            }
+
+            .description {
+                margin: 0;
+            }
+
+            .connection {
+                position: absolute;
+                left: -2px;
+                top: calc(var(--gap-y) + var(--padding-y));
+                bottom: 0;
+                width: 4px;
+                margin-bottom: calc(-1 * (2 * var(--padding-y) + var(--gap-y)));
+                background-image: var(--connection-gradient);
+                background-position: center;
+                background-attachment: fixed;
+                border-radius: 10px;
+                z-index: 1;
+            }
+
+            &:last-child {
+                .connection {
+                    margin-bottom: 100%;
+                }
+            }
+        }
+    }
+
+    [data-aos="scale-down"] {
+        transform: scaleY(0);
+        transform-origin: center top;
+        transition-property: transform;
+        &.aos-animate {
+            transform: scaleY(1);
+        }
+    }
+</style>
