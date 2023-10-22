@@ -105,13 +105,19 @@ const data = [
     <div class="schedule">
         {data.map(item =>
             <div class="schedule-item">
+                <div class="time-start-container">
+                    <div class="time-start-marker">{item.start}</div>
+                </div>
+                <div class="timeline">
+                    <div class="marker"></div>
+                    <div class="connection"></div>
+                </div>
                 <div class:list={["card", item.class]} data-aos="zoom-in-right">
+                    <div class="icon">{item.icon}</div>
                     <div class="time-start">{item.start}</div>
                     <h3 class="title">{item.title}</h3>
-                    <p class="description">{item.description}</p>
+                    {item.description && <p class="description">{item.description}</p>}
                 </div>
-                <div class="icon">{item.icon}</div>
-                <div class="connection"></div>
             </div>
         )}
     </div>
@@ -126,92 +132,129 @@ const data = [
 
     .schedule {
         list-style-type: none;
-        max-width: 600px;
+        max-width: 700px;
 
         --padding-y: 2rem;
         --gap-y: 3rem;
         --icon-size: 2.5rem;
         --icon-padding: 1rem;
         --marker-size: 1rem;
+        --connection-padding: 12px;
         --connection-gradient: linear-gradient(
-            rgba(var(--flare-yellow), .25) 60%,
-            rgba(var(--flare-blue), .1) 80%
+            rgb(var(--card-background)) 60%,
+            transparent 70%
         );
 
         .schedule-item {
-            position: relative;
+            display: grid;
+            grid-template-columns: 3em auto 1fr;
+            column-gap: 30px;
 
             &:not(:last-child) {
                 margin-bottom: var(--gap-y);
             }
 
-            .icon {
-                position: absolute;
-                top: 2rem;
-                left: 0;
-                font-size: var(--icon-size);
-                padding: var(--icon-padding);
-                background: white;
-                border-radius: 50%;
+            .time-start {
+                color: rgb(var(--accent-color));
+                display: none;
+            }
 
-                &::before {
-                    content: "";
+            .time-start-container {
+                position: relative;
+
+                .time-start-marker {
                     position: absolute;
-                    transform: translateY(-50%);
-                    top: 50%;
-                    left: -50px;
+                    color: rgb(var(--accent-color));
+                    font-size: 1.5rem;
+                    font-family: "Dosis";
+                    right: 0;
+                    top: calc(
+                        min(
+                            50%,
+                            calc(
+                                var(--padding-y) +
+                                var(--icon-padding) +
+                                var(--icon-size) * 1.4 / 2
+                            )
+                        ) -
+                        0.725em
+                    );
+                }
+            }
+
+            .timeline {
+                display: grid;
+                grid-template-areas: "overlay";
+                position: relative;
+
+                .marker {
+                    grid-area: overlay;
+                    position: relative;
+                    top: min(
+                        calc(50% - var(--marker-size) / 2),
+                        calc(
+                            var(--padding-y) +
+                            var(--icon-padding) +
+                            var(--icon-size) * 1.4 / 2 -
+                            var(--marker-size) / 2
+                        )
+                    );
                     width: var(--marker-size);
                     height: var(--marker-size);
-                    background: rgba(var(--flare-yellow), .35);
+                    background: rgb(var(--card-background));
+                    outline: 4px solid white;
                     border-radius: 50%;
+    
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        inset: -7px;
+                        background-image: var(--connection-gradient);
+                        background-position: center;
+                        background-attachment: fixed;
+                        border-radius: 50%;
+                        outline: 4px solid white;
+                        z-index: -1;
+                    }
                 }
-
-                &::after {
-                    content: "";
+    
+                .connection {
+                    grid-area: overlay;
                     position: absolute;
-                    inset: -4px;
+                    width: 4px;
+                    top: calc(
+                        min(
+                            50%,
+                            calc(
+                                var(--padding-y) +
+                                var(--icon-padding) +
+                                var(--icon-size) * 1.4 / 2
+                            )
+                        ) +
+                        var(--marker-size) / 2
+                    );
+                    bottom: calc(
+                        -1 * (
+                            var(--gap-y) +
+                            var(--padding-y) +
+                            var(--icon-padding) +
+                            var(--icon-size) * 1.4 / 2 -
+                            var(--marker-size) / 2
+                        )
+                    );
+                    justify-self: center;
                     background-image: var(--connection-gradient);
                     background-position: center;
                     background-attachment: fixed;
-                    border-radius: 50%;
-                    z-index: -1;
-                    opacity: .35;
+                    border-radius: 10px;
+                    z-index: -3;
                 }
             }
 
-            .connection {
-                position: absolute;
-                left: -2px;
-                --connection-padding: 12px;
-                top: calc(
-                    var(--padding-y) +
-                    var(--icon-padding) +
-                    var(--icon-size) * 1.4 / 2 +
-                    var(--marker-size) / 2 +
-                    var(--connection-padding)
-                );
-                bottom: calc(
-                    -1 * (
-                        var(--gap-y) +
-                        var(--padding-y) +
-                        var(--icon-padding) +
-                        var(--icon-size) * 1.4 / 2 -
-                        var(--marker-size) / 2 -
-                        var(--connection-padding)
-                    )
-                );
-                width: 4px;
-                margin-left: calc(-50px + var(--marker-size) / 2);
-                background-image: var(--connection-gradient);
-                background-position: center;
-                background-attachment: fixed;
-                border-radius: 10px;
-                z-index: -1;
-            }
 
             &:last-child {
                 .connection {
-                    margin-bottom: 100%;
+                    display: none;
                 }
             }
 
@@ -221,15 +264,25 @@ const data = [
                 border-radius: 30px;
                 margin-left: var(--icon-size);
 
-                .time-start {
-                    color: rgb(var(--accent-color));
+                .icon {
+                    position: absolute;
+                    top: min(50%, calc(var(--padding-y) + var(--icon-padding) +  var(--icon-size) * 1.4 / 2));
+                    left: 0;
+                    transform: translate(-50%, -50%);
+                    font-size: var(--icon-size);
+                    padding: var(--icon-padding);
+                    background: white;
+                    border-radius: 50%;
                 }
     
                 .title {
                     font-size: 2rem;
                     margin: 0;
-                    margin-bottom: 1rem;
                     position: relative;
+
+                    &:not(:last-child) {
+                        margin-bottom: 1rem;
+                    }
                 }
     
                 .description {
