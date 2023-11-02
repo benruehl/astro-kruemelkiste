@@ -1,5 +1,6 @@
 ---
 import { getImage } from "astro:assets";
+import { Icon } from "astro-icon";
 import backgroundImage from "../../icons/music-art.svg";
 
 const optimizedBackgroundImage = await getImage({ src: backgroundImage });
@@ -7,6 +8,12 @@ const optimizedBackgroundImage = await getImage({ src: backgroundImage });
 
 <section>
     <div class="background-art" style={`background-image: url('${optimizedBackgroundImage.src}')`}>
+    </div>
+    <div class="hanging-icon left" data-aos="zoom-in-down">
+        <Icon name="music-rocket"/>
+    </div>
+    <div class="hanging-icon right" data-aos="zoom-in-down" data-aos-delay="100">
+        <Icon name="music-bird"/>
     </div>
     <div class="text">
         <h2>Musik & <br/>Instrumente</h2>
@@ -28,6 +35,35 @@ const optimizedBackgroundImage = await getImage({ src: backgroundImage });
         aspect-ratio: 601 / 532;
         background-position: center;
         background-repeat: no-repeat;
+    }
+
+    .hanging-icon {
+        grid-area: overlay;
+        transform-origin: top center;
+        animation: swing 6s ease-in-out infinite;
+
+        &.left {
+            justify-self: flex-start;
+            margin-left: 18%;
+            width: 180px;
+        }
+
+        &.right {
+            justify-self: flex-end;
+            margin-right: 16%;
+            width: 250px;
+            animation-delay: 2s;
+            animation-duration: 5s;
+        }
+
+        @keyframes swing {
+            from, to {
+                rotate: -2deg;
+            }
+            50% {
+                rotate: 2deg;
+            }
+        }
     }
 
     .text {
