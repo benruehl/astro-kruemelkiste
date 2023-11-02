@@ -1,0 +1,49 @@
+---
+import { getImage } from "astro:assets";
+import backgroundImage from "../../icons/music-art.svg";
+
+const optimizedBackgroundImage = await getImage({ src: backgroundImage });
+---
+
+<section>
+    <div class="background-art" style={`background-image: url('${optimizedBackgroundImage.src}')`}>
+    </div>
+    <div class="text">
+        <h2>Musik & <br/>Instrumente</h2>
+        <p>Spielerisch beschäftigen wir uns mit Musik, singen viel und experimentieren mit einfachen Musikinstrumenten.</p>
+    </div>
+</section>
+
+<style lang="scss">
+    section {
+        display: grid;
+        grid-template-areas: "overlay";
+        align-items: center;
+        margin-bottom: -100px;
+    }
+
+    .background-art {
+        grid-area: overlay;
+        width: 100%;
+        aspect-ratio: 601 / 532;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .text {
+        grid-area: overlay;
+        justify-self: center;
+        color: white;
+        max-width: 360px;
+        margin-top: -400px;
+        text-align: center;
+
+        h2 {
+            text-shadow: 2px 2px rgb(var(--accent-color));
+        }
+
+        p {
+            text-shadow: 1px 1px rgb(var(--accent-color));
+        }
+    }
+</style>
