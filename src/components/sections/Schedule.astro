@@ -1,10 +1,33 @@
 ---
-import { Icon } from "astro-icon";
+import { getImage } from "astro:assets";
+import treeImage from "../../icons/fluentui-emoji/deciduous_tree_color.svg";
+import drumImage from "../../icons/fluentui-emoji/drum_color.svg";
+import locomotiveImage from "../../icons/fluentui-emoji/locomotive_color.svg";
+import playgroundImage from "../../icons/fluentui-emoji/playground_slide_color.svg";
+import appleImage from "../../icons/fluentui-emoji/red_apple_color.svg";
+import sleepingImage from "../../icons/fluentui-emoji/sleeping_face_color.svg";
+import spaghettiImage from "../../icons/fluentui-emoji/spaghetti_color.svg";
+import teddyImage from "../../icons/fluentui-emoji/teddy_bear_color.svg";
+import watermelonImage from "../../icons/fluentui-emoji/watermelon_color.svg";
+import wavingImage from "../../icons/fluentui-emoji/waving_hand_color.svg";
+import yawningImage from "../../icons/fluentui-emoji/yawning_face_color.svg";
+
+const optimizedTreeImage = await getImage({ src: treeImage });
+const optimizedDrumImage = await getImage({ src: drumImage });
+const optimizedLocomotiveImage = await getImage({ src: locomotiveImage });
+const optimizedPlaygroundImage = await getImage({ src: playgroundImage });
+const optimizedAppleImage = await getImage({ src: appleImage });
+const optimizedSleepingImage = await getImage({ src: sleepingImage });
+const optimizedSpaghettiImage = await getImage({ src: spaghettiImage });
+const optimizedTeddyImage = await getImage({ src: teddyImage });
+const optimizedWatermelonImage = await getImage({ src: watermelonImage });
+const optimizedWavingImage = await getImage({ src: wavingImage });
+const optimizedYawningImage = await getImage({ src: yawningImage });
 
 const data = [
     {
         start: "8:00",
-        icon: "waving_hand",
+        icon: optimizedWavingImage,
         class: "greet",
         title: "Begrüßung der Kinder",
         description: `
@@ -14,7 +37,7 @@ const data = [
     },
     {
         start: "9:30",
-        icon: "red_apple",
+        icon: optimizedAppleImage,
         class: "food",
         title: "Obstfrühstück",
         description: `
@@ -23,7 +46,7 @@ const data = [
     },
     {
         start: "10:00",
-        icon: "deciduous_tree",
+        icon: optimizedTreeImage,
         class: "outdoors",
         title: "Wir sind draußen",
         description: `
@@ -32,7 +55,7 @@ const data = [
     },
     {
         start: "11:15",
-        icon: "spaghetti",
+        icon: optimizedSpaghettiImage,
         class: "food",
         title: "Mittagessen",
         description: `
@@ -41,7 +64,7 @@ const data = [
     },
     {
         start: "11:30",
-        icon: "teddy_bear",
+        icon: optimizedTeddyImage,
         class: "sleep",
         title: "Vorbereitung auf die Mittagsruhe",
         description: `
@@ -50,13 +73,13 @@ const data = [
     },
     {
         start: "12:00",
-        icon: "sleeping_face",
+        icon: optimizedSleepingImage,
         class: "sleep",
         title: "Mittagsruhe"
     },
     {
         start: "13:30",
-        icon: "yawning_face",
+        icon: optimizedYawningImage,
         class: "toys",
         title: "Erwachen",
         description: `
@@ -65,7 +88,7 @@ const data = [
     },
     {
         start: "14:30",
-        icon: "drum",
+        icon: optimizedDrumImage,
         class: "toys",
         title: "Freies Spiel",
         description: `
@@ -74,7 +97,7 @@ const data = [
     },
     {
         start: "15:00",
-        icon: "watermelon",
+        icon: optimizedWatermelonImage,
         class: "food",
         title: "Vesper",
         description: `
@@ -83,7 +106,7 @@ const data = [
     },
     {
         start: "15:15",
-        icon: "locomotive",
+        icon: optimizedLocomotiveImage,
         class: "toys",
         title: "Freies Spiel",
         description: `
@@ -92,7 +115,7 @@ const data = [
     },
     {
         start: "15:30",
-        icon: "playground_slide",
+        icon: optimizedPlaygroundImage,
         class: "outdoors",
         title: "Spielplatz",
         description: `
@@ -115,7 +138,8 @@ const data = [
                     <div class="connection"></div>
                 </div>
                 <div class:list={["card", item.class]} data-aos="zoom-in-right">
-                    <Icon class="icon" name={"fluentui-emoji/" + item.icon + "_color"}/>
+                    <img class="icon blur" src={item.icon.src} alt="icon"/>
+                    <img class="icon" src={item.icon.src} alt="icon"/>
                     <div class="time-start">{item.start}</div>
                     <h3 class="title">{item.title}</h3>
                     {item.description && <p class="description">{item.description}</p>}
@@ -139,7 +163,7 @@ const data = [
 
         --padding-y: 2rem;
         --gap-y: 3rem;
-        --icon-size: 2.25rem;
+        --icon-size: 4rem;
         --icon-padding: 1.2rem;
         --marker-size: 1rem;
         --connection-padding: 12px;
@@ -177,7 +201,7 @@ const data = [
                             calc(
                                 var(--padding-y) +
                                 var(--icon-padding) +
-                                var(--icon-size) * 1.4 / 2
+                                var(--icon-size) / 2
                             )
                         ) -
                         0.725em
@@ -198,7 +222,7 @@ const data = [
                         calc(
                             var(--padding-y) +
                             var(--icon-padding) +
-                            var(--icon-size) * 1.4 / 2 -
+                            var(--icon-size) / 2 -
                             var(--marker-size) / 2
                         )
                     );
@@ -231,7 +255,7 @@ const data = [
                             calc(
                                 var(--padding-y) +
                                 var(--icon-padding) +
-                                var(--icon-size) * 1.4 / 2
+                                var(--icon-size) / 2
                             )
                         ) +
                         var(--marker-size) / 2
@@ -241,7 +265,7 @@ const data = [
                             var(--gap-y) +
                             var(--padding-y) +
                             var(--icon-padding) +
-                            var(--icon-size) * 1.4 / 2 -
+                            var(--icon-size) / 2 -
                             var(--marker-size) / 2
                         )
                     );
@@ -271,18 +295,17 @@ const data = [
 
                 .icon {
                     position: absolute;
-                    top: min(50%, calc(var(--padding-y) + var(--icon-padding) +  var(--icon-size) * 1.4 / 2));
+                    top: min(50%, calc(var(--padding-y) + var(--icon-padding) + var(--icon-size) / 2));
                     left: 0;
                     transform: translate(-50%, -50%);
-                    font-size: var(--icon-size);
-                    width: calc(var(--icon-size) * 1.4);
-                    height: calc(var(--icon-size) * 1.4);
+                    width: var(--icon-size);
+                    height: var(--icon-size);
                     padding: var(--icon-padding);
-                    line-height: 1;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background: radial-gradient(white 70%, transparent 70%);
+
+                    &.blur {
+                        filter: blur(20px);
+                        opacity: .5;
+                    }
                 }
     
                 .title {
