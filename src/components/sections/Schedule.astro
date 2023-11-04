@@ -1,9 +1,10 @@
----import Flare from "../common/Flare.astro";
+---
+import { Icon } from "astro-icon";
 
 const data = [
     {
         start: "8:00",
-        icon: "👋",
+        icon: "waving_hand",
         class: "greet",
         title: "Begrüßung der Kinder",
         description: `
@@ -13,7 +14,7 @@ const data = [
     },
     {
         start: "9:30",
-        icon: "🍎",
+        icon: "red_apple",
         class: "food",
         title: "Obstfrühstück",
         description: `
@@ -22,7 +23,7 @@ const data = [
     },
     {
         start: "10:00",
-        icon: "🌳",
+        icon: "deciduous_tree",
         class: "outdoors",
         title: "Wir sind draußen",
         description: `
@@ -31,7 +32,7 @@ const data = [
     },
     {
         start: "11:15",
-        icon: "🍝",
+        icon: "spaghetti",
         class: "food",
         title: "Mittagessen",
         description: `
@@ -40,7 +41,7 @@ const data = [
     },
     {
         start: "11:30",
-        icon: "🧸",
+        icon: "teddy_bear",
         class: "sleep",
         title: "Vorbereitung auf die Mittagsruhe",
         description: `
@@ -49,13 +50,13 @@ const data = [
     },
     {
         start: "12:00",
-        icon: "😴",
+        icon: "sleeping_face",
         class: "sleep",
         title: "Mittagsruhe"
     },
     {
         start: "13:30",
-        icon: "🥱",
+        icon: "yawning_face",
         class: "toys",
         title: "Erwachen",
         description: `
@@ -64,7 +65,7 @@ const data = [
     },
     {
         start: "14:30",
-        icon: "🥁",
+        icon: "drum",
         class: "toys",
         title: "Freies Spiel",
         description: `
@@ -73,7 +74,7 @@ const data = [
     },
     {
         start: "15:00",
-        icon: "🍉",
+        icon: "watermelon",
         class: "food",
         title: "Vesper",
         description: `
@@ -82,7 +83,7 @@ const data = [
     },
     {
         start: "15:15",
-        icon: "🚂",
+        icon: "locomotive",
         class: "toys",
         title: "Freies Spiel",
         description: `
@@ -91,7 +92,7 @@ const data = [
     },
     {
         start: "15:30",
-        icon: "🛝",
+        icon: "playground_slide",
         class: "outdoors",
         title: "Spielplatz",
         description: `
@@ -114,7 +115,7 @@ const data = [
                     <div class="connection"></div>
                 </div>
                 <div class:list={["card", item.class]} data-aos="zoom-in-right">
-                    <div class="icon">{item.icon}</div>
+                    <Icon class="icon" name={"fluentui-emoji/" + item.icon + "_color"}/>
                     <div class="time-start">{item.start}</div>
                     <h3 class="title">{item.title}</h3>
                     {item.description && <p class="description">{item.description}</p>}
@@ -138,8 +139,8 @@ const data = [
 
         --padding-y: 2rem;
         --gap-y: 3rem;
-        --icon-size: 2.5rem;
-        --icon-padding: 1rem;
+        --icon-size: 2.25rem;
+        --icon-padding: 1.2rem;
         --marker-size: 1rem;
         --connection-padding: 12px;
         --connection-gradient: linear-gradient(
@@ -281,8 +282,7 @@ const data = [
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    background: white;
-                    border-radius: 50%;
+                    background: radial-gradient(white 70%, transparent 70%);
                 }
     
                 .title {
