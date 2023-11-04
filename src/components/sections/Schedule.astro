@@ -134,6 +134,20 @@ const data = [
 ]
 ---
 
+<script>
+    import ConfettiGenerator from "confetti-js";
+    
+    const confettiSettings = {
+        target: "confetti-holder",
+        height: 3500,
+        max: 60,
+        size: 4,
+        clock: 1.5
+    };
+    const confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+</script>
+
 <section>
     <h2><span class="small">Routine gibt Halt</span>Unser Tagesablauf</h2>
     <div class="schedule">
@@ -156,6 +170,10 @@ const data = [
             </div>
         )}
     </div>
+    <canvas
+        id="confetti-holder"
+        class="confetti-holder">
+    </canvas>
 </section>
 
 <style lang="scss">
@@ -164,6 +182,16 @@ const data = [
         flex-direction: column;
         align-items: center;
         position: relative;
+    }
+
+    .confetti-holder {
+        position: absolute;
+        width: 80vw;
+        top: -50px;
+        height: calc(100% + 450px);
+        filter: blur(4px);
+        z-index: -1;
+        opacity: .5;
     }
 
     .schedule {
