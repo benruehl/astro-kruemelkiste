@@ -135,15 +135,8 @@ import Flare from "../common/Flare.astro";
         }
 
         .flares {
-            position: absolute;
-            inset: 0;
+            @include FlareContainer();
             z-index: -3;
-            display: grid;
-            grid-template-areas: "overlay";
-
-            :global(*) {
-                grid-area: overlay;
-            }
         }
     }
 

@@ -107,15 +107,7 @@ import Testimonial from "../common/Testimonial.astro";
     }
 
     .flares {
-        position: absolute;
-        inset: 0;
+        @include FlareContainer();
         opacity: .35;
-        z-index: -1;
-        display: grid;
-        grid-template-areas: "overlay";
-
-        :global(*) {
-            grid-area: overlay;
-        }
     }
 </style>

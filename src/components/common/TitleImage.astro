@@ -25,15 +25,7 @@ import Flare from './Flare.astro';
     }
 
     .flares {
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        display: grid;
-        grid-template-areas: "overlay";
-
-        :global(*) {
-            grid-area: overlay;
-        }
+        @include FlareContainer();
     }
 
     .bubble {

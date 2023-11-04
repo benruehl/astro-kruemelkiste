@@ -95,16 +95,8 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
     }
 
     .flares {
-        position: absolute;
-        inset: 0;
-        z-index: -1;
+        @include FlareContainer();
         opacity: .5;
-        display: grid;
-        grid-template-areas: "overlay";
-
-        :global(*) {
-            grid-area: overlay;
-        }
     }
 
     .wallpaper {
