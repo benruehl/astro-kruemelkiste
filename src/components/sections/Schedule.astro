@@ -29,7 +29,7 @@ const data = [
         start: "8:00",
         icon: optimizedWavingImage,
         class: "greet",
-        title: "Begrüßung der Kinder",
+        title: "Begrüßung",
         description: `
             Aufgreifen von Themen und Dingen, die die Kinder mitbringen und bewegen;
             Kleine Beschäftigungen wie Singspiele, Lesen, Malen, Puzzlen, Bauen mit Bausteinen, Basteln, Toben etc.
@@ -90,9 +90,9 @@ const data = [
         start: "14:30",
         icon: optimizedDrumImage,
         class: "toys",
-        title: "Freies Spiel",
+        title: "Angeleitetes Spiel",
         description: `
-            Bausteine, Singspiele, Buch lesen, Toben o.ä.
+            Bausteine, Singspiele, Buch lesen, Toben, Basteln o.ä.
         `
     },
     {
@@ -101,7 +101,7 @@ const data = [
         class: "food",
         title: "Vesper",
         description: `
-            Es gibt Obst und manchmal Nudeln oder Kekse. Im Sommer vespern wir gelegentlich draußen.
+            Im Sommer vespern wir gelegentlich draußen, ansonsten drinnen.
         `
     },
     {
@@ -120,6 +120,15 @@ const data = [
         title: "Spielplatz",
         description: `
             Wir sind auf dem Spielplatz im Hof. Bei schlechtem Wetter oder im Winter spielen wir drinnen.
+        `
+    },
+    {
+        start: "bis 16:00",
+        icon: optimizedWavingImage,
+        class: "greet",
+        title: "Abschied",
+        description: `
+            Eltern holen ihre Kinder ab.
         `
     },
 ]
@@ -174,7 +183,7 @@ const data = [
 
         .schedule-item {
             display: grid;
-            grid-template-columns: 3em auto 1fr;
+            grid-template-columns: 4.5em auto 1fr;
             column-gap: 30px;
 
             &:not(:last-child) {
