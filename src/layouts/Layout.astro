@@ -16,14 +16,16 @@ const { title } = Astro.props;
 		<meta name="description" content="Liebevolle Kindertagespflege in Weißensee" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
-		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
-		<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
-		<script is:inline>
+		<script>
+			// @ts-ignore
+			import AOS from 'aos';
+			import 'aos/dist/aos.css';
+
 			AOS.init();
 		</script>
 	</body>
