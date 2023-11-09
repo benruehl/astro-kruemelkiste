@@ -1,18 +1,26 @@
 ---
 import { getImage } from "astro:assets";
 import { Icon } from "astro-icon";
-import backgroundImage from "../../icons/music-art.svg";
+import Flare from '../common/Flare.astro';
+import musicImage from "../../icons/music-art.svg";
+import backgroundImage from "../../icons/bbburst.svg";
 
+const optimizedMusicImage = await getImage({ src: musicImage });
 const optimizedBackgroundImage = await getImage({ src: backgroundImage });
 ---
 
 <section>
-    <div class="background-art" style={`background-image: url('${optimizedBackgroundImage.src}')`}>
+    <div class="flares">
+        <Flare color="orange" width="1400px" height="1000px" x="70%" y="20%"/>
+        <Flare color="yellow" width="1400px" height="1000px" x="30%" y="60%"/>
+        <Flare color="orange" width="1400px" height="1000px" x="55%" y="90%"/>
+        <Flare color="blue" width="800px" height="500px" x="55%" y="55%"/>
     </div>
-    <div class="hanging-icon left" data-aos="zoom-in-down">
-        <Icon name="music-rocket"/>
+    <div class="background-image" style={`background-image: url('${optimizedBackgroundImage.src}')`}>
     </div>
-    <div class="hanging-icon right" data-aos="zoom-in-down" data-aos-delay="100">
+    <div class="music-art" style={`background-image: url('${optimizedMusicImage.src}')`}>
+    </div>
+    <div class="hanging-icon" data-aos="zoom-in-down" data-aos-delay="100">
         <Icon name="music-bird"/>
     </div>
     <div class="text">
@@ -26,35 +34,33 @@ const optimizedBackgroundImage = await getImage({ src: backgroundImage });
         display: grid;
         grid-template-areas: "overlay";
         align-items: center;
+        position: relative;
         margin-bottom: -100px;
     }
 
-    .background-art {
+    .music-art {
         grid-area: overlay;
-        width: 100%;
-        aspect-ratio: 601 / 532;
-        background-position: center;
+        height: 800px;
+        aspect-ratio: 388 / 394;
+        background-position: right;
         background-repeat: no-repeat;
+        margin-left: auto;
     }
 
     .hanging-icon {
+        scale: .9;
+        align-self: flex-start;
         grid-area: overlay;
         transform-origin: top center;
         animation: swing 6s ease-in-out infinite;
 
-        &.left {
-            justify-self: flex-start;
-            margin-left: 18%;
-            width: 180px;
-        }
-
-        &.right {
-            justify-self: flex-end;
-            margin-right: 16%;
-            width: 250px;
-            animation-delay: 2s;
-            animation-duration: 5s;
-        }
+        justify-self: flex-end;
+        margin-right: 24%;
+        margin-top: 110px;
+        width: 180px;
+        animation-delay: 2s;
+        animation-duration: 5s;
+        z-index: -1;
 
         @keyframes swing {
             from, to {
@@ -69,17 +75,23 @@ const optimizedBackgroundImage = await getImage({ src: backgroundImage });
     .text {
         grid-area: overlay;
         justify-self: center;
-        color: white;
-        max-width: 360px;
-        margin-top: -400px;
-        text-align: center;
+        max-width: 420px;
+        margin-top: 200px;
+        margin-right: 20%;
 
         h2 {
-            text-shadow: 2px 2px rgb(var(--accent-color));
+            text-shadow: 2px 2px white;
+            color: rgb(var(--accent-color));
         }
 
         p {
-            text-shadow: 1px 1px rgb(var(--accent-color));
+            font-size: 1.35rem;
+            line-height: 1.5;
         }
+    }
+
+    .flares {
+        @include FlareContainer();
+        opacity: .5;
     }
 </style>
