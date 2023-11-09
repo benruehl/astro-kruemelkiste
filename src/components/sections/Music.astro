@@ -3,10 +3,8 @@ import { getImage } from "astro:assets";
 import { Icon } from "astro-icon";
 import Flare from '../common/Flare.astro';
 import musicImage from "../../icons/music-art.svg";
-import backgroundImage from "../../icons/bbburst.svg";
 
 const optimizedMusicImage = await getImage({ src: musicImage });
-const optimizedBackgroundImage = await getImage({ src: backgroundImage });
 ---
 
 <section>
@@ -15,8 +13,6 @@ const optimizedBackgroundImage = await getImage({ src: backgroundImage });
         <Flare color="yellow" width="1400px" height="1000px" x="30%" y="60%"/>
         <Flare color="orange" width="1400px" height="1000px" x="55%" y="90%"/>
         <Flare color="blue" width="800px" height="500px" x="55%" y="55%"/>
-    </div>
-    <div class="background-image" style={`background-image: url('${optimizedBackgroundImage.src}')`}>
     </div>
     <div class="music-art" style={`background-image: url('${optimizedMusicImage.src}')`}>
     </div>
