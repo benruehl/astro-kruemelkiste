@@ -28,7 +28,13 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
 <style lang="scss" define:vars={{ textBackgroundImageUrl }}>
     section {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         position: relative;
+    }
+
+    .text {
+        min-width: 0;
     }
 
     .subtitle {
@@ -39,6 +45,7 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
         background: linear-gradient(to right, rgb(var(--text-color)), rgb(var(--text-color-strong)));
         background-clip: text;
         -webkit-text-fill-color: transparent;
+        max-width: 36rem;
     }
 
     .button {

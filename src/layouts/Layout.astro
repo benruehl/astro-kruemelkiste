@@ -10,7 +10,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="de">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Liebevolle Kindertagespflege in Weißensee" />
@@ -75,7 +75,7 @@ const { title } = Astro.props;
 	}
 	h1 {
 		font-family: "Dosis", Tahoma, sans-serif;
-		font-size: 6rem;
+		font-size: min(6rem, 15vw);
 		font-weight: 400;
 		line-height: 1;
 		letter-spacing: 0.05em;
@@ -84,16 +84,18 @@ const { title } = Astro.props;
 	}
 	h2 {
 		font-family: "Dosis", Tahoma, sans-serif;
-		font-size: 4rem;
+		font-size: min(4rem, 15vw);
 		font-weight: 400;
 		line-height: 1;
         text-transform: uppercase;
+		hyphens: auto;
 	}
 	h3 {
 		font-family: "Dosis", Tahoma, sans-serif;
-		font-size: 2.5rem;
+		font-size: min(2.5rem, 12vw);
 		font-weight: 400;
 		line-height: 1;
+		hyphens: auto;
 	}
 	h2,
 	h3 {
@@ -105,6 +107,10 @@ const { title } = Astro.props;
 	}
 	p {
 		font-family: "Varela Round", sans-serif;
+
+		@media (max-width: 380px) {
+			hyphens: auto;
+		}
 	}
 	a {
 		color: rgb(var(--accent-color-alt));
