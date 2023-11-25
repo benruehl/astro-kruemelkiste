@@ -12,7 +12,7 @@ const optimizedMusicImage = await getImage({ src: musicImage });
         <Flare color="orange" width="1400px" height="1000px" x="70%" y="20%"/>
         <Flare color="yellow" width="1400px" height="1000px" x="30%" y="60%"/>
         <Flare color="orange" width="1400px" height="1000px" x="55%" y="90%"/>
-        <Flare color="blue" width="800px" height="500px" x="55%" y="55%"/>
+        <Flare color="blue" width="800px" height="500px" x="60%" y="55%"/>
     </div>
     <div class="music-art" style={`background-image: url('${optimizedMusicImage.src}')`}>
     </div>
@@ -31,14 +31,13 @@ const optimizedMusicImage = await getImage({ src: musicImage });
         grid-template-areas: "overlay";
         align-items: center;
         position: relative;
-        margin-top: -30px;
-        margin-bottom: -100px;
+        margin-top: calc(-10rem + -50px);
     }
 
     .music-art {
         grid-area: overlay;
-        height: 800px;
-        aspect-ratio: 388 / 394;
+        height: 600px;
+        aspect-ratio: 363 / 382;
         background-position: right;
         background-repeat: no-repeat;
         margin-left: auto;
@@ -53,7 +52,7 @@ const optimizedMusicImage = await getImage({ src: musicImage });
 
         justify-self: flex-end;
         margin-right: 24%;
-        margin-top: 110px;
+        translate: 0 160px;
         width: 180px;
         animation-delay: 2s;
         animation-duration: 5s;
@@ -71,10 +70,10 @@ const optimizedMusicImage = await getImage({ src: musicImage });
 
     .text {
         grid-area: overlay;
-        justify-self: center;
+        justify-self: flex-start;
         max-width: 420px;
         margin-top: 200px;
-        margin-right: 20%;
+        margin-left: 15%;
 
         h2 {
             text-shadow: 2px 2px white;
