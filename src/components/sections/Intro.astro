@@ -209,7 +209,7 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         position: relative;
         margin-bottom: 200px;
 
-        @media (max-width: 640px)  {
+        @media (max-width: $sm)  {
             grid-template-columns: 1fr;
             gap: 2rem;
         }
@@ -218,11 +218,11 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
             display: flex;
             position: relative;
 
-            @media (min-width: 641px) {
+            @media (min-width: $sm + 1) {
                 margin-top: -50px;
             }
 
-            @media (max-width: 640px)  {
+            @media (max-width: $sm)  {
                 flex-direction: column;
                 align-items: center;
             }
@@ -234,7 +234,7 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
                 border: 10px solid white;
                 overflow: hidden;
 
-                @media (max-width: 640px)  {
+                @media (max-width: $sm)  {
                     width: min(300px, 100%);
                 }
         
@@ -248,7 +248,7 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
                     scale: -1 1;
                 }
 
-                @media (min-width: 641px) {
+                @media (min-width: $sm + 1) {
                     &:first-child {
                         border-radius: 50px 0 0 50px;
                     }

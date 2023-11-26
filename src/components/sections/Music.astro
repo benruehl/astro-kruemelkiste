@@ -36,11 +36,16 @@ const optimizedMusicImage = await getImage({ src: musicImage });
 
     .music-art {
         grid-area: overlay;
-        height: 600px;
+        width: min(580px, 55%);
         aspect-ratio: 363 / 382;
         background-position: right;
         background-repeat: no-repeat;
         margin-left: auto;
+        margin-bottom: auto;
+
+        @media (max-width: $xs) {
+            width: 100%;
+        }
     }
 
     .hanging-icon {
@@ -52,7 +57,7 @@ const optimizedMusicImage = await getImage({ src: musicImage });
 
         justify-self: flex-end;
         margin-right: 24%;
-        translate: 0 160px;
+        translate: 0 200px;
         width: 180px;
         animation-delay: 2s;
         animation-duration: 5s;
@@ -75,14 +80,21 @@ const optimizedMusicImage = await getImage({ src: musicImage });
         margin-top: 200px;
         margin-left: 15%;
 
+        @media (max-width: $sm) {
+            margin-left: 0;
+            justify-self: center;
+        }
+
+        @media (min-width: $sm + 1) {
+            p {
+                font-size: 1.35rem;
+                line-height: 1.5;
+            }
+        }
+
         h2 {
             text-shadow: 2px 2px white;
             color: rgb(var(--accent-color));
-        }
-
-        p {
-            font-size: 1.35rem;
-            line-height: 1.5;
         }
     }
 
