@@ -215,17 +215,36 @@ const data = [
             grid-template-columns: 4.5em auto 1fr;
             column-gap: 30px;
 
+            @media (max-width: $sm) {
+                display: block;
+            }
+
             &:not(:last-child) {
                 margin-bottom: var(--gap-y);
+
+                @media (max-width: $sm) {
+                    margin-bottom: calc(var(--gap-y) / 2);
+                }
             }
 
             .time-start {
                 color: rgb(var(--accent-color));
+                font-size: 1.3rem;
+                font-family: "Dosis";
+                position: relative;
                 display: none;
+
+                @media (max-width: $sm) {
+                    display: block;
+                }
             }
 
             .time-start-container {
                 position: relative;
+
+                @media (max-width: $sm) {
+                    display: none;
+                }
 
                 .time-start-marker {
                     position: absolute;
@@ -251,6 +270,10 @@ const data = [
                 display: grid;
                 grid-template-areas: "overlay";
                 position: relative;
+
+                @media (max-width: $sm) {
+                    display: none;
+                }
 
                 .marker {
                     grid-area: overlay;
@@ -330,6 +353,10 @@ const data = [
                 margin-left: var(--icon-size);
                 transition: all .3s ease;
                 transform-origin: left center;
+
+                @media (max-width: $sm) {
+                    margin-left: calc(var(--icon-size) / 2);
+                }
 
                 .icon {
                     position: absolute;
