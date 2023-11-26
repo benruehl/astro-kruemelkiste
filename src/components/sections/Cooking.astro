@@ -15,7 +15,6 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         <Flare color="orange" width="1400px" height="800px" x="55%" y="70%"/>
         <Flare color="blue" width="1000px" height="1200px" x="35%" y="40%"/>
     </div>
-    <Image class="ingredients" src={ingredientsImage} alt="Tomaten, Basilikum und Pfefferkürner"/>
     <div class="wallpaper" style={`background-image: url('${optimizedWallpaperImage.src}')`}/>
     <div class="spoon-container">
         <Icon
@@ -37,6 +36,7 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
             frisches Essen. 
         </p>
     </div>
+    <Image class="ingredients" src={ingredientsImage} alt="Tomaten, Basilikum und Pfefferkürner"/>
 </section>
 
 <style lang="scss">
@@ -46,27 +46,38 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         justify-content: space-evenly;
         position: relative;
         margin-top: -4rem;
+
+        @media (max-width: 800px) {
+            flex-direction: column;
+        }
     }
 
     .spoon-container {
         display: grid;
         grid-template-columns: 1fr;
         justify-items: center;
+        width: min(383px, 50%);
+        object-fit: contain;
+
+        @media (max-width: 800px) {
+            display: none;
+        }
 
         .sprinkles {
-            height: 102px;
+            max-height: 102px;
             margin-bottom: -50px;
             filter: drop-shadow(0 5px 5px rgba(var(--text-color), .25));
         }
 
         .spoon {
+            width: min(290px, 100%);
+            height: auto;
             filter: saturate(80%);
             grid-row: 2;
             grid-column: 1;
         }
 
         .bow {
-            width: 383px;
             grid-row: 2;
             grid-column: 1;
             margin: auto;
@@ -80,18 +91,40 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         margin-top: 15%;
         margin-right: 10%;
 
-        p {
-            font-size: 1.35rem;
-            line-height: 1.5;
+        @media (max-width: 800px) {
             max-width: 400px;
+            align-self: center;
+        }
+
+        p {
+            max-width: 400px;
+
+            @media (max-width: $sm) {
+                max-width: max(200px, 70%);
+            }
+
+            @media (min-width: $sm + 1) {
+                font-size: 1.35rem;
+                line-height: 1.5;
+            }
         }
     }
 
     .ingredients {
         position: absolute;
         bottom: 0;
-        right: 0; 
+        right: 0;
+        width: min(654px, 60%);
+        height: auto;
+        min-width: 300px;
         z-index: -1;
+
+        @media (max-width: 800px) {
+            position: static;
+            width: min(500px, 100%);
+            margin-left: auto;
+            margin-top: -150px;
+        }
     }
 
     .flares {

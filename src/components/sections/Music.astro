@@ -38,6 +38,7 @@ const optimizedMusicImage = await getImage({ src: musicImage });
         grid-area: overlay;
         width: min(580px, 55%);
         aspect-ratio: 363 / 382;
+        min-width: 300px;
         background-position: right;
         background-repeat: no-repeat;
         margin-left: auto;
@@ -45,6 +46,7 @@ const optimizedMusicImage = await getImage({ src: musicImage });
 
         @media (max-width: $xs) {
             width: 100%;
+            min-width: 0;
         }
     }
 
