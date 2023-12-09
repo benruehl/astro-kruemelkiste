@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import { Icon } from "astro-icon";
 import Flag from "../common/Flag.astro";
 import Flare from "../common/Flare.astro";
+import jugendamtImage from "../../icons/jugendamt.svg";
 ---
 
 <section>
@@ -26,7 +28,7 @@ import Flare from "../common/Flare.astro";
             <div class="jugendamt">
                 <Flag class="flag" width="80px" height="60px"/>
                 <div class="pole"></div>
-                <Icon class="building" name="jugendamt"/>
+                <Image class="building" src={jugendamtImage} alt="Jugendamt"/>
             </div>
         </div>
         <div class="text">
@@ -67,19 +69,28 @@ import Flare from "../common/Flare.astro";
 
     .content {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 6rem;
     }
 
     .artwork {
         display: grid;
         grid-template-areas: "overlay";
         align-items: center;
-        margin-left: -180px;
         position: relative;
+        max-width: 100vw;
+
+        @media (min-width: $sm + 1) {
+            margin-left: -180px;
+        }
 
         .background {
             grid-area: overlay;
-            width: 615px;
-            height: 615px;
+            width: 130vw;
+            aspect-ratio: 1 / 1;
+            max-width: 615px;
+            max-height: 615px;
             background-color: rgb(var(--card-background));
             background-image: linear-gradient(
                 to bottom,
@@ -87,7 +98,16 @@ import Flare from "../common/Flare.astro";
                 rgb(var(--card-background-dark))
             );
             border-radius: 50%;
-            margin-left: 170px;
+
+            @media (min-width: $sm + 1) {
+                margin-left: 170px;
+            }
+
+            @media (max-width: $sm) {
+                position: absolute;
+                z-index: -1;
+                margin-left: 5vw;
+            }
         }
         
         .jugendamt {
@@ -95,12 +115,16 @@ import Flare from "../common/Flare.astro";
             display: grid;
             grid-template-areas: "overlay";
             align-items: end;
+            height: auto;
             width: 640px;
+            max-width: 85vw;
             --pole-height: 300px;
     
             .building {
                 grid-area: overlay;
                 z-index: 2;
+                max-width: 100%;
+                height: auto;
             }
     
             .pole {
@@ -109,6 +133,7 @@ import Flare from "../common/Flare.astro";
                 margin-right: 40px;
                 margin-bottom: 2px;
                 height: var(--pole-height);
+                max-height: 50vw;
                 width: 6px;
                 background-color: #999999;
                 border-radius: 8px;
@@ -123,6 +148,12 @@ import Flare from "../common/Flare.astro";
                     left: 6px;
                     background-color: #F2F2F2;
                 }
+
+                @media (max-width: $sm) {
+                    transform-origin: bottom left;
+                    scale: .65;
+                    margin-right: 30px;
+                }
             }
     
             .flag {
@@ -131,6 +162,13 @@ import Flare from "../common/Flare.astro";
                 margin-right: 40px;
                 margin-bottom: var(--pole-height);
                 translate: 100% 100%;
+
+                @media (max-width: $sm) {
+                    transform-origin: bottom left;
+                    scale: .65;
+                    margin-right: 30px;
+                    margin-bottom: calc(33vw + 20px);
+                }
             }
         }
 
@@ -155,23 +193,26 @@ import Flare from "../common/Flare.astro";
     }
 
     .text {
-        max-width: 400px;
-        padding: 0 60px;
-        margin-left: 60px;
-        border-image: linear-gradient(
-			to bottom,
-			rgb(var(--card-background)),
-			rgb(var(--card-background-dark))
-		) 1;
-        border-left-style: solid;
-        border-left-width: 2px;
-        background: white;
 
         :first-child {
             margin-top: 0;
         }
         :last-child {
             margin-bottom: 0;
+        }
+
+        @media (min-width: $sm + 1) {
+            max-width: 400px;
+            padding: 0 60px;
+            margin-left: 60px;
+            background: white;
+            border-image: linear-gradient(
+                to bottom,
+                rgb(var(--card-background)),
+                rgb(var(--card-background-dark))
+            ) 1;
+            border-left-style: solid;
+            border-left-width: 2px;
         }
     }
 </style>
