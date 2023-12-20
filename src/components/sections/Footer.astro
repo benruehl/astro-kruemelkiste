@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import groupImage from "../../icons/steffi-group.svg";
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <footer>
@@ -17,7 +19,7 @@ import groupImage from "../../icons/steffi-group.svg";
         </p>
         <h2>Über diese Webseite
         </h2>
-        <a href="">Impressum & Datenschutz</a>
+        <a href=`${baseUrl}/impressum/`>Impressum & Datenschutz</a>
         <p>
             Texte von Steffi Rühl<br>
             Webdesign und technische Umsetzung von Benjamin Rühl<br>

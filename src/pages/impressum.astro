@@ -1,0 +1,61 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<Layout title="Steffis Krümelkiste">
+    <main>
+        <a href=`${baseUrl}/`>🡐 Zurück zur Hauptseite</a>
+        
+        <h1>Impressum</h1>
+
+        <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
+        <p>Steffi R&uuml;hl<br />
+        Steffis Kr&uuml;melkiste<br />
+        Kindertagespflege<br />
+        (Einzelunternehmer)<br />
+        Gounodstr. 101<br />
+        13088 Berlin</p>
+
+        <h2>Kontakt</h2>
+        <p>Telefon: 03092409442<br />
+        E-Mail: steffis.kruemelkiste@gmail.com</p>
+
+        <h2>Aufsichtsbeh&ouml;rde</h2>
+        <p>Bezirksamt Pankow von Berlin, Jugendamt<br />
+        Fr&ouml;belstr. 17<br />
+        10405 Berlin</p>
+        <p><a href="http://kindertagespflege-berlin.de" target="_blank" rel="noopener noreferrer">http://kindertagespflege-berlin.de</a></p>
+
+        <h2>Angaben zur Berufs&shy;haftpflicht&shy;versicherung</h2>
+        <p><strong>Name und Sitz des Versicherers:</strong><br />
+        Alte Leipziger Versicherung AG<br />
+        &uuml;ber<br />
+        Kindertagespflege Landesverband Berlin<br />
+        Stresemannstr.78<br />
+        10963 Berlin</p>
+        <p><strong>Geltungsraum der Versicherung:</strong><br />Deutschland</p>
+
+        <h2>Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h2>
+        <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+        <p>Quelle: <a href="https://www.e-recht24.de">e-recht24.de</a></p>
+    </main>
+</Layout>
+
+<style>
+    main {
+        gap: 0;
+        margin-top: 6rem;
+        margin-bottom: 6rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+</style>
