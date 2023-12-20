@@ -49,6 +49,7 @@ const { title } = Astro.props;
 		--orange-strong: 231, 111, 81;
 		--footer-background: #F7EFE7;
 		--content-max-width: 1280px;
+		--page-padding: 2rem;
 	}
 	html {
 		font-family: "Varela Round", sans-serif;
@@ -150,7 +151,7 @@ const { title } = Astro.props;
 	footer {
 		margin: auto;
 		width: var(--content-max-width);
-		max-width: calc(100% - 2rem);
+		max-width: calc(100% - var(--page-padding));
 	}
 	main {
 		font-size: 18px;

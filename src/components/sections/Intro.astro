@@ -14,13 +14,14 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
 ---
 
 <section>
+    <h2>
+        <ImageText>
+            Kinderbetreuung.<br>Familiär und individuell.
+        </ImageText>
+    </h2>
     <div class="box">
         <Icon class="corner" name="corner-l"/>
-        <h2>
-            <ImageText>
-                Kinderbetreuung.<br>Familiär und individuell.
-            </ImageText>
-        </h2>
+        <div class="placeholder"></div>
         <div class="feature" data-aos="fade-left">
             <h3>
                 <Goo>
@@ -102,10 +103,25 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
 <style lang="scss">
     $box-padding: min(50px, 3vw);
 
+    h2 {
+        grid-column: 1 / -1;
+        text-transform: none;
+        line-height: 1.2;
+        margin-bottom: -8.5rem;
+        margin-left: $box-padding;
+        position: relative;
+        z-index: 1;
+
+        @media (max-width: $sm) {
+            margin-left: 0;
+        }
+    }
+
     .box {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 300px minmax(auto, 300px);
         grid-auto-flow: row;
+        justify-content: space-between;
         gap: 3rem;
         @include QuadGradientBackground();
         border-radius: 50px;
@@ -115,27 +131,28 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         margin-top: 5.5rem;
         position: relative;
 
-        @media (max-width: 640px)  {
+        @media (max-width: 640px) {
             grid-template-columns: 1fr;
             justify-items: center;
+        }
+
+        @media (max-width: $sm) {
+            margin-left: calc(var(--page-padding) * -1);
+            margin-right: calc(var(--page-padding) * -1);
+            padding-left: var(--page-padding);
+            padding-right: var(--page-padding);
         }
 
         & > * {
             min-width: 0;
         }
 
-        h2 {
+        .placeholder {
             grid-column: 1 / -1;
-            text-transform: none;
-            line-height: 1.2;
-            margin-top: -9.5rem;
-            z-index: 1;
-            min-width: 0;
+            height: 70px;
         }
 
         .feature {
-            max-width: 300px;
-
             &.large {
                 grid-row: span 2;
             }
@@ -161,7 +178,7 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
             object-fit: contain;
             object-position: bottom;
 
-            @media (max-width: 860px)  {
+            @media (max-width: 860px) {
                 width: min(100%, 320px);
             }
         }
@@ -173,7 +190,7 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
             animation: rotate 240s linear infinite;
             transform-origin: 0;
 
-            @media (max-width: 860px)  {
+            @media (max-width: 860px) {
                 position: static;
                 grid-column: 1 / -1;
                 width: min(150%, 500px);
@@ -205,26 +222,28 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         justify-content: space-between;
         align-items: center;
         justify-items: center;
+        gap: 1rem;
         padding: 0 $box-padding;
         position: relative;
         margin-bottom: 200px;
 
-        @media (max-width: $sm)  {
+        @media (max-width: $sm) {
             grid-template-columns: 1fr;
             gap: 2rem;
+            padding: 0;
         }
 
         .image-group {
             display: flex;
             position: relative;
+            margin-top: -50px;
 
-            @media (min-width: $sm + 1) {
-                margin-top: -50px;
+            @media (max-width: 860px) {
+                flex-direction: column;
             }
 
-            @media (max-width: $sm)  {
-                flex-direction: column;
-                align-items: center;
+            @media (max-width: $sm) {
+                display: none;
             }
 
             .card {
@@ -233,10 +252,6 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
                 aspect-ratio: 3 / 4;
                 border: 10px solid white;
                 overflow: hidden;
-
-                @media (max-width: $sm)  {
-                    width: min(300px, 100%);
-                }
         
                 img {
                     width: 100%;
@@ -248,7 +263,7 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
                     scale: -1 1;
                 }
 
-                @media (min-width: $sm + 1) {
+                @media (min-width: 860px + 1px) {
                     &:first-child {
                         border-radius: 50px 0 0 50px;
                     }
@@ -256,6 +271,16 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
                         border-radius: 0 50px 50px 0;
                         border-left-width: 0;
                     }
+                }
+
+                @media (max-width: 860px) {
+                    &:first-child {
+                        border-radius: 50px 50px 0 0;
+                    }
+                    &:last-child {
+                        border-radius: 0 0 50px 50px;
+                        border-top-width: 0;
+                    }   
                 }
             }
         }
