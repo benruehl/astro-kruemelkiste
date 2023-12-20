@@ -7,12 +7,13 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
 ---
 
 <section>
-    <div class="text">
-        <h1>
-            <ImageText>
-                Steffis<br>Krümelkiste
-            </ImageText>
-        </h1>
+    <h1>
+        <ImageText>
+            Steffis<br>Krümel&shy;kiste
+        </ImageText>
+    </h1>
+    <TitleImage class="title-image"/>
+    <div class="description">
         <p class="subtitle">Liebevolle Kindertagespflege in Weißensee</p>
         <p>
             Ich bin Steffi Rühl – gelernte Kinderkrankenschwester.
@@ -22,23 +23,49 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
         </p>
         <a class="button" href="#kontakt">Kontakt</a>
     </div>
-    <TitleImage/>
 </section>
 
 <style lang="scss" define:vars={{ textBackgroundImageUrl }}>
     section {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: auto minmax(500px, auto);
+        justify-content: space-between;
+        justify-items: center;
+        align-items: center;
+        row-gap: 2rem;
         position: relative;
+
+        @media (max-width: 860px) {
+            grid-template-columns: 1fr;
+            justify-content: center;
+            row-gap: 4rem;
+        }
+
+        @media (min-width: 860px + 1px) {
+            grid-auto-rows: 1fr;
+        }
     }
 
-    .text {
-        min-width: 0;
+    .title-image {
+        grid-row: span 2;
+    }
+
+    .description {
+        align-self: flex-start;
     }
 
     .subtitle {
         font-size: 1.4rem;
+        margin-top: 0;
+    }
+
+    h1 {
+        align-self: flex-end;
+        margin-bottom: 0;
+
+        @media (min-width: 860px + 1px) {
+            margin-bottom: 4rem;
+        }
     }
 
     p {

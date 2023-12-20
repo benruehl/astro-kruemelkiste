@@ -5,27 +5,45 @@ import bubble1Image from "../../images/title-bubble-1.png";
 import bubble2Image from "../../images/title-bubble-2.png";
 import bubble3Image from "../../images/title-bubble-3.png";
 import Flare from './Flare.astro';
+
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
 ---
 
-<div class="container">
+<div  class:list={["container", className]}>
     <div class="flares">
         <Flare color="yellow" width="1900px" height="1234px" x="35%" y="40%"/>
         <Flare color="orange" width="700px" height="700px" x="50%" y="15%"/>
         <Flare color="blue" width="1100px" height="700px" x="35%" y="65%"/>
     </div>
-    <Image src={titleImage} alt="Mädchen bläßt Seifenblasen" loading="eager"/>
+    <Image src={titleImage} alt="Mädchen bläßt Seifenblasen" class="main-img" loading="eager"/>
     <Image src={bubble1Image} alt="Seifenblase" class="bubble bubble-1" loading="eager"/>
     <Image src={bubble2Image} alt="Seifenblase" class="bubble bubble-2" loading="eager"/>
     <Image src={bubble3Image} alt="Seifenblase" class="bubble bubble-3" loading="eager"/>
 </div>
 
 <style lang="scss">
+    $img-break: 500px;
+
     .container {
         position: relative;
+        margin-left: -50px;
+        
+		@media (max-width: $img-break) {
+			margin-left: -34%;
+		}
     }
 
     .flares {
         @include FlareContainer();
+    }
+
+    .main-img {
+        max-width: 100%;
+        height: auto;
     }
 
     .bubble {
@@ -34,23 +52,37 @@ import Flare from './Flare.astro';
     }
 
     .bubble-1 {
+        width: 22.5%;
+        height: auto;
         left: 21%;
         top: 29.5%;
         filter: sepia() saturate(.75);
     }
 
     .bubble-2 {
+        width: 20%;
+        height: auto;
         left: 16%;
         top: 30%;
         animation-delay: -1s;
         filter: sepia() saturate(1.5) hue-rotate(45deg);
+        
+		@media (max-width: $img-break) {
+			display: none;
+		}
     }
 
     .bubble-3 {
+        width: 30.5%;
+        height: auto;
         left: 0;
         top: 12%;
         animation-delay: 1s;
         filter: sepia() saturate(2) hue-rotate(-45deg);
+        
+		@media (max-width: $img-break) {
+			display: none;
+		}
     }
 
     @keyframes float {
