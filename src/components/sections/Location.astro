@@ -20,17 +20,32 @@ import kidImage from "../../images/kid-corner.jpg";
 </section>
 
 <style lang="scss">
+    $acceptable-min-width: 660px;
+
     section {
         display: flex;
         justify-content: flex-end;
+        flex-wrap: wrap;
         position: relative;
     }
 
     .map {
         max-width: 1000px;
+        min-width: 800px;
         translate: 100px 0;
         margin-bottom: 120px;
         z-index: -2;
+
+        @media (max-width: 1200px) and (min-width: $acceptable-min-width + 1) {
+            margin-bottom: 250px;
+        }
+
+        @media (max-width: $acceptable-min-width) {
+            position: absolute;
+            top: 0;
+            left: 55%;
+            translate: -50% 0;
+        }
 
         :global(> :last-child) {
             animation: float 3s infinite ease-in-out;
@@ -56,6 +71,12 @@ import kidImage from "../../images/kid-corner.jpg";
         overflow: hidden;
         width: 800px;
         height: 420px;
+        max-width: 100%;
+
+        @media (max-width: $acceptable-min-width) {
+            position: relative;
+            margin-top: 430px;
+        }
 
         &::before {
             content: "";
@@ -83,12 +104,20 @@ import kidImage from "../../images/kid-corner.jpg";
         .text {
             margin: 0 auto;
             padding: 20px 80px 20px 0;
+
+            @media (max-width: $acceptable-min-width) {
+                padding: 0;
+            }
         }
 
         img {
             max-width: 100%;
             max-height: 100%;
             width: auto;
+
+            @media (max-width: $acceptable-min-width) {
+                display: none;
+            }
         }
     }
 </style>
