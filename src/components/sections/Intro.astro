@@ -336,8 +336,11 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         }
 
         .text {
-            max-width: 330px;
             z-index: 1;
+       
+            @media (min-width: $sm + 1px) {
+                max-width: 330px;
+            }
         }
 
         .flares {
