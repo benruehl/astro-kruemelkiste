@@ -63,6 +63,19 @@ const optimizedPatternImage = await getImage({ src: patternImage });
             margin-right: calc(var(--page-padding) * -1);
             padding-left: var(--page-padding);
             padding-right: var(--page-padding);
+
+            &:not(:last-child) {
+                padding-bottom: 160px;
+            }
+
+            &:last-child {
+                flex-wrap: wrap;
+
+                picture.bottom {
+                    margin-top: -164px;
+                    margin-bottom: 0;
+                }
+            }
         }
 
         @media (min-width: $sm + 1px) {
