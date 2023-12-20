@@ -58,8 +58,17 @@ const optimizedPatternImage = await getImage({ src: patternImage });
         padding: 60px min(50px, 3vw);
         min-height: 260px;
 
-        &:not(:last-child) {
-            margin-bottom: 40px;
+        @media (max-width: $sm) {
+            margin-left: calc(var(--page-padding) * -1);
+            margin-right: calc(var(--page-padding) * -1);
+            padding-left: var(--page-padding);
+            padding-right: var(--page-padding);
+        }
+
+        @media (min-width: $sm + 1px) {
+            &:not(:last-child) {
+                margin-bottom: 40px;
+            }
         }
         
         .text {
