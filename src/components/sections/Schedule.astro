@@ -355,7 +355,8 @@ const data = [
                 transform-origin: left center;
 
                 @media (max-width: $sm) {
-                    margin-left: calc(var(--icon-size) / 2);
+                    margin-left: 0;
+                    padding: var(--padding-y) 2rem;
                 }
 
                 .icon {
@@ -370,6 +371,12 @@ const data = [
                     &.blur {
                         filter: blur(20px);
                         opacity: .5;
+                    }
+
+                    @media (max-width: $sm) {
+                        top: calc(var(--icon-size) / 3);
+                        left: 80vw;
+                        padding: 0;
                     }
                 }
     
