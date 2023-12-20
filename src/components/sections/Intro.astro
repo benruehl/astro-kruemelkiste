@@ -307,6 +307,14 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         padding: 60px $box-padding;
         position: relative;
 
+        @media (max-width: $sm) {
+            margin-left: calc(var(--page-padding) * -1);
+            margin-right: calc(var(--page-padding) * -1);
+            padding-left: var(--page-padding);
+            padding-right: var(--page-padding);
+            border-radius: 0;
+        }
+
         .image-group {
             min-width: 0;
             margin-top: -244px;
@@ -339,10 +347,9 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         }
 
         img {
-            width: min(512px, calc(200px + 20vw));
-            aspect-ratio: 512 / 566;
+            width: 512px;
+            height: auto;
             max-width: 100%;
-            max-height: 100vw;
             object-fit: contain;
             position: relative;
             z-index: 1;
