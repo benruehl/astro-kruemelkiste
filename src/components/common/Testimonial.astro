@@ -35,6 +35,16 @@ const { author, image, imageAlt } = Astro.props as Props;
             position: absolute;
             left: -40px;
         }
+
+        @media (max-width: $sm) {
+            padding-left: 2rem;
+            padding-top: 8rem;
+
+            & img {
+                left: 2rem;
+                top: -20px;
+            }
+        }
     }
 
     figure,

@@ -66,6 +66,7 @@ import Testimonial from "../common/Testimonial.astro";
         justify-content: space-evenly;
         align-items: center;
         gap: 40px;
+        flex-wrap: wrap;
         position: relative;
 
         --curve-distance: -300px;
@@ -73,6 +74,7 @@ import Testimonial from "../common/Testimonial.astro";
 
     .contact {
         max-width: 400px;
+        min-width: 0;
         position: relative;
     }
 
@@ -108,5 +110,9 @@ import Testimonial from "../common/Testimonial.astro";
     .flares {
         @include FlareContainer();
         opacity: .35;
+
+        @media (max-width: $sm) {
+            display: none;
+        }
     }
 </style>
