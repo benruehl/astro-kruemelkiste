@@ -1,7 +1,7 @@
-# 🐯 Krümelkiste
+# Krümelkiste
 
-Steffis Krümelkiste website - made with Astro.
-https://benruehl.github.io/astro-kruemelkiste/
+🐯 Steffis Krümelkiste website - made with Astro.<br>
+Visit https://benruehl.github.io/astro-kruemelkiste/
 
 ## 🚀 Project Structure
 
