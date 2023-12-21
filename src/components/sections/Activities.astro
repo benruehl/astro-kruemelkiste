@@ -121,7 +121,8 @@ const optimizedPatternImage = await getImage({ src: patternImage });
                 mix-blend-mode: difference;
                 border-radius: 1000px;
                 opacity: .4;
-                -webkit-backface-visibility: hidden;
+                -webkit-backface-visibility: hidden; // fix iOS flickering
+                -webkit-perspective: 1000; // fix iOS flickering
             }
 
             img {
