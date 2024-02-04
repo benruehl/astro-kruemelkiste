@@ -88,7 +88,8 @@ import kidImage from "../../images/kid-corner.jpg";
             background: rgb(var(--card-background));
             mix-blend-mode: screen;
             z-index: -1;
-            transform: translateZ(0); // fix Safari mix-blend-mode issue
+            transform: translate3d(0,0,0); // fix Safari mix-blend-mode issue
+            -webkit-backface-visibility: visible; // fix Safari mix-blend-mode issue
             border-radius: 1000px; // fix Safari mix-blend-mode issue
         }
 
