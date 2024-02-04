@@ -92,7 +92,7 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         margin-right: 10%;
 
         @media (max-width: 800px) {
-            max-width: 400px;
+            max-width: min(400px, 100%);
             align-self: center;
         }
 
