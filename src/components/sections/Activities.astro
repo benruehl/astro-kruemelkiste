@@ -120,6 +120,7 @@ const optimizedPatternImage = await getImage({ src: patternImage });
                 box-shadow: rgba(var(--card-background-dark), .4) 0 0 100px;
                 mix-blend-mode: difference;
                 border-radius: 1000px;
+                transform: translateZ(0); // fix iOS flickering issue
             }
 
             img {
