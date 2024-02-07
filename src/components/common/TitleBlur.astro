@@ -1,0 +1,38 @@
+---
+import waveBackgroundImage from "../../icons/title-wave.svg";
+---
+
+<div class="container">
+    <div
+        class="wave-background"
+        style={`background-image: url(${waveBackgroundImage.src}), url(${waveBackgroundImage.src});`}>
+    </div>
+</div>
+
+<style lang="scss">
+    .container {
+        position: absolute;
+        inset: 0;
+        left: -140px;
+        overflow: hidden;
+    }
+
+    .wave-background {
+        margin-top: -100px;
+        height: 500px;
+        width: calc(1920px * 4);
+        filter: blur(140px);
+        background-repeat: no-repeat;
+        background-position: 0 top, calc(1920px * 2) top;
+        animation: move 15s linear infinite;
+    }
+        
+    @keyframes move {
+        from {
+            transform: translateX(0);
+        }
+        to { 
+            transform: translateX(-50%);
+        }
+    }
+</style>
