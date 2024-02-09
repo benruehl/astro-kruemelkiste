@@ -56,16 +56,6 @@ const { title } = Astro.props;
 		font-family: "Varela Round", sans-serif;
 		color: rgb(var(--text-color));
 		scroll-behavior: smooth;
-
-		&::after {
-			content: "";
-			position: fixed;
-			inset: 0;
-			background-image: radial-gradient(
-				at bottom, transparent 50%, rgba(252,188,152,0.2)
-			);
-			pointer-events: none;
-		}
 	}
 	html,
 	body {
