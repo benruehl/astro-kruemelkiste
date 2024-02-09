@@ -70,7 +70,7 @@ import balloonImage from "../../images/balloon.png";
         position: relative;
 
         strong {
-            font-size: min(5rem, 16vw);
+            font-size: min(5rem, 13vw);
             line-height: 1.2;
             color: rgb(var(--accent-color));
         }
@@ -85,16 +85,31 @@ import balloonImage from "../../images/balloon.png";
                 top: 80%;
                 transform: translateY(-50%) rotate(-20deg);
                 color: rgba(var(--flare-orangedark), .45);
+
+                @media (max-width: $sm) {
+                    left: -1.5em;
+                    top: 40%;
+                }
             }
             &:nth-child(2) {
                 right: -3em;
                 top: -3em;
                 color: rgba(var(--orange-strong), .4);
+
+                @media (max-width: $sm) {
+                    right: 0em;
+                    top: -3em;
+                }
             }
             &:nth-child(3) {
                 right: -5em;
                 top: -1em;
-                color: rgba(var(--card-background-dark), 1);
+                color: rgba(var(--flare-orange), .7);
+
+                @media (max-width: $sm) {
+                    right: 15%;
+                    top: 110%;
+                }
             }
         }
     }
