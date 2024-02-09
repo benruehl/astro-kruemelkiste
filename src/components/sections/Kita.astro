@@ -5,7 +5,6 @@ import WavyBackground from '../common/WavyBackground.astro';
 import Flare from '../common/Flare.astro';
 import kidFurImage from "../../images/kid-fur.png";
 import balloonImage from "../../images/balloon.png";
-import flowerImage from "../../images/flower.png";
 ---
 
 <section>
@@ -28,9 +27,9 @@ import flowerImage from "../../images/flower.png";
                 ist mir eine <br/><strong>Herzens&shy;ange&shy;legenheit.</strong>
             </div>
             <div class="grid">
-                <div class="box">
+                <div class="box" data-aos="fade-left">
                     <h3>Kindertagepflege<br/> oder Kita?</h3>
-                    <p data-aos="fade-up">
+                    <p>
                         Wenn ihr für euer Kind eine wirklich persönliche, familiäre Betreuung sucht
                         – ein Nest, in dem es stark wird für die Welt – dann seid ihr bei uns richtig. 
                     </p>
@@ -46,7 +45,7 @@ import flowerImage from "../../images/flower.png";
     </WavyBackground>
 </section>
 
-<style lang="scss" define:vars={{ flowerSrc: `url(${flowerImage.src})` }}>
+<style lang="scss">
     section {
         position: relative;
     }
@@ -122,36 +121,20 @@ import flowerImage from "../../images/flower.png";
     }
 
     .box {
+        padding: 3rem;
         background: linear-gradient(to right, rgba(255, 255, 255, .35), rgba(255, 255, 255, .1));
         border-radius: 50px;
-        max-width: 500px;
+        max-width: 400px;
         position: relative;
         overflow: hidden;
         z-index: 1;
 
         & > :first-child {
             margin-top: 0;
-            padding: 3rem 3rem 0 3rem;
         }
 
         & > :last-child {
             margin-bottom: 0;
-            padding: 1.5rem 3rem 2rem 3rem;
-        }
-
-        &::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: var(--flowerSrc);
-            background-repeat: no-repeat;
-            background-position: 0% 30%;
-            opacity: .5;
-            z-index: -1;
-        }
-
-        p {
-            backdrop-filter: blur(20px);
         }
     }
 
