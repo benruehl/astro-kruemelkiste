@@ -1,0 +1,74 @@
+---
+import { Image } from 'astro:assets';
+import arcImage from "../../icons/title-arc.svg";
+---
+
+<div class="container">
+    <div class="header image-container">
+        <Image class="wave-background" src={arcImage} alt="" />
+    </div>
+    <div class="content">
+        <div class="content-background"></div>
+        <slot/>
+    </div>
+    <div class="footer image-container">
+        <Image class="wave-background inverse" src={arcImage} alt="" />
+    </div>
+</div>
+
+<style lang="scss">
+    .container {
+        position: relative;
+        margin-top: calc(var(--wave-height) * -1);
+
+        --wave-height: max(12.7vw, 220px); // approx. height of background image in ratio to 100vw
+    }
+
+    .image-container {
+        display: grid;
+        grid-template-areas: "overlay";
+        align-items: end;
+        justify-content: center;
+        pointer-events: none;
+
+        .wave-background {
+            grid-area: overlay;
+            width: 100vw;
+            height: auto;
+            min-width: 1760px;
+            background-position: bottom;
+            background-repeat: no-repeat;
+            z-index: -10;
+            
+            &.inverse {
+                transform: scale(-1, -1);
+            }
+        }
+    }
+
+    .header {
+        margin-bottom: calc(var(--wave-height) * -1);
+    }
+
+    .footer {
+        margin-top: calc(var(--wave-height) * -1.5);
+        margin-bottom: calc(var(--wave-height) * -0.5);
+    }
+
+    .content {
+        position: relative;
+
+        .content-background {
+            position: absolute !important;
+            left: 50%;
+            height: 100%;
+            width: 100vw;
+            transform: translate(-50%);
+            background-color: #F7ECE2;
+            z-index: -1;
+            margin-top: var(--wave-height);
+            height: calc(100% - var(--wave-height) * 2.5);
+        }
+    }
+
+</style>

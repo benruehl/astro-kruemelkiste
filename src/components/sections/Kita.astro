@@ -1,0 +1,169 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from "astro-icon";
+import WavyBackground from '../common/WavyBackground.astro';
+import Flare from '../common/Flare.astro';
+import kidFurImage from "../../images/kid-fur.png";
+import balloonImage from "../../images/balloon.png";
+import flowerImage from "../../images/flower.png";
+---
+
+<section>
+    <WavyBackground>
+        <div class="flares">
+            <Flare color="yellow" width="1600px" height="1100px" x="45%" y="35%"/>
+            <Flare color="blue" width="800px" height="700px" x="65%" y="85%"/>
+        </div>
+        <div class="container">
+            <div class="principle">
+                <Image
+                    class="icon"
+                    src={balloonImage}
+                    alt="Herzballon"
+                    width={130}
+                />
+                <Icon class="icon" name="sparkle" width={64}/>
+                <Icon class="icon" name="star" width={54}/>
+                Dass Kinder und Eltern sich bei uns wohlfühlen,
+                ist mir eine <br/><strong>Herzens&shy;ange&shy;legenheit.</strong>
+            </div>
+            <div class="grid">
+                <div class="box">
+                    <h3>Kindertagepflege<br/> oder Kita?</h3>
+                    <p data-aos="fade-up">
+                        Wenn ihr für euer Kind eine wirklich persönliche, familiäre Betreuung sucht
+                        – ein Nest, in dem es stark wird für die Welt – dann seid ihr bei uns richtig. 
+                    </p>
+                </div>
+                <Image
+                    class="kid-fur"
+                    src={kidFurImage}
+                    alt="Baby liegt auf seinem Bauch und lächelt mit Finger im Mund"
+                    width={320}
+                />
+            </div>
+        </div>
+    </WavyBackground>
+</section>
+
+<style lang="scss" define:vars={{ flowerSrc: `url(${flowerImage.src})` }}>
+    section {
+        position: relative;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 100px;
+    }
+
+    .principle {
+        font-family: "Dosis", Tahoma, sans-serif;
+        font-weight: 400;
+        font-size: min(2rem, 10vw);
+        line-height: 1.8;
+        color: rgb(var(--text-color-soft));
+        text-align: center;
+        margin: 2em 0;
+        min-width: 0;
+        position: relative;
+
+        strong {
+            font-size: min(5rem, 16vw);
+            line-height: 1.2;
+            color: rgb(var(--accent-color));
+        }
+
+        .icon {
+            position: absolute;
+            color: rgb(var(--accent-color));
+            opacity: .75;
+
+            &:nth-child(1) {
+                left: -7em;
+                top: 80%;
+                transform: translateY(-50%) rotate(-20deg);
+                color: rgba(var(--flare-orangedark), .45);
+            }
+            &:nth-child(2) {
+                right: -3em;
+                top: -3em;
+                color: rgba(var(--orange-strong), .4);
+            }
+            &:nth-child(3) {
+                right: -5em;
+                top: -1em;
+                color: rgba(var(--card-background-dark), 1);
+            }
+        }
+    }
+
+    .grid {
+        display: flex;
+        grid-template-columns: auto auto;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 40px 80px;
+        flex-wrap: wrap;
+
+        .kid-fur {
+            transform: scale(-1, 1);
+            max-width: 100%;
+            z-index: 0;
+        }
+
+        img {
+            min-width: 0;
+            height: 100%;
+            width: auto;
+        }
+    }
+
+    .box {
+        background: linear-gradient(to right, rgba(255, 255, 255, .35), rgba(255, 255, 255, .1));
+        border-radius: 50px;
+        max-width: 500px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+
+        & > :first-child {
+            margin-top: 0;
+            padding: 3rem 3rem 0 3rem;
+        }
+
+        & > :last-child {
+            margin-bottom: 0;
+            padding: 1.5rem 3rem 2rem 3rem;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: var(--flowerSrc);
+            background-repeat: no-repeat;
+            background-position: 0% 30%;
+            opacity: .5;
+            z-index: -1;
+        }
+
+        p {
+            backdrop-filter: blur(20px);
+        }
+    }
+
+    h3 {
+        color: rgb(var(--accent-color));
+    }
+
+    .flares {
+        @include FlareContainer();
+
+        & > :global(:last-child) {
+            opacity: .5;
+        }
+    }
+</style>
