@@ -25,6 +25,12 @@ import waveBackgroundImage from "../../icons/title-wave.svg";
         background-repeat: no-repeat;
         background-position: 0 top, calc(1920px * 2) top;
         animation: move 15s linear infinite;
+
+        @media (max-width: $sm) {
+            animation: none;
+            background-position: calc(100vw + 50px) -150px;
+            opacity: .5;
+        }
     }
         
     @keyframes move {

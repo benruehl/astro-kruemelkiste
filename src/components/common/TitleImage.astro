@@ -39,6 +39,10 @@ const { class: className } = Astro.props;
 
     .flares {
         @include FlareContainer();
+
+        @media (max-width: $sm) {
+            opacity: .5;
+        }
     }
 
     .main-img {
