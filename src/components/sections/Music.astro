@@ -31,7 +31,7 @@ const optimizedMusicImage = await getImage({ src: musicImage });
         grid-template-areas: "overlay";
         align-items: center;
         position: relative;
-        margin-top: calc(-10rem + -50px);
+        margin-top: calc(var(--section-gap) * -1 + -50px);
     }
 
     .music-art {
@@ -45,7 +45,7 @@ const optimizedMusicImage = await getImage({ src: musicImage });
         margin-bottom: auto;
 
         @media (max-width: $xs) {
-            width: 80%;
+            width: 90%;
             min-width: 0;
         }
     }
@@ -59,7 +59,7 @@ const optimizedMusicImage = await getImage({ src: musicImage });
 
         justify-self: flex-end;
         margin-right: 24%;
-        translate: 0 200px;
+        translate: 0 min(200px, 50vw);
         width: 180px;
         animation-delay: 2s;
         animation-duration: 5s;
@@ -95,6 +95,14 @@ const optimizedMusicImage = await getImage({ src: musicImage });
 
     .flares {
         @include FlareContainer();
-        opacity: .5;
+        opacity: .4;
+
+        @media (max-width: $sm) {
+            opacity: .25;
+
+            &:first-child {
+                display: none;
+            }
+        }
     }
 </style>

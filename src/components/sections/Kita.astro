@@ -56,6 +56,10 @@ import balloonImage from "../../images/balloon.png";
         align-items: flex-end;
         flex-wrap: wrap;
         gap: 100px;
+
+        @media (max-width: $sm) {
+            gap: 50px;
+        }
     }
 
     .principle {
@@ -154,6 +158,16 @@ import balloonImage from "../../images/balloon.png";
             padding-left: var(--page-padding);
             padding-right: var(--page-padding);
             border-radius: 0;
+            background: none;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 1rem;
+                width: 70px;
+                height: 2px;
+                background: rgba(var(--accent-color), .5);
+            }
         }
     }
 
