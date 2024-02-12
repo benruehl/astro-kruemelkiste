@@ -61,7 +61,7 @@ import balloonImage from "../../images/balloon.png";
     .principle {
         font-family: "Dosis", Tahoma, sans-serif;
         font-weight: 400;
-        font-size: min(2rem, 10vw);
+        font-size: 1.5rem;
         line-height: 1.8;
         color: rgb(var(--text-color-soft));
         text-align: center;
@@ -70,7 +70,7 @@ import balloonImage from "../../images/balloon.png";
         position: relative;
 
         strong {
-            font-size: min(5rem, 13vw);
+            font-size: min(4rem, 15vw);
             line-height: 1.2;
             color: rgb(var(--accent-color));
         }
@@ -81,35 +81,31 @@ import balloonImage from "../../images/balloon.png";
             opacity: .75;
 
             &:nth-child(1) {
-                left: -7em;
+                left: -9em;
                 top: 80%;
                 transform: translateY(-50%) rotate(-20deg);
                 color: rgba(var(--flare-orangedark), .45);
 
                 @media (max-width: $sm) {
                     left: -1.5em;
-                    top: 40%;
+                    top: 50%;
+                    opacity: .5;
                 }
             }
             &:nth-child(2) {
-                right: -3em;
+                right: -5em;
                 top: -3em;
                 color: rgba(var(--orange-strong), .4);
 
                 @media (max-width: $sm) {
                     right: 0em;
-                    top: -3em;
+                    top: -40%;
                 }
             }
             &:nth-child(3) {
-                right: -5em;
-                top: -1em;
+                right: -7em;
+                top: 0;
                 color: rgba(var(--flare-orange), .7);
-
-                @media (max-width: $sm) {
-                    right: 15%;
-                    top: 110%;
-                }
             }
         }
     }
@@ -150,6 +146,14 @@ import balloonImage from "../../images/balloon.png";
 
         & > :last-child {
             margin-bottom: 0;
+        }
+
+        @media (max-width: $sm) {
+            margin-left: calc(var(--page-padding) * -1);
+            margin-right: calc(var(--page-padding) * -1);
+            padding-left: var(--page-padding);
+            padding-right: var(--page-padding);
+            border-radius: 0;
         }
     }
 

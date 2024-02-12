@@ -56,6 +56,12 @@ const { title } = Astro.props;
 		font-family: "Varela Round", sans-serif;
 		color: rgb(var(--text-color));
 		scroll-behavior: smooth;
+		font-size: 18px;
+		line-height: 1.5;
+
+		@media (max-width: $sm) {
+			font-size: 16px;
+		}
 	}
 	html,
 	body {
@@ -67,7 +73,7 @@ const { title } = Astro.props;
 	}
 	h1 {
 		font-family: "Dosis", Tahoma, sans-serif;
-		font-size: min(6rem, 20vw);
+		font-size: min(5rem, 20vw);
 		font-weight: 400;
 		line-height: 1;
 		letter-spacing: 0.05em;
@@ -76,7 +82,7 @@ const { title } = Astro.props;
 	}
 	h2 {
 		font-family: "Dosis", Tahoma, sans-serif;
-		font-size: min(4rem, 15vw);
+		font-size: min(3.5rem, 15vw);
 		font-weight: 400;
 		line-height: 1;
         text-transform: uppercase;
@@ -84,7 +90,7 @@ const { title } = Astro.props;
 	}
 	h3 {
 		font-family: "Dosis", Tahoma, sans-serif;
-		font-size: min(2.5rem, 12vw);
+		font-size: min(2rem, 12vw);
 		font-weight: 400;
 		line-height: 1;
 		hyphens: auto;
@@ -135,8 +141,6 @@ const { title } = Astro.props;
 		max-width: calc(100% - var(--page-padding));
 	}
 	main {
-		font-size: 18px;
-		line-height: 1.4;
 		display: flex;
 		flex-direction: column;
 		gap: 10rem;
