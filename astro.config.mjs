@@ -2,8 +2,8 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://benruehl.github.io',
-    base: '/astro-kruemelkiste',
+    site: 'https://steffis-kruemelkiste.de',
+    base: '',
     scopedStyleStrategy: 'class',
     vite: {
         css: {
