@@ -48,6 +48,10 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
 
     .title-image {
         grid-row: span 2;
+
+        @media (max-width: 860px) {
+            order: 3;
+        }
     }
 
     .description {
