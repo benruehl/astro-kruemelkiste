@@ -380,6 +380,22 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
                 background-repeat: repeat;
                 filter: hue-rotate(90deg);
                 animation: background-scroll 20s linear infinite;
+
+                /*
+                    Browsers on iOS only (!) show reproducable rendering issues
+                    of the whole website when the following animation is in use.
+                    Specifically, when scrolling this element into viewport most
+                    of the page's content that was not rendered yet will not be 
+                    rendered at all. This results in the page being 70% blank.
+                    The issue could **not** be reproduced on macOS Safari.
+
+                    The media query makes sure that the animation is deactivated
+                    on iOS devices to work around the issue.
+                */
+                @supports (-webkit-touch-callout: none) {
+                    /* CSS specific to iOS devices */ 
+                    animation: none;
+                }
             }
     
             @keyframes background-scroll {
