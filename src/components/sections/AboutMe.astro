@@ -1,150 +1,257 @@
 ---
-import { Image } from 'astro:assets';
-import kidHappyImage from "../../images/kid-happy.jpg";
-import kidToysImage from "../../images/kid-toys.jpg";
-import kidAutumnImage from "../../images/kid-autumn.jpg";
-import kidSnackImage from "../../images/kid-snack.jpg";
-import kruemelImage from "../../icons/kruemel.svg";
+import { Image, getImage } from 'astro:assets';
+import { Icon } from "astro-icon";
+import WavyBackground from '../common/WavyBackground.astro';
+import kidFurSquareImage from "../../images/kid-fur-square.jpg";
+import steffiImage from "../../images/steffi-portrait.png";
+import elephantImage from "../../images/elephant.png";
+import patternImage from "../../icons/wave-pattern.svg";
+import childishWallpaperImage from "../../icons/childish-wallpaper.svg";
+
+const optimizedPatternImage = await getImage({ src: patternImage });
+const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
 ---
 
-<section class="container">
-    <div class="card" data-aos="fade-up">
-        <Image src={kidHappyImage} alt="Mädchen lächelt"/>
-    </div>
-    <div class="card card-text card-title" data-aos="fade-up">
-        <h2>
-            Was mir wichtig ist
-        </h2>
-    </div>
-    <div class="card" data-aos="fade-up">
-        <Image src={kidToysImage} alt="Junge spielt mit Spielzeugautos"/>
-    </div>
-    <div class="card card-text card-background-1" data-aos="fade-up">
-        <h3>Spiel, Spaß und Kreativität</h3>
-        <p>
-            Es wird gespielt, gemalt, 
-            gebastelt und mehr.
-            Ich gehe auf Interessen und 
-            Ideen der Kinder ein und 
-            entwickle sie mit ihnen 
-            weiter.
-        </p>
-    </div>
-    <div class="card" data-aos="fade-up">
-        <Image src={kidAutumnImage} alt="Kleinkind sitzt auf Herbstlaub"/>
-    </div>
-    <div class="card card-text card-background-2 card-alt" data-aos="fade-up">
-        <h3>Familie, Geborgenheit, Bodenständigkeit</h3>
-        <p>
-            Die Kinder werden wie als Teil 
-            der Familie aufgenommen 
-            und dabei liebevoll und 
-            individuell betreut. 
-            Jedes Kind wird entsprechend 
-            seines Alters und seines 
-            Entwicklungsstandes 
-            individuell gefördert.
-        </p>
-    </div>
-    <div class="card" data-aos="fade-up">
-        <Image src={kidSnackImage} alt="Kleinkind nascht Schokolade"/>
-    </div>
-    <div class="card card-text card-background-3" data-aos="fade-up">
-        <h3>Faires, freundliches Miteinander</h3>
-        <p>
-            Der richtige Umgang mit
-            anderen Kindern muss erst
-            erlernt werden. Hierbei
-            werden behutsam soziale
-            Werte vermittelt.
-        </p>
-    </div>
-    <div class="card card-text card-kruemel" data-aos="fade-up">
-        <Image src={kruemelImage} alt="Krümel, Maskottchen der Krümelkiste"/>
-        <h3><span class="small">Hi, ich bin</span>Krümel!</h3>
-        <p>
-            Ich begleite die 
-            Kinder durch den 
-            Tag und spende 
-            Trost wenn nötig.
-        </p>
-    </div>
+<section>
+    <WavyBackground>
+        <div class="wallpaper" style={`background-image: url('${optimizedWallpaperImage.src}')`}/>
+        <div class="grid">
+            <div class="card card-xl card-background" style={`background-image: url('${optimizedPatternImage.src}')`}>
+                <Icon class="cert-icon" name="certificate"/>
+                <Image
+                    class="steffi"
+                    src={steffiImage}
+                    alt="Steffi Portrait"
+                    height={700}
+                />
+                <blockquote>
+                    Dass Kinder und Eltern sich bei uns wohlfühlen,
+                    ist mir eine Herzens&shy;ange&shy;legenheit.
+                </blockquote>
+                <Icon class="thats-me-icon" name="thats-me"/>
+            </div>
+            <div class="card card-split card-background card-allow-overflow">
+                <div class="text-content">
+                    <strong class="accent">Kindertagepflege<br> oder Kita?</strong>
+                    <p>
+                        Wenn ihr für euer Kind eine wirklich persönliche, familiäre Betreuung sucht
+                        – ein Nest, in dem es stark wird für die Welt – dann seid ihr bei uns richtig. 
+                    </p>
+                </div>
+                <div class="elephant-wrapper">
+                    <Image
+                        class="elephant"
+                        src={elephantImage}
+                        alt="Gezeichneter Baby-Elephant hält Herzluftballon im Rüssel"
+                        width={300}
+                    />
+                </div>
+            </div>
+            <div
+                class="card card-split card-background-image"
+            >
+                <Icon class="background-flowers" name="flowers"/>
+                <div class="text-content">
+                    <Image
+                        class="kid-fur"
+                        src={kidFurSquareImage}
+                        alt="Gezeichneter Baby-Elephant hält Herzluftballon im Rüssel"
+                        width={220}
+                    />
+                </div>
+                <div class="text-content">
+                    <p><strong>Betreuung anfragen</strong></p>
+                    <a class="button" href="#kontakt">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </WavyBackground>
 </section>
 
 <style lang="scss">
-    .container {
+
+    .grid {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 1rem;
-        margin-bottom: 10rem;
-     
-        & > div:not(:nth-child(3n+2)) {
-            translate: 0 10rem;
-        }
-    }
+        grid-template-columns: auto 1fr;
+        gap: 2rem;
 
-    .card {
-        background: rgb(var(--card-background));
-        border-radius: 50px;
-        height: 500px;
-        overflow: hidden;
+        @media (max-width: $sm) {
+            grid-template-columns: 1fr;
 
-        h3 {
-            margin-top: 3rem;
-            color: rgb(var(--accent-color));
-        }
-
-        &.card-alt {
-            h3 {
-                color: rgb(var(--accent-color-alt));
+            .card:nth-child(2) {
+                order: -1;
             }
         }
     }
 
-    img {
+    .card {
+        position: relative;
+        border-radius: 30px;
+        text-align: center;
+        display: flex;
+        overflow: hidden;
+
+        &.card-allow-overflow {
+            overflow: inherit;
+        }
+        
+        img {
+            display: block;
+            object-fit: contain;
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+        }
+    }
+
+    .card-xl {
+        grid-row: span 2;
+        overflow: hidden;
+    }
+
+    .card-background {
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 30px;
+            background-color: rgb(var(--card-background));
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23C1666B' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+            z-index: -1;
+
+            @media (max-width: $sm) {
+                mask-image: linear-gradient(to bottom, transparent, black);
+            }
+        }
+    }
+
+    .card-background-image {
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at -30% 270%, #876E69 25%, rgb(var(--card-background)) 80%);
+
+            @media (max-width: $sm) {
+                background: radial-gradient(circle at 50% -50%, #876E69 25%, rgb(var(--card-background)) 80%);
+            }
+        }
+
+        > * {
+            z-index: 1;
+        }
+    }
+
+    .card-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        @media (max-width: $sm) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .text-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 2.5rem;
+    }
+
+    .steffi {
+        padding: 80px 50px 0 50px;
+        height: 100% !important;
+        z-index: 1;
+    }
+
+    blockquote {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 8rem 3rem 3.5rem 3rem;
+        background: linear-gradient(to top, rgba(52, 12, 14, 0.5), rgba(52, 12, 14, 0));
+        font-size: 2rem;
+        color: white;
+        z-index: 2;
+    }
+
+    .cert-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 120px;
+        height: auto;
+        mask-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0.55), black);
+        color: #817a6b;
+
+        @media (max-width: $sm) {
+            width: 100px;
+        }
+    }
+
+    .thats-me-icon {
+        position: absolute;
+        top: 25%;
+        left: 20px;
+        width: 120px;
+        height: auto;
+        mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.55), black);
+        transform: rotate(-5deg);
+    }
+
+    .elephant-wrapper {
+        position: relative;
         width: 100%;
         height: 100%;
-        object-fit: fill;
-    }
 
-    .card-text {
-        padding: 0 3rem;
-    }
-
-    .card-background-1 {
-        background: rgb(var(--card-background-alt));
-    }
-
-    .card-background-2 {
-        background: rgb(var(--card-background-accent-alt));
-    }
-
-    .card-background-3 {
-        background: rgb(var(--card-background-accent));
-    }
-
-    .card-title {
-        color: rgb(var(--accent-color));
-    }
-
-    .card-kruemel {
-        background: none;
-        border: 4px solid #FCBC98;
-
-        img {
+        .elephant {
             position: absolute;
-            bottom: -40px;
-            width: 100%;
-            height: 100%;
-            object-position: bottom right;
+            bottom: 20px;
+            max-height: 105%;
+            opacity: .8;
         }
+    }
 
-        p {
-            max-width: 60%;
-        }
+    .kid-fur {
+        margin: 0 auto;
+        min-height: 180px;
+        border-radius: 1000px;
+        border: 3px solid rgb(var(--card-background));
+    }
 
-        .small {
-            font-size: 1.5rem;
-        }
+    .background-flowers {
+        position: absolute;
+        top: -30%;
+        left: 10%;
+        height: 200%;
+        transform: translate(-25%);
+        opacity: .65;
+    }
+
+    .wallpaper {
+        position: absolute;
+        background-size: 243px 200px;
+        right: -5%;
+        bottom: -140px;
+        width: 80%;
+        height: 300px;
+        mask-image: radial-gradient(rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0));
+        transform: rotate(7deg);
+    }
+
+    strong {
+        font-size: 2rem;
+        font-family: "Dosis", Tahoma, sans-serif;
+        font-weight: normal;
+		hyphens: auto;
+    }
+
+    .accent {
+        color: rgb(var(--accent-color-alt));
     }
 </style>
