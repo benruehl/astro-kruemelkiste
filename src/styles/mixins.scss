@@ -24,6 +24,10 @@
         rgba(var(--flare-blue)),
         0.1
     );
+
+    & > * {
+        position: relative;
+    }
 }
 
 @mixin FlareContainer {

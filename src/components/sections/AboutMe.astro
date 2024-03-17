@@ -1,98 +1,58 @@
 ---
 import { Image, getImage } from 'astro:assets';
 import { Icon } from "astro-icon";
-import WavyBackground from '../common/WavyBackground.astro';
-import kidFurSquareImage from "../../images/kid-fur-square.jpg";
-import steffiImage from "../../images/steffi-portrait.png";
-import elephantImage from "../../images/elephant.png";
+import kidHatImage from "../../images/kid-hat.png";
+import berlinLogoImage from "../../icons/berlin-logo.svg";
+import jugendamtLogoImage from "../../images/jugendamt-logo.png";
 import patternImage from "../../icons/wave-pattern.svg";
-import childishWallpaperImage from "../../icons/childish-wallpaper.svg";
 
 const optimizedPatternImage = await getImage({ src: patternImage });
-const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
 ---
 
 <section>
-    <WavyBackground>
-        <div class="wallpaper" style={`background-image: url('${optimizedWallpaperImage.src}')`}/>
-        <div class="grid">
-            <div class="card card-xl card-background" style={`background-image: url('${optimizedPatternImage.src}')`}>
-                <Icon class="cert-icon" name="certificate"/>
-                <Image
-                    class="steffi"
-                    src={steffiImage}
-                    alt="Steffi Portrait"
-                    height={700}
-                />
-                <blockquote>
-                    Dass Kinder und Eltern sich bei uns wohlfühlen,
-                    ist mir eine Herzens&shy;ange&shy;legenheit.
-                </blockquote>
-                <Icon class="thats-me-icon" name="thats-me"/>
-            </div>
-            <div class="card card-split card-background card-allow-overflow">
-                <div class="text-content">
-                    <strong class="accent">Kindertagepflege<br> oder Kita?</strong>
-                    <p>
-                        Wenn ihr für euer Kind eine wirklich persönliche, familiäre Betreuung sucht
-                        – ein Nest, in dem es stark wird für die Welt – dann seid ihr bei uns richtig. 
-                    </p>
-                </div>
-                <div class="elephant-wrapper">
-                    <Image
-                        class="elephant"
-                        src={elephantImage}
-                        alt="Gezeichneter Baby-Elephant hält Herzluftballon im Rüssel"
-                        width={300}
-                    />
-                </div>
-            </div>
-            <div
-                class="card card-split card-background-image"
-            >
-                <Icon class="background-flowers" name="flowers"/>
-                <div class="text-content">
-                    <Image
-                        class="kid-fur"
-                        src={kidFurSquareImage}
-                        alt="Gezeichneter Baby-Elephant hält Herzluftballon im Rüssel"
-                        width={220}
-                    />
-                </div>
-                <div class="text-content">
-                    <p><strong>Betreuung anfragen</strong></p>
-                    <a class="button" href="#kontakt">Kontakt</a>
-                </div>
-            </div>
+    <div class="grid">
+        <div class="wallpaper" style={`background-image: url('${optimizedPatternImage.src}')`}/>
+        <div class="big-img-container">
+            <Icon class="cert-icon" name="certificate"/>
+            <Image
+                src={kidHatImage}
+                alt="Junges Mädchen mit pinkem Strickhut lächelt"
+                height={550}
+            />
         </div>
-    </WavyBackground>
+        <div class="quote">
+            <blockquote>
+                Dass Kinder und Eltern sich bei uns wohlfühlen,
+                ist mir eine Herzens&shy;ange&shy;legenheit.
+            </blockquote>
+        </div>
+    </div>
+    <hr>
+    <div class="logos">
+        <Image class="jugendamt-logo" src={jugendamtLogoImage} alt="Jugendamt Pankow Logo"/>
+        <Image class="berlin-logo" src={berlinLogoImage} alt="Berlin Logo"/>
+    </div>
 </section>
 
 <style lang="scss">
-
     .grid {
         display: grid;
         grid-template-columns: auto 1fr;
+        align-items: center;
         gap: 2rem;
+        position: relative;
 
         @media (max-width: $sm) {
             grid-template-columns: 1fr;
-
-            .card:nth-child(2) {
-                order: -1;
-            }
         }
     }
 
-    .card {
+    .big-img-container {
+        align-self: flex-end;
         position: relative;
-        border-radius: 30px;
-        text-align: center;
-        display: flex;
-        overflow: hidden;
 
-        &.card-allow-overflow {
-            overflow: inherit;
+        @media (max-width: $sm) {
+            order: 2;
         }
         
         img {
@@ -104,86 +64,41 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         }
     }
 
-    .card-xl {
-        grid-row: span 2;
-        overflow: hidden;
-    }
-
-    .card-background {
-        &::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 30px;
-            background-color: rgb(var(--card-background));
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23C1666B' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-            z-index: -1;
-
-            @media (max-width: $sm) {
-                mask-image: linear-gradient(to bottom, transparent, black);
-            }
-        }
-    }
-
-    .card-background-image {
-
-        &::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at -30% 270%, #876E69 25%, rgb(var(--card-background)) 80%);
-
-            @media (max-width: $sm) {
-                background: radial-gradient(circle at 50% -50%, #876E69 25%, rgb(var(--card-background)) 80%);
-            }
-        }
-
-        > * {
-            z-index: 1;
-        }
-    }
-
-    .card-split {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-
-        @media (max-width: $sm) {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    .text-content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem 2.5rem;
-    }
-
-    .steffi {
-        padding: 80px 50px 0 50px;
-        height: 100% !important;
+    .quote {
+        margin: 0 auto;
+        margin-bottom: 4rem;
         z-index: 1;
-    }
+        
+        blockquote {
+            margin: 0;
+            padding: 0;
+            font-size: 2rem;
+            max-width: 450px;
+    
+            @media (max-width: $sm) {
+                text-align: center;
+                font-size: 1.5rem;
+            }
+        }
 
-    blockquote {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: 0;
-        padding: 8rem 3rem 3.5rem 3rem;
-        background: linear-gradient(to top, rgba(52, 12, 14, 0.5), rgba(52, 12, 14, 0));
-        font-size: 2rem;
-        color: white;
-        z-index: 2;
+        img {
+            display: block;
+            border-radius: 1000px;
+            border: 2px solid white;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px -1px rgba(0,0,0,.1);
+            margin-top: 2rem;
+
+            @media (max-width: $sm) {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
     }
 
     .cert-icon {
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 0;
+        right: 0;
         width: 120px;
         height: auto;
         mask-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0.55), black);
@@ -194,64 +109,43 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
         }
     }
 
-    .thats-me-icon {
-        position: absolute;
-        top: 25%;
-        left: 20px;
-        width: 120px;
-        height: auto;
-        mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.55), black);
-        transform: rotate(-5deg);
-    }
-
-    .elephant-wrapper {
-        position: relative;
-        width: 100%;
-        height: 100%;
-
-        .elephant {
-            position: absolute;
-            bottom: 20px;
-            max-height: 105%;
-            opacity: .8;
+    .logos {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 20px;
+        margin-top: max(-70px, -16vw);
+        opacity: .7;
+        
+        img {
+            width: auto;
+            max-height: 13vw;
+            
+            &.berlin-logo {
+                height: 50px;
+            }
+            &.jugendamt-logo {
+                height: 70px;
+            }
         }
-    }
-
-    .kid-fur {
-        margin: 0 auto;
-        min-height: 180px;
-        border-radius: 1000px;
-        border: 3px solid rgb(var(--card-background));
-    }
-
-    .background-flowers {
-        position: absolute;
-        top: -30%;
-        left: 10%;
-        height: 200%;
-        transform: translate(-25%);
-        opacity: .65;
     }
 
     .wallpaper {
         position: absolute;
-        background-size: 243px 200px;
-        right: -5%;
-        bottom: -140px;
-        width: 80%;
-        height: 300px;
-        mask-image: radial-gradient(rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0));
-        transform: rotate(7deg);
+        inset: 0;
+        mask-image: radial-gradient(at 40% 100%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 70%);
+        width: 100vw;
+        margin-left: 50%;
+        transform: translate(-50%);
     }
 
-    strong {
-        font-size: 2rem;
-        font-family: "Dosis", Tahoma, sans-serif;
-        font-weight: normal;
-		hyphens: auto;
-    }
-
-    .accent {
-        color: rgb(var(--accent-color-alt));
+    hr {
+        background-color: rgb(var(--card-background));
+        border: 0;
+        height: 1px;
+        margin: 0;
+        width: 100vw;
+        margin-left: 50%;
+        transform: translate(-50%);
     }
 </style>

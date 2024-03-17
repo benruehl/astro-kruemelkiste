@@ -1,185 +1,262 @@
 ---
-import { Image } from 'astro:assets';
 import { Icon } from "astro-icon";
-import WavyBackground from '../common/WavyBackground.astro';
 import Flare from '../common/Flare.astro';
-import kidFurImage from "../../images/kid-fur.png";
-import balloonImage from "../../images/balloon.png";
+
+const features = [
+    {
+        title: "Individuelle Betreuung",
+        description: "Meine Gruppe besteht aus nur 5 Kindern. Dadurch kann ich auf die Bedürfnisse jedes einzelnen genau eingehen."
+    },
+    {
+        title: "Feste Bezugsperson",
+        description: "Im Gegensatz zur Kita bleibt die Bezugsperson bei mir immer gleich. Vielen Kindern fällt es so leichter, Vertrauen aufzubauen."
+    },
+    {
+        title: "Enger Kontakt zu Eltern"
+    },
+    {
+        title: "Familiäres Umfeld"
+    },
+    {
+        title: "Behutsame Eingewöhnung"
+    },
+    {
+        title: "Keine Mehrkosten",
+        description: "Keine Mehrkosten gegenüber der Kita. Die Finanzierung wird vom Jugendamt übernommen."
+    },
+    {
+        title: "Enger Kontakt zu Eltern"
+    },
+    {
+        title: "Kleine Gruppe"
+    },
+]
 ---
 
 <section>
-    <WavyBackground>
-        <div class="flares">
-            <Flare color="yellow" width="1600px" height="1100px" x="45%" y="35%"/>
-            <Flare color="blue" width="800px" height="700px" x="65%" y="85%"/>
+    <div class="container">
+        <div class="title">
+            <h2><span class="accent">Kindertagespflege</span> oder Kita?</h2>
+            <p>
+                Wenn ihr für euer Kind eine wirklich persönliche, familiäre Betreuung sucht
+                – ein Nest, in dem es stark wird für die Welt – dann seid ihr bei uns richtig. 
+            </p>
         </div>
-        <div class="container">
-            <div class="principle">
-                <Image
-                    class="icon"
-                    src={balloonImage}
-                    alt="Herzballon"
-                    width={130}
-                />
-                <Icon class="icon" name="sparkle" width={64}/>
-                <Icon class="icon" name="star" width={54}/>
-                Dass Kinder und Eltern sich bei uns wohlfühlen,
-                ist mir eine <br/><strong>Herzens&shy;ange&shy;legenheit.</strong>
-            </div>
-            <div class="grid">
-                <div class="box" data-aos="fade-left">
-                    <h3>Kindertagepflege<br/> oder Kita?</h3>
+        <div class="core-features">
+            <Flare color="yellow" width="2200px" height="1234px" x="40%" y="20%" opacity={.75}/>
+            <Flare color="orange" width="700px" height="700px" x="70%" y="15%" opacity={.5}/>
+            <Flare color="blue" width="1200px" height="700px" x="65%" y="85%" opacity={.5}/>
+            {features.filter(feature => feature.description).map(feature =>
+                <div class="card">
+                    <h3>{feature.title}</h3>
                     <p>
-                        Wenn ihr für euer Kind eine wirklich persönliche, familiäre Betreuung sucht
-                        – ein Nest, in dem es stark wird für die Welt – dann seid ihr bei uns richtig. 
+                        {feature.description}
                     </p>
                 </div>
-                <Image
-                    class="kid-fur"
-                    src={kidFurImage}
-                    alt="Baby liegt auf seinem Bauch und lächelt mit Finger im Mund"
-                    width={320}
-                />
-            </div>
+            )}
         </div>
-    </WavyBackground>
+    </div>
+    <div class="floating-features">
+        {features.map(feature => 
+            <div class="feature">
+                <Icon class="checkmark" name="sparkle"/>
+                {feature.title}
+            </div>
+        )}
+    </div>
 </section>
 
 <style lang="scss">
-    section {
-        position: relative;
+    section { 
+        display: grid;
+        grid-template-areas: "overlay";
     }
 
     .container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        flex-wrap: wrap;
-        gap: 100px;
+        grid-area: overlay;
+        padding: 8rem 0;
 
         @media (max-width: $sm) {
-            gap: 50px;
+            padding: 12rem 0;
         }
     }
-
-    .principle {
-        font-family: "Dosis", Tahoma, sans-serif;
-        font-weight: 400;
-        font-size: 1.5rem;
-        line-height: 1.8;
-        color: rgb(var(--text-color-soft));
+    
+    .title {
+        max-width: 700px;
         text-align: center;
-        margin: 2em 0;
-        min-width: 0;
-        position: relative;
+        margin: auto;
 
-        strong {
-            font-size: min(4rem, 15vw);
+        h2 {
             line-height: 1.2;
-            color: rgb(var(--accent-color));
-        }
-
-        .icon {
-            position: absolute;
-            color: rgb(var(--accent-color));
-            opacity: .75;
-
-            &:nth-child(1) {
-                left: -9em;
-                top: 80%;
-                transform: translateY(-50%) rotate(-20deg);
-                color: rgba(var(--flare-orangedark), .45);
-
-                @media (max-width: $sm) {
-                    left: -1.5em;
-                    top: 50%;
-                    opacity: .5;
-                }
-            }
-            &:nth-child(2) {
-                right: -5em;
-                top: -3em;
-                color: rgb(var(--orange-strong));
-
-                @media (max-width: $sm) {
-                    right: 0em;
-                    top: -40%;
-                }
-            }
-            &:nth-child(3) {
-                right: -7em;
-                top: 0;
-                color: rgba(var(--flare-orange), .7);
-            }
-        }
-    }
-
-    .grid {
-        display: flex;
-        grid-template-columns: auto auto;
-        align-items: flex-end;
-        justify-content: center;
-        gap: 40px 80px;
-        flex-wrap: wrap;
-
-        .kid-fur {
-            transform: scale(-1, 1);
-            max-width: 100%;
-            z-index: 0;
-        }
-
-        img {
-            min-width: 0;
-            height: 100%;
-            width: auto;
-        }
-    }
-
-    .box {
-        padding: 3rem;
-        background: linear-gradient(to right, rgba(255, 255, 255, .35), rgba(255, 255, 255, .1));
-        border-radius: 50px;
-        max-width: 400px;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-
-        & > :first-child {
+            text-transform: none;
             margin-top: 0;
         }
 
-        & > :last-child {
-            margin-bottom: 0;
+        .accent {
+            color: rgb(var(--accent-color));
         }
+    }
+
+    .core-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 4rem;
+        text-align: center;
+        position: relative;
 
         @media (max-width: $sm) {
-            margin-left: calc(var(--page-padding) * -1);
-            margin-right: calc(var(--page-padding) * -1);
-            padding-left: var(--page-padding);
-            padding-right: var(--page-padding);
-            border-radius: 0;
-            background: none;
+            grid-template-columns: 1fr;
+        }
 
-            &::before {
-                content: "";
-                position: absolute;
-                top: 1rem;
-                width: 70px;
-                height: 2px;
-                background: rgba(var(--accent-color), .5);
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+
+            p {
+                margin: 0;
             }
+
+            > *:first-child {
+                margin-top: 0;
+            }
+            > *:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: rgb(var(--accent-color-alt));
+        }
+
+        .checkmark {
+            height: .9em;
+            width: auto;
+            margin-right: .5ch;
         }
     }
 
-    h3 {
-        color: rgb(var(--accent-color));
-    }
+    .floating-features {
+        grid-area: overlay;
+        width: 120%;
+        margin-left: 50%;
+        transform: translate(-50%);
+        position: relative;
+        pointer-events: none;
 
-    .flares {
-        @include FlareContainer();
+        .feature {
+            position: absolute;
+            padding: 4px 16px;
+            border-radius: 100px;
+            color: var(--color);
+            background-color: var(--background-color);
+            white-space: nowrap;
+            animation: wiggle 5s infinite ease-in-out reverse;
 
-        & > :global(:last-child) {
+            &:nth-child(1) {
+                top: 0;
+                left: 45%;
+                --background-color: #ffdbbe;
+                --color: #d56000;
+
+                @media (max-width: $sm) {
+                    left: 20%;
+                }
+            }
+            &:nth-child(2) {
+                top: 15%;
+                right: 10%;
+                animation-delay: -1.5s;
+                --background-color: #f6d0e0;
+                --color: #c54d81;
+
+                @media (max-width: $sm) {
+                    top: 5%;
+                }
+            }
+            &:nth-child(3) {
+                top: 50%;
+                right: 0;
+                animation-delay: -3s;
+                --background-color: #e5c1f8;
+                --color: #9d39cf;
+
+                @media (max-width: $sm) {
+                    top: 35%;
+                    right: 2%;
+                }
+            }
+            &:nth-child(4) {
+                bottom: 10%;
+                right: 20%;
+                animation-delay: -4.5s;
+                --background-color: #c8d3f5;
+                --color: #2b53cc;
+            }
+            &:nth-child(5) {
+                bottom: 0;
+                right: 45%;
+                animation-delay: -7s;
+                --background-color: #baeae7;
+                --color: #109388;
+
+                @media (max-width: $sm) {
+                    right: 20%;
+                }
+            }
+            &:nth-child(6) {
+                bottom: 15%;
+                left: 10%;
+                animation-delay: -8.5s;
+                --background-color: #c1f1cb;
+                --color: #1c9a37;
+
+                @media (max-width: $sm) {
+                    bottom: 5%;
+                }
+            }
+            &:nth-child(7) {
+                bottom: 45%;
+                left: 0;
+                animation-delay: -10s;
+                --background-color: #d8ebaa;
+                --color: #5e8300;
+
+                @media (max-width: $sm) {
+                    bottom: 28%;
+                    left: 7%;
+                }
+            }
+            &:nth-child(8) {
+                top: 10%;
+                left: 15%;
+                animation-delay: -11.5s;
+                --background-color: #ede6a7;
+                --color: #978800;
+            }
+        }
+
+        .checkmark {
+            height: 1em;
+            width: auto;
+            margin-left: -1em;
+            transform: scale(1.75) translate(-8px, -4px);
+            color: var(--color);
             opacity: .5;
+        }
+
+        @keyframes wiggle {
+            from {
+                translate: 0;
+            }
+            50% {
+                translate: 3% -7%;
+            }
+            to {
+                translate: 0;
+            }
         }
     }
 </style>

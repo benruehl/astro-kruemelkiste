@@ -5,14 +5,15 @@ interface Props {
 	height: string;
 	x?: string;
 	y?: string;
+	opacity?: number;
 }
 
-const { color, width, height, x, y } = Astro.props;
+const { color, width, height, x, y, opacity } = Astro.props;
 ---
 
 <div class:list={["flair", color]}></div>
 
-<style define:vars={{ width, height, y, x }}>
+<style define:vars={{ width, height, y, x, opacity }}>
 	.flair {
 		position: absolute;
 		z-index: -1;
@@ -22,6 +23,7 @@ const { color, width, height, x, y } = Astro.props;
 		top: var(--y);
 		transform: translate(-50%, -50%);
 		transform-origin: center;
+		opacity: var(--opacity, 1)
 	}
 	.orange {
 		background: radial-gradient(

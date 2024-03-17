@@ -17,7 +17,7 @@ const { class: className } = Astro.props;
     <div class="flares">
         <Flare color="yellow" width="1900px" height="1234px" x="35%" y="40%"/>
         <Flare color="orange" width="700px" height="700px" x="50%" y="15%"/>
-        <Flare color="blue" width="1100px" height="700px" x="35%" y="65%"/>
+        <Flare color="blue" width="1100px" height="700px" x="35%" y="65%" opacity={.75}/>
     </div>
     <Image src={titleImage} alt="Mädchen bläßt Seifenblasen" class="main-img" loading="eager"/>
     <Image src={bubble1Image} alt="Seifenblase" class="bubble bubble-1" loading="eager"/>
