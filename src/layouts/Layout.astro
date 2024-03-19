@@ -46,6 +46,7 @@ const { title } = Astro.props;
 		--text-color: 87, 108, 115;
 		--text-color-strong: 38, 70, 83;
 		--text-color-soft: 170, 128, 122;
+		--link-color: 33, 131, 117;
 		--accent-color: 193, 102, 107;
 		--accent-color-alt: 42, 157, 143;
 		--card-background: 240, 229, 216;
@@ -138,7 +139,7 @@ const { title } = Astro.props;
 		}
 	}
 	a {
-		color: rgb(var(--accent-color-alt));
+		color: rgb(var(--link-color));
 		text-decoration: none;
 		
 		&:hover {
@@ -149,7 +150,7 @@ const { title } = Astro.props;
 		&[href^="https://"]::before
 		{
 			content: "";
-			background-color: rgb(var(--accent-color-alt));
+			background-color: rgb(var(--link-color));
 			mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='currentColor' fill='none' stroke-width='10' stroke-dashoffset='0' stroke-dasharray='0' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 100 100'%3E%3Cpolyline fill='none' points='40 20 20 20 20 90 80 90 80 60'/%3E%3Cpolyline fill='none' points='60 10 90 10 90 40'/%3E%3Cline fill='none' x1='89' y1='11' x2='50' y2='50' /%3E%3C/svg%3E");
 			width: .8em;
 			height: .8em;
