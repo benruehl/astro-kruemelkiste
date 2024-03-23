@@ -19,7 +19,7 @@ const optimizedPatternImage = await getImage({ src: patternImage });
             <Image
                 src={kidHatImage}
                 alt="Junges Mädchen mit pinkem Strickhut lächelt"
-                height={550}
+                height={500}
             />
         </div>
         <div class="quote quote-desktop" data-aos="fade-right">
@@ -118,6 +118,7 @@ const optimizedPatternImage = await getImage({ src: patternImage });
         height: auto;
         mask-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0.55), black);
         color: #817a6b;
+        z-index: -1;
 
         @media (max-width: $sm) {
             width: 100px;
