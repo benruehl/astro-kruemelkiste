@@ -1,6 +1,7 @@
 ---
 import { Image, getImage } from 'astro:assets';
 import { Icon } from "astro-icon";
+import Flash from '../common/Flash.astro';
 import kidHatImage from "../../images/kid-hat.png";
 import berlinLogoImage from "../../icons/berlin-logo.svg";
 import jugendamtLogoImage from "../../images/jugendamt-logo.png";
@@ -28,6 +29,7 @@ const optimizedPatternImage = await getImage({ src: patternImage });
         </div>
     </div>
     <hr>
+    <Flash class="flash"/>
     <div class="logos">
         <Image class="jugendamt-logo" src={jugendamtLogoImage} alt="Jugendamt Pankow Logo"/>
         <Image class="berlin-logo" src={berlinLogoImage} alt="Berlin Logo"/>
@@ -147,5 +149,9 @@ const optimizedPatternImage = await getImage({ src: patternImage });
         width: 100vw;
         margin-left: 50%;
         transform: translate(-50%);
+    }
+
+    .flash {
+        margin-left: 50%;
     }
 </style>

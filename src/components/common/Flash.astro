@@ -1,0 +1,55 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={["container", className]}>
+    <div class="clip">
+        <div class="gradient blur-strong"></div>
+        <div class="gradient blur-little"></div>
+        <div class="gradient sharp"></div>
+    </div>
+</div>
+
+<style lang="scss">
+    .container {
+        width: 40%;
+        min-width: 200px;
+        height: 0;
+    }
+
+    .clip {
+        height: 18px;
+        overflow: hidden;
+        display: grid;
+        grid-template-areas: "overlay";
+    }
+
+    .gradient {
+        grid-area: overlay;
+        height: 2px;
+        background: linear-gradient(
+            to right,
+            rgba(var(--flare-orange), 0),
+            rgba(var(--flare-orange), .5) 33%,
+            rgba(var(--flare-blue), .6) 66%,
+            rgba(var(--flare-blue), 0)
+        );
+
+        &.blur-little {
+            filter: blur(2px);
+        }
+
+        &.blur-strong {
+            filter: blur(4px);
+        }
+
+        &.sharp {
+            height: 1px;
+            opacity: .5;
+        }
+    }
+</style>
