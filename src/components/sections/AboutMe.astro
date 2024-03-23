@@ -6,6 +6,7 @@ import kidHatImage from "../../images/kid-hat.png";
 import berlinLogoImage from "../../icons/berlin-logo.svg";
 import jugendamtLogoImage from "../../images/jugendamt-logo.png";
 import patternImage from "../../icons/wave-pattern.svg";
+import Flare from '../common/Flare.astro';
 
 const optimizedPatternImage = await getImage({ src: patternImage });
 ---
@@ -21,7 +22,7 @@ const optimizedPatternImage = await getImage({ src: patternImage });
                 height={550}
             />
         </div>
-        <div class="quote" data-aos="zoom-in">
+        <div class="quote quote-desktop" data-aos="fade-right">
             <blockquote>
                 Dass Kinder und Eltern sich bei uns wohlfühlen,
                 ist mir eine Herzens&shy;ange&shy;legenheit.
@@ -33,6 +34,16 @@ const optimizedPatternImage = await getImage({ src: patternImage });
     <div class="logos">
         <Image class="jugendamt-logo" src={jugendamtLogoImage} alt="Jugendamt Pankow Logo"/>
         <Image class="berlin-logo" src={berlinLogoImage} alt="Berlin Logo"/>
+    </div>
+    <div class="quote quote-mobile">
+        <div class="flares">
+            <Flare color="yellow" width="1400px" height="1400px" x="0%" y="100%"/>
+            <Flare color="blue" width="700px" height="700px" x="100%" y="0%"/>
+        </div>
+        <blockquote data-aos="fade-up">
+            Dass Kinder und Eltern sich bei uns wohlfühlen,
+            ist mir eine Herzens&shy;ange&shy;legenheit.
+        </blockquote>
     </div>
 </section>
 
@@ -52,10 +63,6 @@ const optimizedPatternImage = await getImage({ src: patternImage });
     .big-img-container {
         align-self: flex-end;
         position: relative;
-
-        @media (max-width: $sm) {
-            order: 2;
-        }
         
         img {
             display: block;
@@ -69,7 +76,6 @@ const optimizedPatternImage = await getImage({ src: patternImage });
     .quote {
         margin: 0 auto;
         margin-bottom: 4rem;
-        z-index: 1;
         
         blockquote {
             margin: 0;
@@ -83,16 +89,23 @@ const optimizedPatternImage = await getImage({ src: patternImage });
             }
         }
 
-        img {
-            display: block;
-            border-radius: 1000px;
-            border: 2px solid white;
-            box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px -1px rgba(0,0,0,.1);
-            margin-top: 2rem;
-
+        &.quote-desktop {
             @media (max-width: $sm) {
-                margin-left: auto;
-                margin-right: auto;
+                display: none;
+            }
+        }
+        &.quote-mobile {
+            position: relative;
+            margin-top: 4rem;
+
+            @media (min-width: $sm + 1) {
+                display: none;
+            }
+
+            .flares {
+                @include FlareContainer();
+                opacity: .5;
+                z-index: -1;
             }
         }
     }
@@ -137,6 +150,7 @@ const optimizedPatternImage = await getImage({ src: patternImage });
         inset: 0;
         mask-image: radial-gradient(at 40% 100%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 70%);
         width: 100vw;
+        min-width: 1200px;
         margin-left: 50%;
         transform: translate(-50%);
     }
@@ -152,6 +166,6 @@ const optimizedPatternImage = await getImage({ src: patternImage });
     }
 
     .flash {
-        margin-left: 50%;
+        margin-left: 45%;
     }
 </style>

@@ -13,7 +13,7 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<div  class:list={["container", className]}>
+<div class:list={["container", className]}>
     <div class="flares">
         <Flare color="yellow" width="1900px" height="1234px" x="35%" y="40%"/>
         <Flare color="orange" width="700px" height="700px" x="50%" y="15%"/>
@@ -35,19 +35,26 @@ const { class: className } = Astro.props;
 		@media (max-width: $img-break) {
 			margin-left: -34%;
 		}
+
+        @media (max-width: $sm) {
+            display: none;
+        }
     }
 
     .flares {
         @include FlareContainer();
 
         @media (max-width: $sm) {
-            opacity: .5;
+            opacity: .7;
+            transform: scale(1.25, 1.1);
         }
     }
 
     .main-img {
-        max-width: 100%;
+        max-width: 80%;
         height: auto;
+        margin: 0 auto;
+        display: block;
     }
 
     .bubble {
@@ -70,10 +77,6 @@ const { class: className } = Astro.props;
         top: 30%;
         animation-delay: -1s;
         filter: sepia() saturate(1.5) hue-rotate(45deg);
-        
-		@media (max-width: $img-break) {
-			display: none;
-		}
     }
 
     .bubble-3 {
@@ -83,10 +86,6 @@ const { class: className } = Astro.props;
         top: 12%;
         animation-delay: 1s;
         filter: sepia() saturate(2) hue-rotate(-45deg);
-        
-		@media (max-width: $img-break) {
-			display: none;
-		}
     }
 
     @keyframes float {

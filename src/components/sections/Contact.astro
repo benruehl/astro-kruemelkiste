@@ -76,6 +76,10 @@ import Testimonial from "../common/Testimonial.astro";
         max-width: 400px;
         min-width: 0;
         position: relative;
+
+        @media (max-width: $sm) {
+            text-align: center;
+        }
     }
 
     .testimonials {

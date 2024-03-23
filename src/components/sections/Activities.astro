@@ -46,6 +46,10 @@ const optimizedPatternImage = await getImage({ src: patternImage });
 <style lang="scss">
     section {
         position: relative;
+
+        @media (max-width: $sm) {
+            text-align: center;
+        }
     }
 
     .card {
@@ -64,17 +68,8 @@ const optimizedPatternImage = await getImage({ src: patternImage });
             padding-left: var(--page-padding);
             padding-right: var(--page-padding);
 
-            &:not(:last-child) {
-                padding-bottom: 160px;
-            }
-
             &:last-child {
                 flex-wrap: wrap;
-
-                picture.bottom {
-                    margin-top: -164px;
-                    margin-bottom: 0;
-                }
             }
         }
 
@@ -104,11 +99,17 @@ const optimizedPatternImage = await getImage({ src: patternImage });
             border-radius: 1000px;
             position: relative;
 
-            &.top {
-                margin-top: -164px;
+            @media (max-width: $sm) {
+                max-width: 80%;
             }
-            &.bottom {
-                margin-bottom: -164px;
+
+            @media (min-width: $sm + 1px) {
+                &.top {
+                    margin-top: -164px;
+                }
+                &.bottom {
+                    margin-bottom: -164px;
+                }
             }
 
             &::before {

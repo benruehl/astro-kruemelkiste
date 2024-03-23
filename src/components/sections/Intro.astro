@@ -104,6 +104,12 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
 <style lang="scss">
     $box-padding: min(50px, 3vw);
 
+    section {
+        @media (max-width: $sm) {
+            text-align: center;
+        }
+    }
+
     h2 {
         grid-column: 1 / -1;
         text-transform: none;
@@ -197,6 +203,7 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
                 grid-column: 1 / -1;
                 width: min(150%, 500px);
                 margin-left: 50%;
+                margin-top: -20%;
                 justify-self: flex-start;
             }
         }
@@ -235,8 +242,6 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
 
         @media (max-width: $sm) {
             grid-template-columns: 1fr;
-            gap: 2rem;
-            padding: 0;
         }
 
         .image-group {
@@ -297,6 +302,10 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
             position: relative;
             z-index: 1;
 
+            @media (max-width: $sm) {
+                margin: 2rem 0;
+            }
+
             h3 {
                 color: rgb(var(--accent-color));
             }
@@ -323,6 +332,7 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
 
         .image-group {
             min-width: 0;
+            max-width: 90%;
             margin-top: -244px;
             position: relative;
 
@@ -343,6 +353,10 @@ const optimizedWallpaperImage = await getImage({ src: childishWallpaperImage });
 
         .text {
             z-index: 1;
+
+            @media (max-width: $sm) {
+                margin: 2rem 0;
+            }
        
             @media (min-width: $sm + 1px) {
                 max-width: 330px;
