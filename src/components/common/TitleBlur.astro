@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import waveBackgroundImage from "../../icons/title-wave.svg";
 ---
 
@@ -8,9 +9,9 @@ import waveBackgroundImage from "../../icons/title-wave.svg";
     data-aos-duration="2000"
     data-aos-delay="0"
 >
-    <div
-        class="wave-background"
-        style={`background-image: url(${waveBackgroundImage.src}), url(${waveBackgroundImage.src});`}>
+    <div class="wave-background">
+        <Image src={waveBackgroundImage} alt="" width={1920 * 2} loading="eager"/>
+        <Image src={waveBackgroundImage} alt="" width={1920 * 2} loading="eager"/>
     </div>
 </div>
 
@@ -24,17 +25,19 @@ import waveBackgroundImage from "../../icons/title-wave.svg";
 
     .wave-background {
         margin-top: -100px;
-        height: 500px;
         width: calc(1920px * 4);
         filter: blur(140px);
-        background-repeat: no-repeat;
-        background-position: 0 top, calc(1920px * 2) top;
+        display: flex;
         animation: move 15s linear infinite;
 
         @media (max-width: $sm) {
             animation: none;
             background-position: calc(100vw + 50px) -150px;
             opacity: .5;
+        }
+
+        img {
+            height: 500px;
         }
     }
         
