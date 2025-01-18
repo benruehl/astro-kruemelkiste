@@ -1,9 +1,6 @@
 ---
 import ImageText from '../common/ImageText.astro';
 import TitleImage from '../common/TitleImage.astro';
-
-const baseUrl = import.meta.env.BASE_URL;
-const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/");
 ---
 
 <section>
@@ -33,7 +30,7 @@ const textBackgroundImageUrl = `url(${baseUrl}/title-bg.jpg)`.replace("//", "/")
     </div>
 </section>
 
-<style lang="scss" define:vars={{ textBackgroundImageUrl }}>
+<style lang="scss">
     section {
         display: grid;
         grid-template-columns: auto minmax(500px, auto);
